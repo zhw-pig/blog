@@ -362,7 +362,7 @@
         }
       });
       $(".j-navbar-back-home").on("click", function () {
-        window.location.href = "/";
+        window.location.href = "/blog";
       });
       $(".j-navbar-search").on("click", function () {
         fn.showSearch();
