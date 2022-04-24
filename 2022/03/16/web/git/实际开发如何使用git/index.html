@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>实际开发如何使用git - 无处话凄凉</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="IT技术, git gitlab">
+  <meta name="description" content="一般进入公司，如果你的公司使用的是外网，你就需要注意以...">
+  <meta name="author" content="张怀伟">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/blog/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: false,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: './source/images/theme/welcome-image.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'none'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">实际开发如何使用git</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/blog/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/blog/galleries/ " class="underline "> 我们</a>
+      </li><li class="menu-item">
+        <a href="/blog/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/blog/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/blog/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/blog/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by 张怀伟</p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/blog/images/web/git.webp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">实际开发如何使用git</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>三月 16, 2022</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1067</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <p>一般进入公司，如果你的公司使用的是外网，你就需要注意以下两个问题，这是我刚刚入职踩过的坑~</p>
+<h1 id="关于远程库项目拉取遇到的问题"><a href="#关于远程库项目拉取遇到的问题" class="headerlink" title="关于远程库项目拉取遇到的问题"></a>关于远程库项目拉取遇到的问题</h1><pre><code>进入公司，一般公司使用的都是内网服务搭建的远程库平台【默认互联网无法访问】。
+拉取项目步骤如下：
+1、组长根据你在公司的邮箱地址给你开git账号，
+2、安装git，注册git账号，生成SHH密钥
+3、根据项目组长给你的网址访问内网远程库平台【公司内部一般用到的内网远程库平台包括：
+gitlab、gitblit】
+注意：一定要看清项目经理给的gitlab网址是不是外网，如果是内网就无法访问，
+【我的组长就给我的是内网，整死小白了】
+4、在gitlab上添加git密钥
+5、新建文件夹，git init 初始化，然后拉取项目
+$  git pull 远程库地址  分支
+注意：
+    远程库地址默认是内网地址，此时必须一定要向组长索要外网ip；
+    公司的远程库是在内网上的，一般不允许连接，只允许拉取和推送；
+    不要操作内网远程库的master分支
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44224921/article/details/123476327?spm=1001.2014.3001.5501">注册git账号</a></p>
+<h1 id="安装公司内网中的npm插件库遇到的问题"><a href="#安装公司内网中的npm插件库遇到的问题" class="headerlink" title="安装公司内网中的npm插件库遇到的问题"></a>安装公司内网中的npm插件库遇到的问题</h1><pre><code>1、代码拉取成功，需要使用yarn 或者 npm i 安装依赖
+2、如果依赖有公司内网服务上的npm插件，需要使用如下命令
+$ yarn add 包名 --register 公司npm库的外网地址
+注意：
+此处不要使用npm，访问第三方服务太慢；
+安装前，先查看自己的npm配置是否代理了其他ip，如果是，先备份配置文件，再删除代理
+</code></pre>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>上面是我，第一次在公司使用gitlab采的坑，分享出来，希望和曾经的我一样的你，看了之后，能有<br>帮助。不对的地方家人们可以指出</p>
+<p>我们在自学的时候都是使用的是 github、gitee；而公司实际用的是gitlab【内网服务搭建的】，这使<br>第一次进公司很有可能采的坑~~~~</p>
+
+      </section>
+      <section class="extra">
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/blog/2022/04/20/project/%E9%83%91%E5%B7%9E%E5%9C%B0%E5%9D%80%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%BA%91%E5%B9%B3%E5%8F%B0_react/"><i class="iconfont iconleft"></i>对基于React开发的“郑州地址大数据云平台”门户网站的总结</a>
+    <a href="/blog/2022/03/14/web/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%BF%9C%E7%A8%8B%E5%BA%93%E9%A1%B9%E7%9B%AE%E6%8B%89%E5%8F%96%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">关于远程库项目拉取遇到的问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%85%AC%E5%8F%B8%E5%86%85%E7%BD%91%E4%B8%AD%E7%9A%84npm%E6%8F%92%E4%BB%B6%E5%BA%93%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">安装公司内网中的npm插件库遇到的问题</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="947201280 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="buxianliao0353 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://github.com/zhw-pig "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="947201280@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by 张怀伟</p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/blog/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/blog/js/utils.js"></script>
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

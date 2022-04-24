@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TypeScript基础 - 无处话凄凉</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="IT技术, 前端,TypeScript基础">
+  <meta name="description" content="TypeScript基础语法总结ts原始类型一、包括j...">
+  <meta name="author" content="张怀伟">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/blog/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: false,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: './source/images/theme/welcome-image.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'none'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">TypeScript基础</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/blog/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/blog/galleries/ " class="underline "> 我们</a>
+      </li><li class="menu-item">
+        <a href="/blog/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/blog/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/blog/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/blog/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by 张怀伟</p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://img-blog.csdnimg.cn/210aa32942a2455d86a6ab4d4492d5c0.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">TypeScript基础</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>四月 24, 2022</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>5165</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h1 id="TypeScript基础语法总结"><a href="#TypeScript基础语法总结" class="headerlink" title="TypeScript基础语法总结"></a>TypeScript基础语法总结</h1><h2 id="ts原始类型"><a href="#ts原始类型" class="headerlink" title="ts原始类型"></a>ts原始类型</h2><h3 id="一、包括js所有的基础类型"><a href="#一、包括js所有的基础类型" class="headerlink" title="一、包括js所有的基础类型"></a>一、包括js所有的基础类型</h3><ol>
+<li>string</li>
+<li>boolean</li>
+<li>number</li>
+<li>undefined</li>
+<li>null</li>
+<li>symbol<h3 id="二、函数返回类型"><a href="#二、函数返回类型" class="headerlink" title="二、函数返回类型"></a>二、函数返回类型</h3></li>
+<li>void<h2 id="ts非原始类型"><a href="#ts非原始类型" class="headerlink" title="ts非原始类型"></a>ts非原始类型</h2></li>
+<li>object：<strong>常用</strong>,只检测数组或对象类型</li>
+<li>Object：检测js基础数据类型，同时检测引用类型</li>
+<li>{}：和Object一样<h2 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h2> 检测数组类型，有三种写法：</li>
+<li>第一种写法：<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> <span class="hljs-attr">arr</span>:<span class="hljs-built_in">number</span>[] = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]  <span class="hljs-comment">// 表示arr类型是一个数组，且数组的每一个元素都是number类型</span><br></code></pre></td></tr></table></figure></li>
+<li>第二种写法：使用<a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/generics.html">泛型</a><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> <span class="hljs-attr">arr</span>:<span class="hljs-title class_">Array</span>&lt;<span class="hljs-built_in">number</span>&gt; = [<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>];  <span class="hljs-comment">// 表示arr类型是一个数组，且数组的每一个元素都是number类型</span><br></code></pre></td></tr></table></figure></li>
+<li>第三种写法：使用<a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/basic-types.html">元组</a><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> <span class="hljs-attr">arr</span>:[<span class="hljs-built_in">number</span> | <span class="hljs-built_in">boolean</span>] = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-literal">true</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-literal">false</span>]; <span class="hljs-comment">// 表示arr这个数组类型中的元素类型，可以是number或者boolean</span><br></code></pre></td></tr></table></figure>
+<h2 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h2><blockquote>
+<p>联合类型即是使用 ‘|’ 符号，让一个变量，可以被多个类型检测</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> <span class="hljs-attr">test</span>:<span class="hljs-built_in">number</span> | <span class="hljs-built_in">boolean</span>  <span class="hljs-comment">// 表示test这个变量可以是number，也可以是boolean类型</span><br><span class="hljs-keyword">let</span> obj : &#123;<span class="hljs-attr">a</span>:<span class="hljs-number">1</span>&#125; | &#123;<span class="hljs-attr">b</span>:<span class="hljs-number">2</span>&#125;  <span class="hljs-comment">// 表示obj这个变量可以是&#123;a:1&#125;，也可以是&#123;b:2&#125;，也可以两个都有</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="交叉类型"><a href="#交叉类型" class="headerlink" title="交叉类型"></a>交叉类型</h2><blockquote>
+<p>交叉类型即是使用 ‘&amp;’ 符号，让一个变量满足被 **&amp;**连接的所有类型</p>
+</blockquote>
+<h2 id="交叉联合类型"><a href="#交叉联合类型" class="headerlink" title="交叉联合类型"></a>交叉联合类型</h2><blockquote>
+<p>交叉联合类型即是：| 和 &amp; 的混合使用，只需要记住 <strong>&amp;优先|</strong></p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> obj : &#123;<span class="hljs-attr">name</span>:<span class="hljs-built_in">string</span>&#125; &amp; &#123;age : <span class="hljs-built_in">number</span>&#125; &amp; &#123;age : <span class="hljs-number">13</span>&#125;<br>obj = &#123;name : <span class="hljs-string">&#x27;&#x27;</span>, age : <span class="hljs-number">13</span>&#125;   <span class="hljs-comment">// 这里的age属性只能是number且值为13</span><br></code></pre></td></tr></table></figure>
+<h2 id="any类型和unknown-类型的区别"><a href="#any类型和unknown-类型的区别" class="headerlink" title="any类型和unknown 类型的区别"></a>any类型和unknown 类型的区别</h2><blockquote>
+<p>any 不再有TypeScript的类型校验；<br>unknown 保持着类型校验</p>
+</blockquote>
+<h2 id="TypeScript两种自定义类型"><a href="#TypeScript两种自定义类型" class="headerlink" title="TypeScript两种自定义类型"></a>TypeScript两种自定义类型</h2><h3 id="一、接口interface"><a href="#一、接口interface" class="headerlink" title="一、接口interface"></a>一、接口interface</h3><blockquote>
+<p>TypeScript的核心原则之一是对值所具有的结构进行类型检查。 它有时被称做“鸭式辨型法”或“结构性子类型化”。 在TypeScript里，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。</p>
+</blockquote>
+<p>上面这句定义摘自官网，比较抽象，其实接口就是</p>
+<blockquote>
+<p>开发者自己使用<strong>interface</strong>关键字封装的一套类型校验规则，就是接口</p>
+</blockquote>
+<h4 id="1、封装一套限制对象的类型规则"><a href="#1、封装一套限制对象的类型规则" class="headerlink" title="1、封装一套限制对象的类型规则"></a>1、封装一套限制对象的类型规则</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 这是一个接口返回的数据类型校验</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ObjIft</span> &#123;<br>    status : <span class="hljs-built_in">number</span>;<br>    data? : &#123;&#125;[];  <span class="hljs-comment">// 表示data这个数组中的每一个元素是对象，且data缺省</span><br>    message : <span class="hljs-built_in">string</span>;<br>&#125;<br><span class="hljs-comment">// 使用这个检验规则接口</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">resObj</span>:<span class="hljs-title class_">ObjIft</span> = &#123;<br>    status : <span class="hljs-number">200</span>,<br>    data : [<br>        &#123;...&#125;<br>    ],<br>    message : <span class="hljs-string">&#x27;success&#x27;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、封装一套限制数组的类型规则"><a href="#2、封装一套限制数组的类型规则" class="headerlink" title="2、封装一套限制数组的类型规则"></a>2、封装一套限制数组的类型规则</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ArrIft</span> &#123;<br>    <span class="hljs-comment">// [idx:number]  数组下标类型</span><br>    [<span class="hljs-attr">idx</span>:<span class="hljs-built_in">number</span>]:<span class="hljs-built_in">number</span>|<span class="hljs-built_in">string</span><br>&#125;<br><br><span class="hljs-keyword">let</span> <span class="hljs-attr">arr</span>:<span class="hljs-title class_">ArrIft</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;4&#x27;</span>,<span class="hljs-string">&#x27;5&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<h4 id="3、封装一套限制函数的类型规则"><a href="#3、封装一套限制函数的类型规则" class="headerlink" title="3、封装一套限制函数的类型规则"></a>3、封装一套限制函数的类型规则</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">FnIft</span> &#123;<br>    <span class="hljs-comment">// (p:string) 函数参数及类型 : 函数返回值</span><br>    (<span class="hljs-attr">p</span>:<span class="hljs-built_in">string</span>) : <span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">fn</span>:<span class="hljs-title class_">FnIft</span> = <span class="hljs-function">(<span class="hljs-params">p</span>)=&gt;</span>&#123;&#125;<br><span class="hljs-title function_">fn</span>(<span class="hljs-string">&#x27;&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h4 id="4、interface注意点"><a href="#4、interface注意点" class="headerlink" title="4、interface注意点"></a>4、interface注意点</h4><ul>
+<li>接口名首字母需要大写</li>
+<li>接口里的属性可以设置只读规则，用<strong>readonly</strong>修饰</li>
+<li>接口里的属性可以设置属性缺省，用**?**修饰</li>
+<li>接口是可以同名的，也是可以通过<strong>extends</strong>继承其他接口的，<strong>通过继承或者同名的接口，规则会合并</strong>，使用时，需要遵循合并后的规则</li>
+<li>实际开发中，可以设置全局接口。只需要：将全局接口放在<strong>xxx.d.ts</strong>文件中，无需导出该文件，即可在全局使用</li>
+</ul>
+<h3 id="二、别名type"><a href="#二、别名type" class="headerlink" title="二、别名type"></a>二、别名type</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">StrOrNum</span> = <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">str</span>:<span class="hljs-title class_">StrOrNum</span>;<br>str = <span class="hljs-string">&#x27;1&#x27;</span><br>str = <span class="hljs-number">1</span><br><br><span class="hljs-comment">// 类型别名定义函数</span><br><span class="hljs-comment">// 参数及其类型 =&gt; 返回值类型</span><br><span class="hljs-keyword">type</span> <span class="hljs-title class_">FnType</span> = <span class="hljs-function">(<span class="hljs-params">p:<span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">void</span><br></code></pre></td></tr></table></figure>
+<h3 id="接口和别名的区别"><a href="#接口和别名的区别" class="headerlink" title="接口和别名的区别"></a>接口和别名的区别</h3><ol>
+<li>都可以用来自定义类型</li>
+<li>类型别名支持联合和交叉类型定义</li>
+<li>别名不支持重复命名，接口可以</li>
+</ol>
+<h2 id="TS函数中的参数写法"><a href="#TS函数中的参数写法" class="headerlink" title="TS函数中的参数写法"></a>TS函数中的参数写法</h2><h3 id="一、参数默认值"><a href="#一、参数默认值" class="headerlink" title="一、参数默认值"></a>一、参数默认值</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params">a:<span class="hljs-built_in">number</span> = <span class="hljs-number">3</span></span>) &#123;&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="二、参数缺省"><a href="#二、参数缺省" class="headerlink" title="二、参数缺省"></a>二、参数缺省</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params">a?:<span class="hljs-built_in">number</span></span>) &#123;&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="三、接收剩余参数"><a href="#三、接收剩余参数" class="headerlink" title="三、接收剩余参数"></a>三、接收剩余参数</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params">a:<span class="hljs-built_in">number</span>,b:<span class="hljs-built_in">number</span>,...arr:<span class="hljs-built_in">number</span>[]</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr)  <span class="hljs-comment">// 输出 3,4,5</span><br>&#125;<br><span class="hljs-title function_">fn</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="TS中this指向问题"><a href="#TS中this指向问题" class="headerlink" title="TS中this指向问题"></a>TS中this指向问题</h2><h3 id="一、全局对象下的this"><a href="#一、全局对象下的this" class="headerlink" title="一、全局对象下的this"></a>一、全局对象下的this</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// ts中提供了Window接口，用来规范全局对象window的</span><br><span class="hljs-comment">// 这里通过接口可以重复命名，扩展了Window接口对window对象的规则</span><br><span class="hljs-comment">// 所以此时 window全局对象下 是有自定义属性：myName 的</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Window</span> &#123;<br>    myName : <span class="hljs-built_in">string</span><br>&#125;<br><span class="hljs-comment">// 在ts中，若要使用this，需要在函数形参的第一个位置，注明this指向对象的类型</span><br><span class="hljs-comment">// 这里this指向window对象，所以需要用Window接口规范</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params"><span class="hljs-variable language_">this</span>:Window,name:<span class="hljs-built_in">string</span></span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">myName</span> = name<br>&#125;<br><span class="hljs-variable language_">window</span>.<span class="hljs-property">Person</span> = <span class="hljs-title class_">Person</span>()  <span class="hljs-comment">// 挂载</span><br><span class="hljs-variable language_">window</span>.<span class="hljs-title class_">Person</span>(<span class="hljs-string">&#x27;少年歌行~无心&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="二、普通对象下的this"><a href="#二、普通对象下的this" class="headerlink" title="二、普通对象下的this"></a>二、普通对象下的this</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 自定义对象规范</span><br><span class="hljs-keyword">type</span> <span class="hljs-title class_">ObjType</span> = &#123;<br>    myName : <span class="hljs-built_in">string</span>;<br>    <span class="hljs-title class_">Person</span> : <span class="hljs-function">(<span class="hljs-params">name:<span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">void</span><br>&#125;<br><span class="hljs-comment">// 定义对象obj，并使用规则ObjType</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">obj</span>:<span class="hljs-title class_">ObjType</span> = &#123;<br>    myName : <span class="hljs-string">&#x27;&#x27;</span>,<br>    <span class="hljs-comment">// this:ObjType|Other  this可以指向联合类型</span><br>    <span class="hljs-title class_">Person</span> : <span class="hljs-function">(<span class="hljs-params"><span class="hljs-variable language_">this</span>:ObjType,name:<span class="hljs-built_in">string</span></span>) =&gt;</span>&#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">myName</span> = name<br>    &#125;<br>&#125;<br>obj.<span class="hljs-title class_">Person</span>(<span class="hljs-string">&#x27;少年歌行~无心&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><blockquote>
+<p>软件工程中，我们不仅要创建一致的定义良好的API，同时也要考虑可重用性。 组件不仅能够支持当前的数据类型，同时也能支持未来的数据类型，这在创建大型系统时为你提供了十分灵活的功能。<br> 在像C#和Java这样的语言中，可以使用泛型来创建可重用的组件，一个组件可以支持多种类型的数据。 这样用户就可以以自己的数据类型来使用组件。</p>
+</blockquote>
+<p>官网对<a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/generics.html">泛型</a>的介绍,太过晦涩。其实，简单讲，<a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/generics.html">泛型</a><strong>即是类型的形参</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// T 是自定义的标识符，是形参，接受外部传来的类型</span><br><span class="hljs-keyword">function</span> fn&lt;T&gt;(<span class="hljs-attr">n</span>:T) &#123;&#125;<br><br><span class="hljs-comment">// &lt;类型&gt;  外部传的实参string类型</span><br>fn&lt;<span class="hljs-built_in">string</span>&gt;(<span class="hljs-string">&#x27;1&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="泛型约束extends"><a href="#泛型约束extends" class="headerlink" title="泛型约束extends"></a>泛型约束extends</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">StrOrNum</span> = <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;<br><span class="hljs-comment">// &lt;T extends StrOrNum&gt; ： StrOrNum 规则约束T泛型</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">PersonItf</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">StrOrNum</span>&gt; &#123;<br>    name : T <span class="hljs-comment">// name属性只能是StrOrNum规则</span><br>&#125;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">zhw</span>:<span class="hljs-title class_">PersonItf</span>&lt;<span class="hljs-built_in">string</span>&gt; = &#123;<br>    name : <span class="hljs-string">&#x27;zhw&#x27;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="枚举enum"><a href="#枚举enum" class="headerlink" title="枚举enum"></a>枚举enum</h2><blockquote>
+<p>使用枚举我们可以定义一些带名字的常量。 使用枚举可以清晰地表达意图或创建一组有区别的用例。 TypeScript支持数字的和基于字符串的枚举。</p>
+</blockquote>
+<p>需要注意的是：<a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/enums.html">枚举</a>不是类型，而是用于列举数据的，让一些晦涩的数据，见名知意；</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">StatusCode</span> &#123;<br>    success = <span class="hljs-number">200</span>,<br>    paramsError = <span class="hljs-number">400</span><br>&#125;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">res</span>:<span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> = <span class="hljs-number">200</span>;<br><span class="hljs-keyword">if</span>(res === <span class="hljs-title class_">StatusCode</span>.<span class="hljs-property">success</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;请求成功&#x27;</span>)<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(res === <span class="hljs-title class_">StatusCode</span>.<span class="hljs-property">paramsError</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败，请求参数问题&#x27;</span>)<br>&#125;<br><br><span class="hljs-comment">// 如果枚举中的属性没有值，则默认值为0，且递增1</span><br><span class="hljs-keyword">enum</span> test &#123;<br>    value,  <span class="hljs-comment">// test.value = 0</span><br>    value2, <span class="hljs-comment">// test.value2 = 1</span><br>    ....<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="类class"><a href="#类class" class="headerlink" title="类class"></a>类class</h2><blockquote>
+<p>来自官网：传统的JavaScript程序使用函数和基于原型的继承来创建可重用的组件，但对于熟悉使用面向对象方式的程序员来讲就有些棘手，因为他们用的是基于类的继承并且对象是由类构建出来的。 从ECMAScript 2015，也就是ECMAScript 6开始，JavaScript程序员将能够使用基于类的面向对象的方式。 使用TypeScript，我们允许开发者现在就使用这些特性，并且编译后的JavaScript可以在所有主流浏览器和平台上运行，而不需要等到下个JavaScript版本</p>
+</blockquote>
+<p><strong>应该注意：</strong> </p>
+<ul>
+<li>定义类的同时，相当于定义了同名称的接口;</li>
+<li>类可以通过关键字implements实现一个接口，从而达到遵循这个接口的规则的作用</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-comment">// 在类中，定义属性前，应该先声明这个属性的类型，也可以给这个属性设置默认值</span><br>    myName : <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;无心&#x27;</span>;<br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name:<span class="hljs-built_in">string</span></span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">myName</span> = name<br>    &#125;,<br>    <span class="hljs-title function_">getName</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">myName</span><br>    &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>以上这个Person类，相当于下面这个接口</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Person</span> &#123;<br>    myName : <span class="hljs-built_in">string</span>,<br>    getName : <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">string</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="一、typeof"><a href="#一、typeof" class="headerlink" title="一、typeof"></a>一、typeof</h3><blockquote>
+<p>typeof 是用来提取变量的类型</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;12&#x27;</span>;<br><span class="hljs-keyword">type</span> <span class="hljs-title class_">StrType</span> = <span class="hljs-keyword">typeof</span> str  <span class="hljs-comment">// 此时自定义的别名StrType 就是提取str这个变量的类型</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">test</span>:<span class="hljs-title class_">StrType</span> = <span class="hljs-string">&#x27;xx&#x27;</span><br></code></pre></td></tr></table></figure>
+      </section>
+      <section class="extra">
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/blog/2022/04/20/project/%E9%83%91%E5%B7%9E%E5%9C%B0%E5%9D%80%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%BA%91%E5%B9%B3%E5%8F%B0_react/">对基于React开发的“郑州地址大数据云平台”门户网站的总结<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TypeScript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93"><span class="toc-text">TypeScript基础语法总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ts%E5%8E%9F%E5%A7%8B%E7%B1%BB%E5%9E%8B"><span class="toc-text">ts原始类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8C%85%E6%8B%ACjs%E6%89%80%E6%9C%89%E7%9A%84%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B"><span class="toc-text">一、包括js所有的基础类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B"><span class="toc-text">二、函数返回类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ts%E9%9D%9E%E5%8E%9F%E5%A7%8B%E7%B1%BB%E5%9E%8B"><span class="toc-text">ts非原始类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">数组类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="toc-text">联合类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E7%B1%BB%E5%9E%8B"><span class="toc-text">交叉类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="toc-text">交叉联合类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#any%E7%B1%BB%E5%9E%8B%E5%92%8Cunknown-%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">any类型和unknown 类型的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TypeScript%E4%B8%A4%E7%A7%8D%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B"><span class="toc-text">TypeScript两种自定义类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%8E%A5%E5%8F%A3interface"><span class="toc-text">一、接口interface</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%88%AB%E5%90%8Dtype"><span class="toc-text">二、别名type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%92%8C%E5%88%AB%E5%90%8D%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">接口和别名的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TS%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E5%86%99%E6%B3%95"><span class="toc-text">TS函数中的参数写法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">一、参数默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8F%82%E6%95%B0%E7%BC%BA%E7%9C%81"><span class="toc-text">二、参数缺省</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%8E%A5%E6%94%B6%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0"><span class="toc-text">三、接收剩余参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TS%E4%B8%ADthis%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98"><span class="toc-text">TS中this指向问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1%E4%B8%8B%E7%9A%84this"><span class="toc-text">一、全局对象下的this</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%99%AE%E9%80%9A%E5%AF%B9%E8%B1%A1%E4%B8%8B%E7%9A%84this"><span class="toc-text">二、普通对象下的this</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B"><span class="toc-text">泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%BA%A6%E6%9D%9Fextends"><span class="toc-text">泛型约束extends</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BEenum"><span class="toc-text">枚举enum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BBclass"><span class="toc-text">类class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95"><span class="toc-text">扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81typeof"><span class="toc-text">一、typeof</span></a></li></ol></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="947201280 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="buxianliao0353 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://github.com/zhw-pig "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="947201280@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by 张怀伟</p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/blog/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/blog/js/utils.js"></script>
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
