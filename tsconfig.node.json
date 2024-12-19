@@ -5,7 +5,9 @@
     "vitest.config.*",
     "cypress.config.*",
     "nightwatch.conf.*",
-    "playwright.config.*"
+    "playwright.config.*",
+    "vite/*.ts",  // vite.config.ts 引入vite文件夹的文件，所以需要这里注明路径
+    "src/**/*.d.ts" // 这里的declare只能用在src下,所以需要在tsconfig.node.json中配置include
   ],
   "compilerOptions": {
     "composite": true,

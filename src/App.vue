@@ -1,85 +1,23 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
+import { decrypt, encryption } from '@/utils/encryption'
+const testZSPhone =
+  '{+vz3GUThEGnstanArz1HPS1xHD6PkoxVd7fNHsO1CRY=}{Lq7rExzxtJEln6FM6AI9UIQa0C+cpn5E5SzTR7wZ3xYmPCmeMKT5nyRR3XOnXkitz1nxq0Xy8wmkpwrapH/ItcWAic2prGIn/OQq8bScGpPEl2lSweVDSu30IIsuil5vjB0NFmK6q9T+GySYlwgHv4c5LTR+usUvzzWxQRfGCQfvwZoaCBrWMyBSXIpdtpsSCc/shEh3u7m7H7M8GTblxWpbRd0zJYHsmr9WdTAJMp13aH0kQrzthRIoqyevg7y28vDr/rCLIRIxukT+2uOsLm3pQzqvA9XtiYh95dJSgz+UZPJKJq1vWdMXpoiQXxc1CryomYP06zErWVY4Ana5xQ==}{Q0Tn3OI10qu3x9yn+yPJEbnPbUrisV4621YG1Co5FdELQeWxjTT/pAuCAYEl4FElya1HoQT/4h3PBLmRib9xPoEurA7E/gBqlk6LqM7AubJY/UQ2iHEwtPKUtwYN6z7ZdXgfbQneXthX+yYO/mlhrn110/lCfqxLuvh1I26gnL/fWnDwUkWwzr/xSTKMOqEC+FNRq3+GqZ9YTS7DGKMDy/Ja/eWkpghWPHDBqiVHlSNuWl3aBhuStbwsDsIfKlZmHSc19zTcIXOxJiJyFn/oszcblvw9RJTR09q/CHMeujfBic+fmCLcpBHdtUMps2KOq1Vdz3SvwmaiI7jbDlIX1Q==}{ThGQsSNpdMe6GLAKquYdTg==}'
+
+const testPhone123 =
+  '{+vz3GUThEGnstanArz1HPS1xHD6PkoxVd7fNHsO1CRY=}{ax4AzePxrUrOy9Ey0nxQ+kO48Doo7Mzjqcu/4wu4yspqkUouVDu2FjCgZHGYp7bXFER8F8G0awrZg85hF5fdk2at/htlBQj6F2DcBt3S+pBe9Atbeu+H2KV1fNEfHDtobTZyCqOa39iL7noshPyXXzfZ0v4xhGYvplMpVcloQbf0ItAyI6129Jj2DOWlrfioxsBMWnRDVMEj0VG233UQ1TDYcr+hEka8ewBvDs30GBrwL/2tQNT7VMpA3N+ChcYabbVsm3H4H3C1/gQm9os7NF6AVISTOggwQd3M+iNCiYrHeupL69iJi9zqpqyfnPdtcNEExNkp980+LCA+YAcjYA==}{jDKygMCc8bBxGllM8+HYPowCINd10t/uslxUe2OQVlMP3VC5kQt6eRs1FfYj5y9jo5V1sRR5lEhjEbJIQF/MJgQlJXu1OxWEijK69DBuG5uCEqOOcTo7TlGjWp1G4Lcl2TsfQOQuSbkkyZf0GlskALZ2loYLJOR3Yu4M/mWevWrtrIAYvfM3LUZwrzHELQAd0DBWN1KGI8A+H90xd/4Ej2qd46L/xQaPnlZ5PVzYFp/+3xuktVldNjz/9YKNf5BJg4phsXOppEQ/lU+XvcEG9BF4AiQCl9fBrVkYXnS5OPnyE6GBsRBVwMoHEJmj5AJdYJwAzsSHUwDMtmdHX05l5Q==}{qH1zgtIQrIQlLdNQOcyVyw==}'
+
+const testGM =
+  '{/TvJIUFaw4K111Js7NNHeT7hfgx/1Nn6DWCeRZ4pnIs=}{AHfGPhr245bkAr4/C18ao5PFUldTaANHatMdT1owhB1rbveN0Di5kYneVBdtfpV5jTD1i9RR56WcpThOSHXjEoQJ1+2gDEdis+SofWwsQrUvFDeLSqPmEKaIJJ7uRV16iuBeEKzWHZ3LnL/8Xg8V5/fiHsOVZG8KdOQ1s3D4pjw0rgJ2iJZoTTqLrurE/fcpuCdLLMsSkGaGTGlE0dr156nxfG7hcddQwxnUZZiV2yfkppbL0FJwuhZrSZEK5RwTXCON8B5jLtTssBx5hk/ZXifpgV/0Ccvch2u7xKZFPVKKxZdL43kFxfstub8nUC1mLxHWu9tDQlz/qBUCIpb5YA==}{VnXxq10mzg/9MPOIK9fxTTbngx4QgWyQ9M9+6/VKAd2iGFGOc7zRTLQuH4q8NJE8qhHlUEMrXqS1tMvnxCYetkoFTWTnccBZQtR3b6hTYCxJWdmOHaNOJSYpT6itAUFCpSgzNqFmB8E9n15BCGsqiG8MxRUq7b5ELzNPOTRlZH2hQSTApEoZeaLKGIPT31Hl+fiihefglJtCIg/3D2CoFo72MH9afpO8xK2Om4crcjuDVonCUHUCmeZDa5Selbr5hO0KBB+rtfOgONLhb5g1fkb8ihpntPfAnhOy5pcjh4KtHuYZ9nYACt7JZv1eKGRMkn1PNNEM0jy/gN3ei4fdpg==}{ubdzqsEK80sF3uzbu0nxpA==}'
+console.log(decrypt(testZSPhone), 'testZSPhone')
+console.log(decrypt(testPhone123), 'testPhone123')
+console.log(decrypt(testGM), 'testGM')
+
+console.log(encryption('15592320353'), 'encryption')
+
+// console.log(Base64.decode('pLKEAuvUYaAQ6BecBs3U3g=='), 'pLKEAuvUYaAQ6BecBs3U3g==')
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
   <RouterView />
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
