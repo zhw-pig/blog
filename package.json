@@ -12,15 +12,22 @@
     "test:e2e": "playwright test",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
-    "lint": "eslint . --fix",
-    "format": "prettier --write src/",
+    "lint:create": "eslint --init",
+    "lint:eslint": "eslint src/**/*.{ts,vue} --cache --fix",
+    "lint:style": "stylelint src/**/*.{css,less,scss,vue,postcss} --cache --fix",
+    "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
     "prepare": "husky install",
-    "lint:css": "stylelint \"src/**/*.{vue,css,scss}\""
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "@vueuse/core": "^12.0.0",
+    "element-plus": "^2.9.1",
     "jsencrypt": "^3.3.2",
     "nprogress": "^0.2.0",
+    "path-browserify": "^1.0.1",
     "pinia": "^2.2.6",
+    "pinia-plugin-persistedstate": "^4.2.0",
     "sm-crypto": "^0.3.13",
     "vue": "^3.5.13",
     "vue-router": "^4.4.5"
@@ -56,18 +63,21 @@
     "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-scss": "^6.10.0",
     "typescript": "~5.6.3",
+    "unplugin-auto-import": "^0.19.0",
+    "unplugin-vue-components": "^0.28.0",
     "vite": "^6.0.1",
     "vite-plugin-vue-devtools": "^7.6.5",
     "vitest": "^2.1.5",
     "vue-tsc": "^2.1.10"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,vue}": [
-      "npm run lint",
-      "npm run format"
+    "**/*.{js,jsx,ts,tsx,vue}": [
+      "pnpm lint:eslint",
+      "pnpm format"
     ],
-    "*.{vue,less,css,scss,sass}": [
-      "npm run lint:css"
+    "*.{scss,less,html}": [
+      "pnpm lint:style",
+      "pnpm format"
     ]
   },
   "browserslist": [

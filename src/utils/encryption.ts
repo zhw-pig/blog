@@ -1,14 +1,8 @@
-import { environment } from '@/evn.config'
+import { getSM4Mode } from '@/config/encryption'
+import EncryptionConstant from '@/constants/encryptionConstant'
 import NodeRsa from 'jsencrypt'
-import { sm4, sm3 } from 'sm-crypto'
+import { sm3, sm4 } from 'sm-crypto'
 import { base64ToHex, createNonceStr, hexToBase64, stringToHex, strToBase64 } from './encryptTool'
-
-// 公钥加密，私钥解密
-export const publicKey: string = environment.VITE_RSA_PUBLIC_KEY
-export const privateKey: string = environment.VITE_RSA_PRIVATE_KEY
-
-// 后端私钥base64转hex获得
-const sm3PrivateKey: string = environment.VITE_SM3_PRIVATE_KEY
 
 /**
  * @param value 要加密的原始数据
@@ -17,8 +11,8 @@ const sm3PrivateKey: string = environment.VITE_SM3_PRIVATE_KEY
  */
 export const createHashBySm3 = (value: string) => {
   const hexString = sm3(value, {
-    key: sm3PrivateKey,
-    mode: 'hmac',
+    key: EncryptionConstant.SM3_PRIVATE_KEY,
+    mode: EncryptionConstant.SM3_MODE,
   })
   return hexString
 }
@@ -31,12 +25,7 @@ export const createHashBySm3 = (value: string) => {
  * @returns  返回的是十六进制的hexString
  */
 export function encryptSm4(value: string, key16: string, iv16: string) {
-  const mode: object = {
-    iv: iv16,
-    padding: 'pkcs#5',
-    mode: 'cbc',
-  }
-  const strEN = sm4.encrypt(value, key16, mode)
+  const strEN = sm4.encrypt(value, key16, getSM4Mode(iv16))
   return strEN
 }
 
@@ -44,8 +33,8 @@ export function encryptSm4(value: string, key16: string, iv16: string) {
  * rsa使用公钥加密sm4所需要的key和iv
  */
 export function encryptRsa(value: string): string {
-  const nodeRsa = new NodeRsa({ default_key_size: '2048' })
-  nodeRsa.setPublicKey(publicKey)
+  const nodeRsa = new NodeRsa()
+  nodeRsa.setPublicKey(EncryptionConstant.PUBLIC_KEY)
   // nodeRsa.importKey(pubKey, 'pkcs8-public')
   const strEN = nodeRsa.encrypt(value) as string
   return strEN
@@ -57,12 +46,7 @@ export function encryptRsa(value: string): string {
  * @param {string} key_16 十六进制的key
  */
 export function decryptSm4(value16: string, key16: string, iv16: string) {
-  const modeParam: object = {
-    iv: iv16,
-    padding: 'pkcs#5', // "none" | "pkcs#5" | "pkcs#7"
-    mode: 'cbc',
-  }
-  const str = sm4.decrypt(value16, key16, modeParam)
+  const str = sm4.decrypt(value16, key16, getSM4Mode(iv16))
   return str
 }
 /**
@@ -71,9 +55,9 @@ export function decryptSm4(value16: string, key16: string, iv16: string) {
  * @param {string} pubKey 公钥
  */
 export function decryptRsa(value: string): string {
-  const nodeRsa = new NodeRsa({ default_key_size: '2048' })
+  const nodeRsa = new NodeRsa()
   // setKey
-  nodeRsa.setPrivateKey(privateKey)
+  nodeRsa.setPrivateKey(EncryptionConstant.PRIVATE_KEY)
   const str = nodeRsa.decrypt(value) as string
   return str
 }
@@ -108,7 +92,14 @@ export function encryption(value: string): string {
   // sm4加密返回的也是HexString，需要转成base64
   const encryptBase64Value = hexToBase64(encryptHexString)
   // 拼接每个单独的{}里面的都是base64
-  return `{${base64Hash}}{${rsaKey}}{${rsaIv}}{${encryptBase64Value}}`
+  return `{${base64Hash}
+      ${EncryptionConstant.SPLIT_SIGN}
+      ${rsaKey}
+      ${EncryptionConstant.SPLIT_SIGN}
+      ${rsaIv}
+      ${EncryptionConstant.SPLIT_SIGN}
+      ${encryptBase64Value}}
+    `
 }
 
 /**
@@ -120,7 +111,7 @@ export function encryption(value: string): string {
  */
 export function decrypt(value: string): string {
   try {
-    const arr = value.split('}{')
+    const arr = value.split(EncryptionConstant.SPLIT_SIGN)
     // const base64Hash = arr[0].slice(1)  // 前端不需要做hash完整性校验
     const rsaKey = arr[1]
     const rsaIv = arr[2]
@@ -129,7 +120,7 @@ export function decrypt(value: string): string {
     // rsa解密出key和iv
     const base64Key = decryptRsa(rsaKey)
     // base64转字符串
-    // const strKey = base64ToString(base64Key)
+    // const strKey = base64ToString(base64Key)  // 正式环境密码机不支持base64友好的转字符串
     const strIv = decryptRsa(rsaIv)
 
     // 16为随机字符串转成16进制的key

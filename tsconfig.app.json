@@ -1,11 +1,30 @@
+// 配置应用程序的 TypeScript 编译器选项
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "sfc.d.ts"],
-  "exclude": ["src/**/__tests__/*"],
+  "exclude": ["src/**/__tests__/*", "node_modules", "dist", "**/*.js"],
   "compilerOptions": {
-    "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,			// 开启严格模式，检查类型声明和赋值...是否合法
+    "noUnusedLocals": true,	// 检查是否存在未使用的变量
+    "noUnusedParameters": true,	// 检查是否存在会使用的函数参数
+    "noFallthroughCasesInSwitch": true,	// 检查switch语句中是否存在break
+    "jsx": "preserve",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": ["node"],
+    "composite": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
     }

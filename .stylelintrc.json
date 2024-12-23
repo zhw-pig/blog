@@ -8,19 +8,15 @@
       "stylelint-scss"
     ],
     "rules": {
-      "selector-class-pattern": [
-          "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
-          {
-              "message": "Expected class selector to be kebab-case"
-          }
-      ],
+      "selector-class-pattern": null,
       "declaration-empty-line-before": null,
       "no-descending-specificity": true,
       "color-hex-length": [
         "long",
         "short"
       ],
-      "at-rule-no-unknown": null
+      "at-rule-no-unknown": null,
+      "selector-pseudo-class-no-unknown": null
     }
 }
   

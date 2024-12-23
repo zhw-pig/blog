@@ -78,6 +78,7 @@ web-admin
 │  ├─ assets              # 静态资源文件
 │  ├─ components          # 全局组件
 │  ├─ config              # 全局配置项
+│  ├─ constants           # 常量管理, 仅仅是存放只读的数据
 │  ├─ directives          # 全局指令文件
 │  ├─ enums               # 项目常用枚举
 │  ├─ hooks               # 常用 Hooks 封装
