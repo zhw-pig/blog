@@ -71,11 +71,11 @@
     "vue-tsc": "^2.1.10"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,vue}": [
+    "*.{js,jsx,ts,tsx,vue}": [
       "pnpm lint:eslint",
       "pnpm format"
     ],
-    "*.{scss,less,html}": [
+    "*.{vue,less,css,scss,sass}": [
       "pnpm lint:style",
       "pnpm format"
     ]
