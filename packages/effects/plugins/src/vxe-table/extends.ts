@@ -3,7 +3,7 @@ import type { VxeGridProps, VxeUIExport } from 'vxe-table';
 
 import type { VxeGridApi } from './api';
 
-import { formatDate, formatDateTime, isFunction } from '@zhwutils';
+import { formatDate, formatDateTime, isFunction } from '@zhw/utils';
 
 export function extendProxyOptions(
   api: VxeGridApi,

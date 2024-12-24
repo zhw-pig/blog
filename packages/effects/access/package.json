@@ -20,10 +20,10 @@
     }
   },
   "dependencies": {
-    "@zhwpreferences": "workspace:*",
-    "@zhwstores": "workspace:*",
-    "@zhwtypes": "workspace:*",
-    "@zhwutils": "workspace:*",
+    "@zhw/preferences": "workspace:*",
+    "@zhw/stores": "workspace:*",
+    "@zhw/types": "workspace:*",
+    "@zhw/utils": "workspace:*",
     "vue": "catalog:"
   }
 }

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { zhwFormProps } from '@zhw-core/form-ui';
+import type { ZhwFormProps } from '@zhw-core/form-ui';
 import type {
   VxeGridDefines,
   VxeGridInstance,
@@ -22,12 +22,12 @@ import {
   watch,
 } from 'vue';
 
-import { usePriorityValues } from '@zhwhooks';
-import { EmptyIcon } from '@zhwicons';
-import { $t } from '@zhwlocales';
-import { usePreferences } from '@zhwpreferences';
-import { cloneDeep, cn, mergeWithArrayOverride } from '@zhwutils';
-import { zhwHelpTooltip, zhwLoading } from '@zhzhwre/shadcn-ui';
+import { usePriorityValues } from '@zhw/hooks';
+import { EmptyIcon } from '@zhw/icons';
+import { $t } from '@zhw/locales';
+import { usePreferences } from '@zhw/preferences';
+import { cloneDeep, cn, mergeWithArrayOverride } from '@zhw/utils';
+import { ZhwHelpTooltip, ZhwLoading } from '@zhw-core/shadcn-ui';
 
 import { VxeGrid, VxeUI } from 'vxe-table';
 
@@ -269,7 +269,7 @@ watch(
   formOptions,
   () => {
     formApi.setState((prev) => {
-      const finalFormOptions: zhwFormProps = mergeWithArrayOverride(
+      const finalFormOptions: ZhwFormProps = mergeWithArrayOverride(
         {},
         formOptions.value,
         prev,
@@ -321,9 +321,9 @@ onUnmounted(() => {
         <slot v-if="showTableTitle" name="table-title">
           <div class="mr-1 pl-1 text-[1rem]">
             {{ tableTitle }}
-            <zhwHelpTooltip v-if="tableTitleHelp" trigger-class="pb-1">
+            <ZhwHelpTooltip v-if="tableTitleHelp" trigger-class="pb-1">
               {{ tableTitleHelp }}
-            </zhwHelpTooltip>
+            </ZhwHelpTooltip>
           </div>
         </slot>
         <slot name="toolbar-actions" v-bind="slotProps"> </slot>
@@ -379,7 +379,7 @@ onUnmounted(() => {
       <!-- loading -->
       <template #loading>
         <slot name="loading">
-          <zhwLoading :spinning="true" />
+          <ZhwLoading :spinning="true" />
         </slot>
       </template>
       <!-- 统一控状态 -->

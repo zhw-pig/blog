@@ -22,7 +22,7 @@
 **使用方式**
 
 ```ts
-import { useEcharts } from '@zhwplugins/echarts';
+import { useEcharts } from '@zhw/plugins/echarts';
 ```
 
 这样做的好处是，应用可以自行选择是否使用插件，而不会因为插件的引入及副作用而导致打包体积增大，只引入需要的插件即可。

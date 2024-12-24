@@ -9,12 +9,12 @@
 ```bash
 # 进入目标应用目录，例如 apps/xxxx-app
 # cd apps/xxxx-app
-pnpm add @zhwtypes
+pnpm add @zhw/types
 ```
 
 ### 使用
 
 ```ts
 // 推荐加上 type
-import type { SelectOption } from '@zhwtypes';
+import type { SelectOption } from '@zhw/types';
 ```

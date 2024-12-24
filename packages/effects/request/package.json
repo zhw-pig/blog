@@ -2,10 +2,10 @@
   "name": "@zhw/request",
   "version": "5.5.1",
   "homepage": "https://github.com/zhw-pig/blog",
-  "bugs": "https://github.com/zhw-pig/blog
+  "bugs": "https://github.com/zhw-pig/blog",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhw-pig/blog
+    "url": "git+https://github.com/zhw-pig/blog",
     "directory": "packages/effects/request"
   },
   "license": "MIT",
@@ -20,8 +20,8 @@
     }
   },
   "dependencies": {
-    "@zhwlocales": "workspace:*",
-    "@zhwutils": "workspace:*",
+    "@zhw/locales": "workspace:*",
+    "@zhw/utils": "workspace:*",
     "axios": "catalog:"
   },
   "devDependencies": {

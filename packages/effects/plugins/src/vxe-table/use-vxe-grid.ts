@@ -7,7 +7,7 @@ import { useStore } from '@zhw-core/shared/store';
 import { VxeGridApi } from './api';
 import VxeGrid from './use-vxe-grid.vue';
 
-export function usezhwVxeGrid(options: VxeGridProps) {
+export function useZhwVxeGrid(options: VxeGridProps) {
   // const IS_REACTIVE = isReactive(options);
   const api = new VxeGridApi(options);
   const extendedApi: ExtendedVxeGridApi = api as ExtendedVxeGridApi;
@@ -25,7 +25,7 @@ export function usezhwVxeGrid(options: VxeGridProps) {
     },
     {
       inheritAttrs: false,
-      name: 'zhwVxeGrid',
+      name: 'ZhwVxeGrid',
     },
   );
   // Add reactivity support
@@ -42,4 +42,4 @@ export function usezhwVxeGrid(options: VxeGridProps) {
   return [Grid, extendedApi] as const;
 }
 
-export type UsezhwVxeGrid = typeof usezhwVxeGrid;
+export type useZhwVxeGrid = typeof useZhwVxeGrid;

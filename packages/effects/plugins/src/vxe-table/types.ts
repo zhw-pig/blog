@@ -1,5 +1,5 @@
 import type { ClassType, DeepPartial } from '@zhw/types';
-import type { zhwFormProps } from '@zzhwore/form-ui';
+import type { ZhwFormProps } from '@zhw-core/form-ui';
 import type {
   VxeGridListeners,
   VxeGridPropTypes,
@@ -11,7 +11,7 @@ import type { VxeGridApi } from './api';
 
 import type { Ref } from 'vue';
 
-import { usezhwForm } from '@zzhwore/form-ui';
+import { useZhwForm } from '@zhw-core/form-ui';
 
 export interface VxePaginationInfo {
   currentPage: number;
@@ -57,7 +57,7 @@ export interface VxeGridProps {
   /**
    * 表单配置
    */
-  formOptions?: zhwFormProps;
+  formOptions?: ZhwFormProps;
   /**
    * 显示搜索表单
    */
@@ -72,5 +72,5 @@ export type ExtendedVxeGridApi = {
 
 export interface SetupVxeTable {
   configVxeTable: (ui: VxeUIExport) => void;
-  usezhwForm: typeof usezhwForm;
+  useZhwForm: typeof useZhwForm;
 }

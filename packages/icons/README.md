@@ -9,11 +9,11 @@
 ```bash
 # 进入目标应用目录，例如 apps/xxxx-app
 # cd apps/xxxx-app
-pnpm add @zhwicons
+pnpm add @zhw/icons
 ```
 
 ### 使用
 
 ```ts
-import { X } from '@zhwicons';
+import { X } from '@zhw/icons';
 ```
