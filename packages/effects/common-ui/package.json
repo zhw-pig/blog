@@ -1,0 +1,42 @@
+{
+  "name": "@zhw/common-ui",
+  "version": "5.5.1",
+  "homepage": "https://github.com/zhw-pig/blog",
+  "bugs": "https://github.com/zhw-pig/blog",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhw-pig/blog",
+    "directory": "packages/effects/common-ui"
+  },
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "dependencies": {
+    "@zhw-core/form-ui": "workspace:*",
+    "@zhw-core/popup-ui": "workspace:*",
+    "@zhw-core/preferences": "workspace:*",
+    "@zhw-core/shadcn-ui": "workspace:*",
+    "@zhw-core/shared": "workspace:*",
+    "@zhwconstants": "workspace:*",
+    "@zhwhooks": "workspace:*",
+    "@zhwicons": "workspace:*",
+    "@zhwlocales": "workspace:*",
+    "@zhwtypes": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "@vueuse/integrations": "catalog:",
+    "qrcode": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:"
+  },
+  "devDependencies": {
+    "@types/qrcode": "catalog:"
+  }
+}

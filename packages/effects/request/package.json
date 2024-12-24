@@ -1,0 +1,30 @@
+{
+  "name": "@zhw/request",
+  "version": "5.5.1",
+  "homepage": "https://github.com/zhw-pig/blog",
+  "bugs": "https://github.com/zhw-pig/blog
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhw-pig/blog
+    "directory": "packages/effects/request"
+  },
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "dependencies": {
+    "@zhwlocales": "workspace:*",
+    "@zhwutils": "workspace:*",
+    "axios": "catalog:"
+  },
+  "devDependencies": {
+    "axios-mock-adapter": "catalog:"
+  }
+}

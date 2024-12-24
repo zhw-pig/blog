@@ -1,0 +1,18 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": [
+    "@changesets/changelog-github",
+    { "repo": "zhw-pig/blog" }
+  ],
+  "commit": false,
+  "fixed": [["@zhw-core/*", "@zhw/*"]],
+  "snapshot": {
+    "prereleaseTemplate": "{tag}-{datetime}"
+  },
+  "privatePackages": { "version": true, "tag": true },
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": []
+}

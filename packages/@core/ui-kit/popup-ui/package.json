@@ -1,0 +1,48 @@
+{
+  "name": "@zhw-core/popup-ui",
+  "version": "5.2.1",
+  "homepage": "https://github.com/zhw-pig/blog",
+  "bugs": "https://github.com/zhw-pig/blog",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhw-pig/blog",
+    "directory": "packages/@zhw-core/uikit/popup-ui"
+  },
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm unbuild",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "development": "./src/index.ts",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "default": "./dist/index.mjs"
+      }
+    }
+  },
+  "dependencies": {
+    "@zhw-core/composables": "workspace:*",
+    "@zhw-core/icons": "workspace:*",
+    "@zhw-core/shadcn-ui": "workspace:*",
+    "@zhw-core/shared": "workspace:*",
+    "@zhw-core/typings": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "vue": "catalog:"
+  }
+}

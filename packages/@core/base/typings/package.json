@@ -1,0 +1,44 @@
+{
+  "name": "@zhw-core/typings",
+  "version": "5.5.1",
+  "homepage": "https://github.com/zhw-pig/blog",
+  "bugs": "https://github.com/zhw-pig/blog",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhw-pig/blog",
+    "directory": "packages/@zhw-core/base/typings"
+  },
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm unbuild"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "development": "./src/index.ts",
+      "default": "./dist/index.mjs"
+    },
+    "./vue-router": {
+      "types": "./vue-router.d.ts"
+    }
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      }
+    }
+  },
+  "dependencies": {
+    "vue": "catalog:",
+    "vue-router": "catalog:"
+  }
+}

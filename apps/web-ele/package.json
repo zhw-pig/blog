@@ -1,0 +1,52 @@
+{
+  "name": "@zhw/web-ele",
+  "version": "5.5.1",
+  "bugs": "https://github.com/zhw-pig/blog/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhw-pig/blog",
+    "directory": "apps/web-ele"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "zhw",
+    "email": "947201280@qq.com",
+    "url": "https://github.com/zhw-pig"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "pnpm vite build --mode production",
+    "build:analyze": "pnpm vite build --mode analyze",
+    "dev": "pnpm vite --mode development",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck"
+  },
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "dependencies": {
+    "@zhw/access": "workspace:*",
+    "@zhw/common-ui": "workspace:*",
+    "@zhw/constants": "workspace:*",
+    "@zhw/hooks": "workspace:*",
+    "@zhw/icons": "workspace:*",
+    "@zhw/layouts": "workspace:*",
+    "@zhw/locales": "workspace:*",
+    "@zhw/plugins": "workspace:*",
+    "@zhw/preferences": "workspace:*",
+    "@zhw/request": "workspace:*",
+    "@zhw/stores": "workspace:*",
+    "@zhw/styles": "workspace:*",
+    "@zhw/types": "workspace:*",
+    "@zhw/utils": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "dayjs": "catalog:",
+    "element-plus": "catalog:",
+    "pinia": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:"
+  },
+  "devDependencies": {
+    "unplugin-element-plus": "catalog:"
+  }
+}

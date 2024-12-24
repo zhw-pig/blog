@@ -1,0 +1,22 @@
+{
+  "name": "@zhw/icons",
+  "version": "5.5.1",
+  "homepage": "https://github.com/zhw-pig/blog",
+  "bugs": "https://github.com/zhw-pig/blog",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhw-pig/blog",
+    "directory": "packages/icons"
+  },
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "dependencies": {
+    "@zhw-core/icons": "workspace:*"
+  }
+}

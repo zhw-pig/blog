@@ -1,0 +1,30 @@
+{
+  "name": "@zhw/stores",
+  "version": "5.5.1",
+  "homepage": "https://github.com/zhw-pig/blog",
+  "bugs": "https://github.com/zhw-pig/blog",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhw-pig/blog",
+    "directory": "packages/stores"
+  },
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "dependencies": {
+    "@zhw-core/shared": "workspace:*",
+    "@zhw-core/typings": "workspace:*",
+    "pinia": "catalog:",
+    "pinia-plugin-persistedstate": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:"
+  }
+}

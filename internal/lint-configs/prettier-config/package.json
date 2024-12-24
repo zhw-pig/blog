@@ -1,0 +1,28 @@
+{
+  "name": "@zhw/prettier-config",
+  "version": "5.0.0",
+  "private": true,
+  "homepage": "https://github.com/zhw-pig/blog",
+  "bugs": "https://github.com/zhw-pig/blog
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhw-pig/blog
+    "directory": "internal/lint-configs/prettier-config"
+  },
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./index.mjs",
+  "module": "./index.mjs",
+  "exports": {
+    ".": {
+      "default": "./index.mjs"
+    }
+  },
+  "dependencies": {
+    "prettier": "catalog:",
+    "prettier-plugin-tailwindcss": "catalog:"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "@zhw/plugins",
+  "version": "5.5.1",
+  "homepage": "https://github.com/zhw-pig/blog",
+  "bugs": "https://github.com/zhw-pig/blog
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhw-pig/blog
+    "directory": "packages/effects/plugins"
+  },
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    "./echarts": {
+      "types": "./src/echarts/index.ts",
+      "default": "./src/echarts/index.ts"
+    },
+    "./vxe-table": {
+      "types": "./src/vxe-table/index.ts",
+      "default": "./src/vxe-table/index.ts"
+    }
+  },
+  "dependencies": {
+    "@zhw-core/form-ui": "workspace:*",
+    "@zhw-core/shadcn-ui": "workspace:*",
+    "@zhw-core/shared": "workspace:*",
+    "@zhwhooks": "workspace:*",
+    "@zhwicons": "workspace:*",
+    "@zhwlocales": "workspace:*",
+    "@zhwpreferences": "workspace:*",
+    "@zhwtypes": "workspace:*",
+    "@zhwutils": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "echarts": "catalog:",
+    "vue": "catalog:",
+    "vxe-pc-ui": "catalog:",
+    "vxe-table": "catalog:"
+  }
+}

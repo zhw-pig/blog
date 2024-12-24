@@ -1,0 +1,43 @@
+{
+  "name": "@zhw/layouts",
+  "version": "5.5.1",
+  "homepage": "https://github.com/zhw-pig/blog",
+  "bugs": "https://github.com/zhw-pig/blog
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhw-pig/blog
+    "directory": "packages/effects/layouts"
+  },
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "dependencies": {
+    "@zhw-core/composables": "workspace:*",
+    "@zhw-core/form-ui": "workspace:*",
+    "@zhw-core/layout-ui": "workspace:*",
+    "@zhw-core/menu-ui": "workspace:*",
+    "@zhw-core/popup-ui": "workspace:*",
+    "@zhw-core/shadcn-ui": "workspace:*",
+    "@zhw-core/shared": "workspace:*",
+    "@zhw-core/tabs-ui": "workspace:*",
+    "@zhwconstants": "workspace:*",
+    "@zhwhooks": "workspace:*",
+    "@zhwicons": "workspace:*",
+    "@zhwlocales": "workspace:*",
+    "@zhwpreferences": "workspace:*",
+    "@zhwstores": "workspace:*",
+    "@zhwtypes": "workspace:*",
+    "@zhwutils": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "name": "zhw-blog-monorepo",
+  "version": "5.5.1",
+  "private": true,
+  "keywords": [
+    "monorepo",
+    "turbo",
+    "zhw",
+    "vue3"
+  ],
+  "homepage": "https://github.com/zhw-pig/blog",
+  "bugs": "https://github.com/zhw-pig/blog/issues",
+  "repository": "zhw-pig/blog.git",
+  "license": "MIT",
+  "author": {
+    "name": "zhw",
+    "email": "947201280@qq.com",
+    "url": "https://github.com/zhw-pig"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "cross-env NODE_OPTIONS=--max-old-space-size=8192 turbo build",
+    "build:analyze": "turbo build:analyze",
+    "build:antd": "pnpm run build --filter=@zhw/web-antd",
+    "build:docker": "./scripts/deploy/build-local-docker-image.sh",
+    "build:docs": "pnpm run build --filter=@zhw/docs",
+    "build:ele": "pnpm run build --filter=@zhw/web-ele",
+    "build:naive": "pnpm run build --filter=@zhw/web-naive",
+    "build:play": "pnpm run build --filter=@zhw/playground",
+    "changeset": "pnpm exec changeset",
+    "check": "pnpm run check:circular && pnpm run check:dep && pnpm run check:type && pnpm check:cspell",
+    "check:circular": "vsh check-circular",
+    "check:cspell": "cspell lint **/*.ts **/README.md .changeset/*.md --no-progress",
+    "check:dep": "vsh check-dep",
+    "check:type": "turbo run typecheck",
+    "clean": "node ./scripts/clean.mjs",
+    "commit": "czg",
+    "dev": "turbo-run dev",
+    "dev:antd": "pnpm -F @zhw/web-antd run dev",
+    "dev:docs": "pnpm -F @zhw/docs run dev",
+    "dev:ele": "pnpm -F @zhw/web-ele run dev",
+    "dev:naive": "pnpm -F @zhw/web-naive run dev",
+    "dev:play": "pnpm -F @zhw/playground run dev",
+    "format": "vsh lint --format",
+    "lint": "vsh lint",
+    "postinstall": "pnpm -r run stub --if-present",
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "is-ci || husky",
+    "preview": "turbo-run preview",
+    "publint": "vsh publint",
+    "reinstall": "pnpm clean --del-lock && pnpm install",
+    "test:unit": "vitest run --dom",
+    "test:e2e": "turbo run test:e2e",
+    "update:deps": "npx taze -r -w",
+    "version": "pnpm exec changeset version && pnpm install --no-frozen-lockfile"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "catalog:",
+    "@changesets/cli": "catalog:",
+    "@playwright/test": "catalog:",
+    "@types/node": "catalog:",
+    "@zhw/commitlint-config": "workspace:*",
+    "@zhw/eslint-config": "workspace:*",
+    "@zhw/prettier-config": "workspace:*",
+    "@zhw/stylelint-config": "workspace:*",
+    "@zhw/tailwind-config": "workspace:*",
+    "@zhw/tsconfig": "workspace:*",
+    "@zhw/turbo-run": "workspace:*",
+    "@zhw/vite-config": "workspace:*",
+    "@zhw/vsh": "workspace:*",
+    "@vitejs/plugin-vue": "catalog:",
+    "@vitejs/plugin-vue-jsx": "catalog:",
+    "@vue/test-utils": "catalog:",
+    "autoprefixer": "catalog:",
+    "cross-env": "catalog:",
+    "cspell": "catalog:",
+    "happy-dom": "catalog:",
+    "husky": "catalog:",
+    "is-ci": "catalog:",
+    "lint-staged": "catalog:",
+    "playwright": "catalog:",
+    "rimraf": "catalog:",
+    "tailwindcss": "catalog:",
+    "turbo": "catalog:",
+    "typescript": "catalog:",
+    "unbuild": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:",
+    "vue": "catalog:",
+    "vue-tsc": "catalog:"
+  },
+  "engines": {
+    "node": ">=20.10.0",
+    "pnpm": ">=9.12.0"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "eslint": "*"
+      }
+    },
+    "overrides": {
+      "@ast-grep/napi": "catalog:",
+      "@ctrl/tinycolor": "catalog:",
+      "clsx": "catalog:",
+      "esbuild": "0.24.0",
+      "pinia": "catalog:",
+      "vue": "catalog:"
+    },
+    "neverBuiltDependencies": [
+      "canvas",
+      "node-gyp"
+    ]
+  }
+}

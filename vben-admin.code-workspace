@@ -1,0 +1,156 @@
+{
+  "folders": [
+    {
+      "name": "@zhw/web-ele",
+      "path": "apps/web-ele",
+    },
+    {
+      "name": "@zhw/commitlint-config",
+      "path": "internal/lint-configs/commitlint-config",
+    },
+    {
+      "name": "@zhw/eslint-config",
+      "path": "internal/lint-configs/eslint-config",
+    },
+    {
+      "name": "@zhw/prettier-config",
+      "path": "internal/lint-configs/prettier-config",
+    },
+    {
+      "name": "@zhw/stylelint-config",
+      "path": "internal/lint-configs/stylelint-config",
+    },
+    {
+      "name": "@zhw/node-utils",
+      "path": "internal/node-utils",
+    },
+    {
+      "name": "@zhw/tailwind-config",
+      "path": "internal/tailwind-config",
+    },
+    {
+      "name": "@zhw/tsconfig",
+      "path": "internal/tsconfig",
+    },
+    {
+      "name": "@zhw/vite-config",
+      "path": "internal/vite-config",
+    },
+    {
+      "name": "@zhw-core/design",
+      "path": "packages/@core/base/design",
+    },
+    {
+      "name": "@zhw-core/icons",
+      "path": "packages/@core/base/icons",
+    },
+    {
+      "name": "@zhw-core/shared",
+      "path": "packages/@core/base/shared",
+    },
+    {
+      "name": "@zhw-core/typings",
+      "path": "packages/@core/base/typings",
+    },
+    {
+      "name": "@zhw-core/composables",
+      "path": "packages/@core/composables",
+    },
+    {
+      "name": "@zhw-core/preferences",
+      "path": "packages/@core/preferences",
+    },
+    {
+      "name": "@zhw-core/form-ui",
+      "path": "packages/@core/ui-kit/form-ui",
+    },
+    {
+      "name": "@zhw-core/layout-ui",
+      "path": "packages/@core/ui-kit/layout-ui",
+    },
+    {
+      "name": "@zhw-core/menu-ui",
+      "path": "packages/@core/ui-kit/menu-ui",
+    },
+    {
+      "name": "@zhw-core/popup-ui",
+      "path": "packages/@core/ui-kit/popup-ui",
+    },
+    {
+      "name": "@zhw-core/shadcn-ui",
+      "path": "packages/@core/ui-kit/shadcn-ui",
+    },
+    {
+      "name": "@zhw-core/tabs-ui",
+      "path": "packages/@core/ui-kit/tabs-ui",
+    },
+    {
+      "name": "@zhw/constants",
+      "path": "packages/constants",
+    },
+    {
+      "name": "@zhw/access",
+      "path": "packages/effects/access",
+    },
+    {
+      "name": "@zhw/common-ui",
+      "path": "packages/effects/common-ui",
+    },
+    {
+      "name": "@zhw/hooks",
+      "path": "packages/effects/hooks",
+    },
+    {
+      "name": "@zhw/layouts",
+      "path": "packages/effects/layouts",
+    },
+    {
+      "name": "@zhw/plugins",
+      "path": "packages/effects/plugins",
+    },
+    {
+      "name": "@zhw/request",
+      "path": "packages/effects/request",
+    },
+    {
+      "name": "@zhw/icons",
+      "path": "packages/icons",
+    },
+    {
+      "name": "@zhw/locales",
+      "path": "packages/locales",
+    },
+    {
+      "name": "@zhw/preferences",
+      "path": "packages/preferences",
+    },
+    {
+      "name": "@zhw/stores",
+      "path": "packages/stores",
+    },
+    {
+      "name": "@zhw/styles",
+      "path": "packages/styles",
+    },
+    {
+      "name": "@zhw/types",
+      "path": "packages/types",
+    },
+    {
+      "name": "@zhw/utils",
+      "path": "packages/utils",
+    },
+    {
+      "name": "@zhw/playground",
+      "path": "playground",
+    },
+    {
+      "name": "@zhw/turbo-run",
+      "path": "scripts/turbo-run",
+    },
+    {
+      "name": "@zhw/vsh",
+      "path": "scripts/vsh",
+    },
+  ],
+}
