@@ -17,7 +17,7 @@ interface Props {
 }
 
 defineOptions({
-  name: 'zhwSpinner',
+  name: 'ZhwSpinner',
 });
 
 const props = withDefaults(defineProps<Props>(), {

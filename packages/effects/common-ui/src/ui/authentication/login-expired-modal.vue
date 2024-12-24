@@ -3,8 +3,8 @@ import type { AuthenticationProps } from './types';
 
 import { computed, watch } from 'vue';
 
-import { usezhwModal } from '@zhw-core/popup-ui';
-import { Slot, zhwAvatar } from '@zzhwore/shadcn-ui';
+import { useZhwModal } from '@zhw-core/popup-ui';
+import { Slot, ZhwAvatar } from '@zhw-core/shadcn-ui';
 
 interface Props extends AuthenticationProps {
   avatar?: string;
@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const open = defineModel<boolean>('open');
 
-const [Modal, modalApi] = usezhwModal();
+const [Modal, modalApi] = useZhwModal();
 
 watch(
   () => open.value,
@@ -64,7 +64,7 @@ function calcZIndex() {
       :z-index="getZIndex"
       class="border-none px-10 py-6 text-center shadow-xl sm:w-[600px] sm:rounded-2xl md:h-[unset]"
     >
-      <zhwAvatar :src="avatar" class="mx-auto mb-6 size-20" />
+      <ZhwAvatar :src="avatar" class="mx-auto mb-6 size-20" />
       <Slot
         :show-forget-password="false"
         :show-register="false"

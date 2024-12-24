@@ -1,1 +1,1 @@
-export { default as zhwIcon } from './icon.vue';
+export { default as ZhwIcon } from './icon.vue';

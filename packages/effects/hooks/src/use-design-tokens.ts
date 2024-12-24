@@ -1,7 +1,7 @@
 import { reactive, watch } from 'vue';
 
 import { preferences, usePreferences } from '@zhw/preferences';
-import { convertToRgb, updateCSSVariables } from '@zhwutils';
+import { convertToRgb, updateCSSVariables } from '@zhw/utils';
 
 /**
  * 用于适配各个框架的设计系统

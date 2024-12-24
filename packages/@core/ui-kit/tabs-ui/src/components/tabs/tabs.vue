@@ -6,17 +6,17 @@ import type { TabConfig, TabsProps } from '../../types';
 import { computed } from 'vue';
 
 import { Pin, X } from '@zhw-core/icons';
-import { zhwContextMenu, zhwIcon } from '@zhzhwre/shadcn-ui';
+import { ZhwContextMenu, ZhwIcon } from '@zhw-core/shadcn-ui';
 
 interface Props extends TabsProps {}
 
 defineOptions({
-  name: 'zhwTabs',
+  name: 'ZhwTabs',
   // eslint-disable-next-line perfectionist/sort-objects
   inheritAttrs: false,
 });
 const props = withDefaults(defineProps<Props>(), {
-  contentClass: 'zhwtabs-content',
+  contentClass: 'zhw-tabs-content',
   contextMenus: () => [],
   tabs: () => [],
 });
@@ -86,7 +86,7 @@ const tabsView = computed(() => {
         data-tab-item="true"
         @click="active = tab.key"
       >
-        <zhwContextMenu
+        <ZhwContextMenu
           :handler-data="tab"
           :menus="contextMenus"
           :modal="false"
@@ -114,7 +114,7 @@ const tabsView = computed(() => {
             <div
               class="text-accent-foreground group-[.is-active]:text-primary dark:group-[.is-active]:text-accent-foreground mx-3 mr-4 flex h-full items-center overflow-hidden rounded-tl-[5px] rounded-tr-[5px] pr-3 transition-all duration-300"
             >
-              <zhwIcon
+              <ZhwIcon
                 v-if="showIcon"
                 :icon="tab.icon"
                 class="mr-2 flex size-4 items-center overflow-hidden"
@@ -126,7 +126,7 @@ const tabsView = computed(() => {
               </span>
             </div>
           </div>
-        </zhwContextMenu>
+        </ZhwContextMenu>
       </div>
     </TransitionGroup>
   </div>

@@ -23,7 +23,7 @@ export async function perfectionist(): Promise<Linter.Config[]> {
                 vue: 'vue',
               },
               value: {
-                zhw ['@zzhw, '@zhzhw/**', '@zhwzhwe/**/**'],
+                zhw: ['@zhw/*', '@zhw/**/**', '@zhw-core/**/**'],
                 vue: ['vue', 'vue-*', '@vue*'],
               },
             },
@@ -33,7 +33,7 @@ export async function perfectionist(): Promise<Linter.Config[]> {
               ['internal-type'],
               'builtin',
               'vue',
-              'zhw,
+              'zhw',
               'external',
               'internal',
               ['parent', 'sibling', 'index'],

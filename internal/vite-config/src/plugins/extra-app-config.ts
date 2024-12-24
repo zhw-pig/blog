@@ -14,7 +14,7 @@ interface PluginOptions {
 }
 
 const GLOBAL_CONFIG_FILE_NAME = '_app.config.js';
-const zhw_ADMIN_PRO_APP_CONF = '_zhw_ADMIN_PRO_APP_CONF_';
+const ZHW_ADMIN_PRO_APP_CONF = '_ZHW_ADMIN_PRO_APP_CONF_';
 
 /**
  * 用于将配置文件抽离出来并注入到项目中
@@ -72,12 +72,12 @@ async function viteExtraAppConfigPlugin({
 
 async function getConfigSource() {
   const config = await loadEnv();
-  const windowVariable = `window.${zhw_ADMIN_PRO_APP_CONF}`;
+  const windowVariable = `window.${ZHW_ADMIN_PRO_APP_CONF}`;
   // 确保变量不会被修改
   let source = `${windowVariable}=${JSON.stringify(config)};`;
   source += `
     Object.freeze(${windowVariable});
-    Object.defineProperty(window, "${zhw_ADMIN_PRO_APP_CONF}", {
+    Object.defineProperty(window, "${ZHW_ADMIN_PRO_APP_CONF}", {
       configurable: false,
       writable: false,
     });

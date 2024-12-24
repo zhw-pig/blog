@@ -4,7 +4,7 @@ import type { ButtonVariants, ButtonVariantSize } from '../../ui';
 
 import type { Component } from 'vue';
 
-export interface zhwButtonProps {
+export interface ZhwButtonProps {
   /**
    * The element or component this component should render as. Can be overwrite by `asChild`
    * @defaultValue "div"

@@ -4,12 +4,12 @@ import { defineComponent, h, inject, nextTick, provide, reactive } from 'vue';
 
 import { useStore } from '@zhw-core/shared/store';
 
-import zhwModal from './modal.vue';
+import ZhwModal from './modal.vue';
 import { ModalApi } from './modal-api';
 
-const USER_MODAL_INJECT_KEY = Symbol('zhw_MODAL_INJECT');
+const USER_MODAL_INJECT_KEY = Symbol('ZHW_MODAL_INJECT');
 
-export function usezhwModal<TParentModalProps extends ModalProps = ModalProps>(
+export function useZhwModal<TParentModalProps extends ModalProps = ModalProps>(
   options: ModalApiOptions = {},
 ) {
   // Modal一般会抽离出来，所以如果有传入 connectedComponent，则表示为外部调用，与内部组件进行连接
@@ -45,7 +45,7 @@ export function usezhwModal<TParentModalProps extends ModalProps = ModalProps>(
       },
       {
         inheritAttrs: false,
-        name: 'zhwParentModal',
+        name: 'ZhwParentModal',
       },
     );
     return [Modal, extendedApi as ExtendedModalApi] as const;
@@ -74,7 +74,7 @@ export function usezhwModal<TParentModalProps extends ModalProps = ModalProps>(
     (props: ModalProps, { attrs, slots }) => {
       return () =>
         h(
-          zhwModal,
+          ZhwModal,
           {
             ...props,
             ...attrs,
@@ -85,7 +85,7 @@ export function usezhwModal<TParentModalProps extends ModalProps = ModalProps>(
     },
     {
       inheritAttrs: false,
-      name: 'zhwModal',
+      name: 'ZhwModal',
     },
   );
   injectData.extendApi?.(extendedApi);

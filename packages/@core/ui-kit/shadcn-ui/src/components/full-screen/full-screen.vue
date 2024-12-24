@@ -3,7 +3,7 @@ import { Maximize, Minimize } from '@zhw-core/icons';
 
 import { useFullscreen } from '@vueuse/core';
 
-import { zhwIconButton } from '../button';
+import { ZhwIconButton } from '../button';
 
 defineOptions({ name: 'FullScreen' });
 
@@ -21,8 +21,8 @@ isFullscreen.value = !!(
 );
 </script>
 <template>
-  <zhwIconButton @click="toggle">
+  <ZhwIconButton @click="toggle">
     <Minimize v-if="isFullscreen" class="text-foreground size-4" />
     <Maximize v-else class="text-foreground size-4" />
-  </zhwIconButton>
+  </ZhwIconButton>
 </template>

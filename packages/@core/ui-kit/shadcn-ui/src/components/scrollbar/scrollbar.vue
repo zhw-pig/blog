@@ -82,7 +82,7 @@ function handleScroll(event: Event) {
   <ScrollArea
     :class="[cn(props.class), computedShadowClasses]"
     :on-scroll="handleScroll"
-    class="zhwscrollbar relative"
+    class="zhw-scrollbar relative"
   >
     <div
       v-if="showShadowTop"
@@ -110,7 +110,7 @@ function handleScroll(event: Event) {
 </template>
 
 <style scoped>
-.zhwscrollbar {
+.zhw-scrollbar {
   &:not(.both-shadow).left-shadow {
     mask-image: linear-gradient(90deg, transparent, #000 16px);
   }

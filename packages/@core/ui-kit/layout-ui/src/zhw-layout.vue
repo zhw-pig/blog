@@ -10,7 +10,7 @@ import {
   useLayoutHeaderStyle,
 } from '@zhw-core/composables';
 import { Menu } from '@zhw-core/icons';
-import { zhwIconButton } from '@zhw-core/shadcn-ui';
+import { ZhwIconButton } from '@zhw-core/shadcn-ui';
 import { ELEMENT_ID_MAIN_CONTENT } from '@zhw-core/shared/constants';
 
 import { useMouse, useScroll, useThrottleFn } from '@vueuse/core';
@@ -27,7 +27,7 @@ import { useLayout } from './hooks/use-layout';
 interface Props extends ZhwLayoutProps {}
 
 defineOptions({
-  name: 'zhwLayout',
+  name: 'ZhwLayout',
 });
 
 const props = withDefaults(defineProps<Props>(), {
@@ -534,13 +534,13 @@ const idMainContent = ELEMENT_ID_MAIN_CONTENT;
           </template>
 
           <template #toggle-button>
-            <zhwIconButton
+            <ZhwIconButton
               v-if="showHeaderToggleButton"
               class="my-0 mr-1 rounded-md"
               @click="handleHeaderToggle"
             >
               <Menu class="size-4" />
-            </zhwIconButton>
+            </ZhwIconButton>
           </template>
           <slot name="header"></slot>
         </LayoutHeader>

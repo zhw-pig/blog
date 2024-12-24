@@ -3,10 +3,10 @@
   "version": "5.5.1",
   "private": true,
   "homepage": "https://github.com/zhw-pig/blog",
-  "bugs": "https://github.com/zhw-pig/blog
+  "bugs": "https://github.com/zhw-pig/blog",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhw-pig/blog
+    "url": "git+https://github.com/zhw-pig/blog",
     "directory": "internal/lint-configs/stylelint-config"
   },
   "license": "MIT",

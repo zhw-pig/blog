@@ -87,7 +87,7 @@ async function viteMetadataPlugin(
 
       return {
         define: {
-          __zhw_ADMIN_METADATA__: JSON.stringify({
+          __ZHW_ADMIN_METADATA__: JSON.stringify({
             authorEmail,
             authorName,
             authorUrl,

@@ -5,8 +5,8 @@ import { computed, defineAsyncComponent } from 'vue';
 import { useRouter } from 'vue-router';
 
 import { ArrowLeft, RotateCw } from '@zhw/icons';
-import { $t } from '@zhwlocales';
-import { zhwButton } from '@zzhwore/shadcn-ui';
+import { $t } from '@zhw/locales';
+import { ZhwButton } from '@zhw-core/shadcn-ui';
 
 interface Props extends FallbackProps {}
 
@@ -150,14 +150,14 @@ function refresh() {
         {{ descText }}
       </p>
       <slot v-if="$slots.action" name="action"></slot>
-      <zhwButton v-else-if="showBack" size="lg" @click="back">
+      <ZhwButton v-else-if="showBack" size="lg" @click="back">
         <ArrowLeft class="mr-2 size-4" />
         {{ $t('common.backToHome') }}
-      </zhwButton>
-      <zhwButton v-else-if="showRefresh" size="lg" @click="refresh">
+      </ZhwButton>
+      <ZhwButton v-else-if="showRefresh" size="lg" @click="refresh">
         <RotateCw class="mr-2 size-4" />
         {{ $t('common.refresh') }}
-      </zhwButton>
+      </ZhwButton>
     </div>
   </div>
 </template>

@@ -5,7 +5,7 @@ import { computed } from 'vue';
 
 import { useNamespace } from '@zhw-core/composables';
 import { ChevronDown, ChevronRight } from '@zhw-core/icons';
-import { zhwIcon } from '@zzhwore/shadcn-ui';
+import { ZhwIcon } from '@zhw-core/shadcn-ui';
 
 import { useMenuContext } from '../hooks';
 
@@ -82,7 +82,7 @@ const iconArrowStyle = computed(() => {
   >
     <slot></slot>
 
-    <zhwIcon
+    <ZhwIcon
       v-if="!isMenuMore"
       :class="nsMenu.e('icon')"
       :icon="icon"

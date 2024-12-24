@@ -1,1 +1,1 @@
-export { default as zhwSelect } from './select.vue';
+export { default as ZhwSelect } from './select.vue';

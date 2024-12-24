@@ -30,7 +30,7 @@ async function viteLicensePlugin(
       handler: (_options: NormalizedOutputOptions, bundle: OutputBundle) => {
         const date = dateUtil().format('YYYY-MM-DD ');
         const copyrightText = `/*!
-  * zhw Admin
+  * zhw blog
   * Version: ${version}
   * Author: zhw
   * Copyright (C) 2024 zhw
@@ -38,7 +38,7 @@ async function viteLicensePlugin(
   * Description: ${description}
   * Date Created: ${date}
   * Homepage: ${homepage}
-  * Contact: ann.zhwgmail.com
+  * Contact: 947201280@qq.com
 */
               `.trim();
 

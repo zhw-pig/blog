@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { zhwAvatar } from '../avatar';
+import { ZhwAvatar } from '../avatar';
 
 interface Props {
   /**
@@ -29,7 +29,7 @@ interface Props {
 }
 
 defineOptions({
-  name: 'zhwLogo',
+  name: 'ZhwLogo',
 });
 
 withDefaults(defineProps<Props>(), {
@@ -48,7 +48,7 @@ withDefaults(defineProps<Props>(), {
       :href="href"
       class="flex h-full items-center gap-2 overflow-hidden px-3 text-lg leading-normal transition-all duration-500"
     >
-      <zhwAvatar
+      <ZhwAvatar
         v-if="src"
         :alt="text"
         :src="src"

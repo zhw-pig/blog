@@ -6,7 +6,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  zhwIcon,
+  ZhwIcon,
 } from '@zhw-core/shadcn-ui';
 
 interface Props {
@@ -41,7 +41,7 @@ defineEmits(['click']);
           class="flex-col-center border-border group w-1/3 cursor-pointer border-r border-t py-8 hover:shadow-xl"
           @click="$emit('click', item)"
         >
-          <zhwIcon
+          <ZhwIcon
             :color="item.color"
             :icon="item.icon"
             class="size-7 transition-all duration-300 group-hover:scale-125"

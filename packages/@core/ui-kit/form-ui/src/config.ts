@@ -1,7 +1,7 @@
 import type {
   BaseFormComponentType,
   FormCommonConfig,
-  zhwFormAdapterOptions,
+  ZhwFormAdapterOptions,
 } from './types';
 
 import type { Component } from 'vue';
@@ -41,7 +41,7 @@ export const COMPONENT_BIND_EVENT_MAP: Partial<
 
 export function setupZhwForm<
   T extends BaseFormComponentType = BaseFormComponentType,
->(options: zhwFormAdapterOptions<T>) {
+>(options: ZhwFormAdapterOptions<T>) {
   const { config, defineRules } = options;
 
   const {

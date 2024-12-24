@@ -17,10 +17,10 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  zhwButton,
-  zhwHelpTooltip,
-  zhwIconButton,
-  zhwLoading,
+  ZhwButton,
+  ZhwHelpTooltip,
+  ZhwIconButton,
+  ZhwLoading,
   VisuallyHidden,
 } from '@zhw-core/shadcn-ui';
 import { ELEMENT_ID_MAIN_CONTENT } from '@zhw-core/shared/constants';
@@ -162,9 +162,9 @@ const getAppendTo = computed(() => {
             <slot name="title">
               {{ title }}
 
-              <zhwHelpTooltip v-if="titleTooltip" trigger-class="pb-1">
+              <ZhwHelpTooltip v-if="titleTooltip" trigger-class="pb-1">
                 {{ titleTooltip }}
-              </zhwHelpTooltip>
+              </ZhwHelpTooltip>
             </slot>
           </SheetTitle>
           <SheetDescription v-if="description" class="mt-1 text-xs">
@@ -186,9 +186,9 @@ const getAppendTo = computed(() => {
             as-child
             class="data-[state=open]:bg-secondary ml-[2px] cursor-pointer rounded-full opacity-80 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none"
           >
-            <zhwIconButton>
+            <ZhwIconButton>
               <X class="size-4" />
-            </zhwIconButton>
+            </ZhwIconButton>
           </SheetClose>
         </div>
       </SheetHeader>
@@ -206,7 +206,7 @@ const getAppendTo = computed(() => {
           })
         "
       >
-        <zhwLoading v-if="showLoading" class="size-full" spinning />
+        <ZhwLoading v-if="showLoading" class="size-full" spinning />
 
         <slot></slot>
       </div>
@@ -223,7 +223,7 @@ const getAppendTo = computed(() => {
         <slot name="prepend-footer"></slot>
         <slot name="footer">
           <component
-            :is="components.DefaultButton || zhwButton"
+            :is="components.DefaultButton || ZhwButton"
             v-if="showCancelButton"
             variant="ghost"
             @click="() => drawerApi?.onCancel()"
@@ -234,7 +234,7 @@ const getAppendTo = computed(() => {
           </component>
 
           <component
-            :is="components.PrimaryButton || zhwButton"
+            :is="components.PrimaryButton || ZhwButton"
             v-if="showConfirmButton"
             :loading="confirmLoading"
             @click="() => drawerApi?.onConfirm()"

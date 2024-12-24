@@ -1,1 +1,1 @@
-export { default as zhwInputPassword } from './input-password.vue';
+export { default as ZhwInputPassword } from './input-password.vue';

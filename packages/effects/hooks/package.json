@@ -2,10 +2,10 @@
   "name": "@zhw/hooks",
   "version": "5.5.1",
   "homepage": "https://github.com/zhw-pig/blog",
-  "bugs": "https://github.com/zhw-pig/blog
+  "bugs": "https://github.com/zhw-pig/blog",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhw-pig/blog
+    "url": "git+https://github.com/zhw-pig/blog",
     "directory": "packages/effects/hooks"
   },
   "license": "MIT",
@@ -21,10 +21,10 @@
   },
   "dependencies": {
     "@zhw-core/composables": "workspace:*",
-    "@zhwpreferences": "workspace:*",
-    "@zhwstores": "workspace:*",
-    "@zhwtypes": "workspace:*",
-    "@zhwutils": "workspace:*",
+    "@zhw/preferences": "workspace:*",
+    "@zhw/stores": "workspace:*",
+    "@zhw/types": "workspace:*",
+    "@zhw/utils": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:",
     "vue-router": "catalog:",

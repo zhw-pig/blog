@@ -10,7 +10,7 @@ import {
   generateRoutesByBackend,
   generateRoutesByFrontend,
   mapTree,
-} from '@zhwutils';
+} from '@zhw/utils';
 
 async function generateAccessible(
   mode: AccessModeType,

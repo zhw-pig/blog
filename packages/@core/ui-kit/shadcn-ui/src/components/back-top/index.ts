@@ -1,1 +1,1 @@
-export { default as zhwBackTop } from './back-top.vue';
+export { default as ZhwBackTop } from './back-top.vue';

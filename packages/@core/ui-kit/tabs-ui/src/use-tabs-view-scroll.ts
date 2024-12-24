@@ -2,7 +2,7 @@ import type { TabsProps } from './types';
 
 import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 
-import { zhwScrollbar } from '@zhw-core/shadcn-ui';
+import { ZhwScrollbar } from '@zhw-core/shadcn-ui';
 
 import { useDebounceFn } from '@vueuse/core';
 
@@ -12,7 +12,7 @@ export function useTabsViewScroll(props: TabsProps) {
   let resizeObserver: null | ResizeObserver = null;
   let mutationObserver: MutationObserver | null = null;
   let tabItemCount = 0;
-  const scrollbarRef = ref<InstanceType<typeof zhwScrollbar> | null>(null);
+  const scrollbarRef = ref<InstanceType<typeof ZhwScrollbar> | null>(null);
   const scrollViewportEl = ref<DomElement>(null);
   const showScrollButton = ref(false);
   const scrollIsAtLeft = ref(true);

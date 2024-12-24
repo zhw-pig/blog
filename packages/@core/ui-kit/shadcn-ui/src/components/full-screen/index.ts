@@ -1,1 +1,1 @@
-export { default as zhwFullScreen } from './full-screen.vue';
+export { default as ZhwFullScreen } from './full-screen.vue';

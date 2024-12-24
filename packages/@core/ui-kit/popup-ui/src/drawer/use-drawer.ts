@@ -8,12 +8,12 @@ import { defineComponent, h, inject, nextTick, provide, reactive } from 'vue';
 
 import { useStore } from '@zhw-core/shared/store';
 
-import zhwDrawer from './drawer.vue';
+import ZhwDrawer from './drawer.vue';
 import { DrawerApi } from './drawer-api';
 
-const USER_DRAWER_INJECT_KEY = Symbol('zhw_DRAWER_INJECT');
+const USER_DRAWER_INJECT_KEY = Symbol('ZHW_DRAWER_INJECT');
 
-export function usezhwDrawer<
+export function useZhwDrawer<
   TParentDrawerProps extends DrawerProps = DrawerProps,
 >(options: DrawerApiOptions = {}) {
   // Drawer一般会抽离出来，所以如果有传入 connectedComponent，则表示为外部调用，与内部组件进行连接
@@ -41,7 +41,7 @@ export function usezhwDrawer<
       },
       {
         inheritAttrs: false,
-        name: 'zhwParentDrawer',
+        name: 'ZhwParentDrawer',
       },
     );
     return [Drawer, extendedApi as ExtendedDrawerApi] as const;
@@ -69,11 +69,11 @@ export function usezhwDrawer<
   const Drawer = defineComponent(
     (props: DrawerProps, { attrs, slots }) => {
       return () =>
-        h(zhwDrawer, { ...props, ...attrs, drawerApi: extendedApi }, slots);
+        h(ZhwDrawer, { ...props, ...attrs, drawerApi: extendedApi }, slots);
     },
     {
       inheritAttrs: false,
-      name: 'zhwDrawer',
+      name: 'ZhwDrawer',
     },
   );
   injectData.extendApi?.(extendedApi);
@@ -96,9 +96,9 @@ async function checkProps(api: ExtendedDrawerApi, attrs: Record<string, any>) {
 
   for (const attr of Object.keys(attrs)) {
     if (stateKeys.has(attr) && !['class'].includes(attr)) {
-      // connectedComponent存在时，不要传入Drawer的props，会造成复杂度提升，如果你需要修改Drawer的props，请使用 usezhwDrawer 或者api
+      // connectedComponent存在时，不要传入Drawer的props，会造成复杂度提升，如果你需要修改Drawer的props，请使用 useZhwDrawer 或者api
       console.warn(
-        `[zhw Drawer]: When 'connectedComponent' exists, do not set props or slots '${attr}', which will increase complexity. If you need to modify the props of Drawer, please use usezhwDrawer or api.`,
+        `[ZhwDrawer]: When 'connectedComponent' exists, do not set props or slots '${attr}', which will increase complexity. If you need to modify the props of Drawer, please use useZhwDrawer or api.`,
       );
     }
   }

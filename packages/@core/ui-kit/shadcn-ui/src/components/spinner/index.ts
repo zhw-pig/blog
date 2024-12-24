@@ -1,2 +1,2 @@
-export { default as zhwLoading } from './loading.vue';
-export { default as zhwSpinner } from './spinner.vue';
+export { default as ZhwLoading } from './loading.vue';
+export { default as ZhwSpinner } from './spinner.vue';

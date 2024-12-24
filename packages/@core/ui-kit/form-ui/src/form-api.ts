@@ -89,7 +89,7 @@ export class FormApi {
       await this.stateHandler.waitForCondition();
     }
     if (!this.form?.meta) {
-      throw new Error('<zhwForm /> is not mounted');
+      throw new Error('<ZhwForm /> is not mounted');
     }
     return this.form;
   }

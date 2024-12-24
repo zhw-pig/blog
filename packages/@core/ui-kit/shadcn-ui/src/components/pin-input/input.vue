@@ -4,7 +4,7 @@ import type { PinInputProps } from './types';
 import { computed, onBeforeUnmount, ref, useId, watch } from 'vue';
 
 import { PinInput, PinInputGroup, PinInputInput } from '../../ui';
-import { zhwButton } from '../button';
+import { ZhwButton } from '../button';
 
 defineOptions({
   inheritAttrs: false,
@@ -105,7 +105,7 @@ const id = useId();
           :index="index"
         />
       </PinInputGroup>
-      <zhwButton
+      <ZhwButton
         :disabled="disabled"
         :loading="btnLoading"
         class="flex-grow"
@@ -114,7 +114,7 @@ const id = useId();
         @click="handleSend"
       >
         {{ btnText }}
-      </zhwButton>
+      </ZhwButton>
     </div>
   </PinInput>
 </template>

@@ -2,8 +2,8 @@
 import { computed, h, ref, type VNode, watch, watchEffect } from 'vue';
 
 import { usePagination } from '@zhw/hooks';
-import { EmptyIcon, Grip, listIcons } from '@zhwicons';
-import { $t } from '@zhwlocales';
+import { EmptyIcon, Grip, listIcons } from '@zhw/icons';
+import { $t } from '@zhw/locales';
 import {
   Button,
   Pagination,
@@ -14,9 +14,9 @@ import {
   PaginationListItem,
   PaginationNext,
   PaginationPrev,
-  zhwIcon,
-  zhwIconButton,
-  zhwPopover,
+  ZhwIcon,
+  ZhwIconButton,
+  ZhwPopover,
 } from '@zhw-core/shadcn-ui';
 
 import { refDebounced } from '@vueuse/core';
@@ -137,7 +137,7 @@ const searchInputProps = computed(() => {
 defineExpose({ toggleOpenState, open, close });
 </script>
 <template>
-  <zhwPopover
+  <ZhwPopover
     v-model:open="visible"
     :content-props="{ align: 'end', alignOffset: -11, sideOffset: 8 }"
     content-class="p-0 pt-3"
@@ -149,7 +149,7 @@ defineExpose({ toggleOpenState, open, close });
         :placeholder="$t('ui.iconPicker.placeholder')"
       >
         <template #[iconSlot]>
-          <zhwIcon :icon="currentSelect || Grip" class="size-4" />
+          <ZhwIcon :icon="currentSelect || Grip" class="size-4" />
         </template>
       </component>
     </template>
@@ -159,20 +159,20 @@ defineExpose({ toggleOpenState, open, close });
 
     <template v-if="paginationList.length > 0">
       <div class="grid max-h-[360px] w-full grid-cols-6 justify-items-center">
-        <zhwIconButton
+        <ZhwIconButton
           v-for="(item, index) in paginationList"
           :key="index"
           :tooltip="item"
           tooltip-side="top"
           @click="handleClick(item)"
         >
-          <zhwIcon
+          <ZhwIcon
             :class="{
               'text-primary transition-all': currentSelect === item,
             }"
             :icon="item"
           />
-        </zhwIconButton>
+        </ZhwIconButton>
       </div>
       <div
         v-if="total >= pageSize"
@@ -226,5 +226,5 @@ defineExpose({ toggleOpenState, open, close });
         <div class="mt-1 text-sm">{{ $t('common.noData') }}</div>
       </div>
     </template>
-  </zhwPopover>
+  </ZhwPopover>
 </template>

@@ -1,3 +1,3 @@
-export { default as zhwBreadcrumbView } from './breadcrumb-view.vue';
+export { default as ZhwBreadcrumbView } from './breadcrumb-view.vue';
 
 export type * from './types';

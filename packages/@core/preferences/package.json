@@ -6,7 +6,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhw-pig/blog",
-    "directory": "packages/@core/preferences",
+    "directory": "packages/@core/preferences"
   },
   "license": "MIT",
   "type": "module",

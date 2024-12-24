@@ -22,7 +22,7 @@ export function useZhwForm<
   };
 
   const Form = defineComponent(
-    (props: zhwFormProps, { attrs, slots }) => {
+    (props: ZhwFormProps, { attrs, slots }) => {
       onBeforeUnmount(() => {
         api.unmount();
       });

@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import type { ButtonVariants } from '../../ui';
-import type { zhwButtonProps } from './button';
+import type { ZhwButtonProps } from './button';
 
 import { computed, useSlots } from 'vue';
 
 import { cn } from '@zhw-core/shared/utils';
 
-import { zhwTooltip } from '../tooltip';
-import zhwButton from './button.vue';
+import { ZhwTooltip } from '../tooltip';
+import ZhwButton from './button.vue';
 
-interface Props extends zhwButtonProps {
+interface Props extends ZhwButtonProps {
   class?: any;
   disabled?: boolean;
   onClick?: () => void;
@@ -33,7 +33,7 @@ const showTooltip = computed(() => !!slots.tooltip || !!props.tooltip);
 </script>
 
 <template>
-  <zhwButton
+  <ZhwButton
     v-if="!showTooltip"
     :class="cn('rounded-full', props.class)"
     :disabled="disabled"
@@ -42,15 +42,15 @@ const showTooltip = computed(() => !!slots.tooltip || !!props.tooltip);
     @click="onClick"
   >
     <slot></slot>
-  </zhwButton>
+  </ZhwButton>
 
-  <zhwTooltip
+  <ZhwTooltip
     v-else
     :delay-duration="tooltipDelayDuration"
     :side="tooltipSide"
   >
     <template #trigger>
-      <zhwButton
+      <ZhwButton
         :class="cn('rounded-full', props.class)"
         :disabled="disabled"
         :variant="variant"
@@ -58,11 +58,11 @@ const showTooltip = computed(() => !!slots.tooltip || !!props.tooltip);
         @click="onClick"
       >
         <slot></slot>
-      </zhwButton>
+      </ZhwButton>
     </template>
     <slot v-if="slots.tooltip" name="tooltip"> </slot>
     <template v-else>
       {{ tooltip }}
     </template>
-  </zhwTooltip>
+  </ZhwTooltip>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, type CSSProperties, ref, watchEffect } from 'vue';
 
-import { zhwTooltip } from '@zhw-core/shadcn-ui';
+import { ZhwTooltip } from '@zhw-core/shadcn-ui';
 
 interface Props {
   /**
@@ -96,7 +96,7 @@ function handleExpand() {
 </script>
 <template>
   <div>
-    <zhwTooltip
+    <ZhwTooltip
       :content-style="{
         ...tooltipOverlayStyle,
         maxWidth: `${defaultTooltipMaxWidth}px`,
@@ -130,7 +130,7 @@ function handleExpand() {
           <slot></slot>
         </div>
       </template>
-    </zhwTooltip>
+    </ZhwTooltip>
   </div>
 </template>
 

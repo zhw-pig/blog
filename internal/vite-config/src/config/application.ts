@@ -44,7 +44,7 @@ function defineApplicationConfig(userConfigPromise?: DefineApplicationOptions) {
       nitroMockOptions: {},
       print: !isBuild,
       printInfoMap: {
-        'zhw Admin Docs': 'https://doc.zzhwro',
+        'zhw blog docs': 'https://doc.zhw.blog',
       },
       pwa: true,
       pwaOptions: getDefaultPwaOptions(appTitle),
@@ -110,7 +110,7 @@ function createCssOptions(injectGlobalScss = true): CSSOptions {
               const relativePath = relative(root, filepath);
               // apps下的包注入全局样式
               if (relativePath.startsWith(`apps${path.sep}`)) {
-                return `@use "@zhwstyles/global" as *;\n${content}`;
+                return `@use "@zhw/styles/global" as *;\n${content}`;
               }
               return content;
             },

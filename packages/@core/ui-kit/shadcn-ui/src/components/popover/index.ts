@@ -1,1 +1,1 @@
-export { default as zhwPopover } from './popover.vue';
+export { default as ZhwPopover } from './popover.vue';

@@ -6,7 +6,7 @@ import type { MenuItemRegistered, MenuProvider, SubMenuProps } from '../types';
 import { computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue';
 
 import { useNamespace } from '@zhw-core/composables';
-import { zhwHoverCard } from '@zzhwore/shadcn-ui';
+import { ZhwHoverCard } from '@zhw-core/shadcn-ui';
 
 import {
   createSubMenuContext,
@@ -202,7 +202,7 @@ onBeforeUnmount(() => {
     @mouseleave="() => handleMouseleave()"
   >
     <template v-if="rootMenu.isMenuPopup">
-      <zhwHoverCard
+      <ZhwHoverCard
         :content-class="[
           rootMenu.theme,
           nsMenu.e('popup-container'),
@@ -241,7 +241,7 @@ onBeforeUnmount(() => {
             <slot></slot>
           </ul>
         </div>
-      </zhwHoverCard>
+      </ZhwHoverCard>
     </template>
 
     <template v-else>

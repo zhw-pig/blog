@@ -16,10 +16,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  zhwButton,
-  zhwHelpTooltip,
-  zhwIconButton,
-  zhwLoading,
+  ZhwButton,
+  ZhwHelpTooltip,
+  ZhwIconButton,
+  ZhwLoading,
   VisuallyHidden,
 } from '@zhw-core/shadcn-ui';
 import { ELEMENT_ID_MAIN_CONTENT } from '@zhw-core/shared/constants';
@@ -225,9 +225,9 @@ const getAppendTo = computed(() => {
             {{ title }}
 
             <slot v-if="titleTooltip" name="titleTooltip">
-              <zhwHelpTooltip trigger-class="pb-1">
+              <ZhwHelpTooltip trigger-class="pb-1">
                 {{ titleTooltip }}
-              </zhwHelpTooltip>
+              </ZhwHelpTooltip>
             </slot>
           </slot>
         </DialogTitle>
@@ -249,7 +249,7 @@ const getAppendTo = computed(() => {
           })
         "
       >
-        <zhwLoading
+        <ZhwLoading
           v-if="showLoading"
           class="size-full h-auto min-h-full"
           spinning
@@ -257,14 +257,14 @@ const getAppendTo = computed(() => {
         <slot></slot>
       </div>
 
-      <zhwIconButton
+      <ZhwIconButton
         v-if="fullscreenButton"
         class="hover:bg-accent hover:text-accent-foreground text-foreground/80 flex-center absolute right-10 top-3 hidden size-6 rounded-full px-1 text-lg opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none sm:block"
         @click="handleFullscreen"
       >
         <Shrink v-if="fullscreen" class="size-3.5" />
         <Expand v-else class="size-3.5" />
-      </zhwIconButton>
+      </ZhwIconButton>
 
       <DialogFooter
         v-if="showFooter"
@@ -282,7 +282,7 @@ const getAppendTo = computed(() => {
         <slot name="prepend-footer"></slot>
         <slot name="footer">
           <component
-            :is="components.DefaultButton || zhwButton"
+            :is="components.DefaultButton || ZhwButton"
             v-if="showCancelButton"
             variant="ghost"
             @click="() => modalApi?.onCancel()"
@@ -293,7 +293,7 @@ const getAppendTo = computed(() => {
           </component>
 
           <component
-            :is="components.PrimaryButton || zhwButton"
+            :is="components.PrimaryButton || ZhwButton"
             v-if="showConfirmButton"
             :disabled="confirmDisabled"
             :loading="confirmLoading"

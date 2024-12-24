@@ -1,1 +1,1 @@
-export { default as zhwCheckbox } from './checkbox.vue';
+export { default as ZhwCheckbox } from './checkbox.vue';

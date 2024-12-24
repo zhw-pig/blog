@@ -11,7 +11,7 @@ import {
   FormField,
   FormItem,
   FormMessage,
-  zhwRenderContent,
+  ZhwRenderContent,
 } from '@zhw-core/shadcn-ui';
 import { cn, isFunction, isObject, isString } from '@zhw-core/shared/utils';
 
@@ -329,7 +329,7 @@ function autofocus() {
               :disabled="shouldDisabled"
             >
               <template v-for="name in renderContentKey" :key="name" #[name]>
-                <zhwRenderContent
+                <ZhwRenderContent
                   :content="customContentRender[name]"
                   v-bind="slotProps"
                 />
@@ -340,11 +340,11 @@ function autofocus() {
         </FormControl>
         <!-- 自定义后缀 -->
         <div v-if="suffix" class="ml-1">
-          <zhwRenderContent :content="suffix" />
+          <ZhwRenderContent :content="suffix" />
         </div>
 
         <FormDescription v-if="description">
-          <zhwRenderContent :content="description" />
+          <ZhwRenderContent :content="description" />
         </FormDescription>
 
         <Transition name="slide-up">

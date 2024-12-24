@@ -2,7 +2,7 @@
 import type { CSSProperties } from 'vue';
 import { computed, useTemplateRef } from 'vue';
 
-import { zhwSpineText } from '@zhw-core/shadcn-ui';
+import { ZhwSpineText } from '@zhw-core/shadcn-ui';
 
 const props = defineProps<{
   contentStyle: CSSProperties;
@@ -38,9 +38,9 @@ defineExpose({
     class="absolute top-0 flex size-full select-none items-center justify-center text-xs"
   >
     <slot name="text">
-      <zhwSpineText class="flex h-full items-center">
+      <ZhwSpineText class="flex h-full items-center">
         {{ isPassing ? successText : text }}
-      </zhwSpineText>
+      </ZhwSpineText>
     </slot>
   </div>
 </template>

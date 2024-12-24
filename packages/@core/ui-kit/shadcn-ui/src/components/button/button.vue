@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { zhwButtonProps } from './button';
+import type { ZhwButtonProps } from './button';
 
 import { computed } from 'vue';
 
@@ -10,7 +10,7 @@ import { Primitive } from 'radix-vue';
 
 import { buttonVariants } from '../../ui';
 
-interface Props extends zhwButtonProps {}
+interface Props extends ZhwButtonProps {}
 
 const props = withDefaults(defineProps<Props>(), {
   as: 'button',

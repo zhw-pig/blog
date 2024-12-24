@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 import { $t } from '@zhw/locales';
-import { zhwButton } from '@zzhwore/shadcn-ui';
+import { ZhwButton } from '@zhw-core/shadcn-ui';
 
 import { useQRCode } from '@vueuse/integrations/useQRCode';
 
@@ -87,8 +87,8 @@ function goToLogin() {
       </p>
     </div>
 
-    <zhwButton class="mt-4 w-full" variant="outline" @click="goToLogin()">
+    <ZhwButton class="mt-4 w-full" variant="outline" @click="goToLogin()">
       {{ $t('common.back') }}
-    </zhwButton>
+    </ZhwButton>
   </div>
 </template>

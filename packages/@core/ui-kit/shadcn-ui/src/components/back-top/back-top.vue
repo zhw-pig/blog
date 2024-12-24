@@ -5,7 +5,7 @@ import { computed } from 'vue';
 
 import { ArrowUpToLine } from '@zhw-core/icons';
 
-import { zhwButton } from '../button';
+import { ZhwButton } from '../button';
 import { useBackTop } from './use-backtop';
 
 interface Props extends BacktopProps {}
@@ -29,7 +29,7 @@ const { handleClick, visible } = useBackTop(props);
 </script>
 <template>
   <transition name="fade-down">
-    <zhwButton
+    <ZhwButton
       v-if="visible"
       :style="backTopStyle"
       class="dark:bg-accent dark:hover:bg-heavy bg-background hover:bg-heavy data shadow-float fixed bottom-10 z-[1000] size-10 rounded-full duration-500"
@@ -38,6 +38,6 @@ const { handleClick, visible } = useBackTop(props);
       @click="handleClick"
     >
       <ArrowUpToLine class="size-4" />
-    </zhwButton>
+    </ZhwButton>
   </transition>
 </template>

@@ -7,7 +7,7 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 const getDefaultPwaOptions = (name: string): Partial<PwaPluginOptions> => ({
   manifest: {
     description:
-      'zhw Admin is a modern admin dashboard template based on Vue 3. ',
+      'zhw blog',
     icons: [
       {
         sizes: '192x192',

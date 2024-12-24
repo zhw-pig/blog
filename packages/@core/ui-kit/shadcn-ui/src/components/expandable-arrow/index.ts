@@ -1,1 +1,1 @@
-export { default as zhwExpandableArrow } from './expandable-arrow.vue';
+export { default as ZhwExpandableArrow } from './expandable-arrow.vue';

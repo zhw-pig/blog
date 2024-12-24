@@ -1,6 +1,6 @@
 import type { Component } from 'vue';
 
-interface zhwDropdownMenuItem {
+interface ZhwDropdownMenuItem {
   disabled?: boolean;
   /**
    * @zh_CN 点击事件处理
@@ -26,7 +26,7 @@ interface zhwDropdownMenuItem {
 }
 
 interface DropdownMenuProps {
-  menus: zhwDropdownMenuItem[];
+  menus: ZhwDropdownMenuItem[];
 }
 
-export type { DropdownMenuProps, zhwDropdownMenuItem };
+export type { DropdownMenuProps, ZhwDropdownMenuItem };

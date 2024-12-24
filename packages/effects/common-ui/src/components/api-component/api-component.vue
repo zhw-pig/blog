@@ -3,7 +3,7 @@ import type { AnyPromiseFunction } from '@zhw/types';
 
 import { type Component, computed, ref, unref, useAttrs, watch } from 'vue';
 
-import { LoaderCircle } from '@zhwicons';
+import { LoaderCircle } from '@zhw/icons';
 import { get, isEqual, isFunction } from '@zhw-core/shared/utils';
 
 import { objectOmit } from '@vueuse/core';

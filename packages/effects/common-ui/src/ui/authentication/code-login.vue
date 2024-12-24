@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import type { Recordable } from '@zhw/types';
-import type { zhwFormSchema } from '@zzhwore/form-ui';
+import type { ZhwFormSchema } from '@zhw-core/form-ui';
 
 import { computed, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { $t } from '@zhwlocales';
-import { usezhwForm } from '@zzhwore/form-ui';
-import { zhwButton } from '@zzhwore/shadcn-ui';
+import { $t } from '@zhw/locales';
+import { useZhwForm } from '@zhw-core/form-ui';
+import { ZhwButton } from '@zhw-core/shadcn-ui';
 
 import Title from './auth-title.vue';
 
 interface Props {
-  formSchema: zhwFormSchema[];
+  formSchema: ZhwFormSchema[];
   /**
    * @zh_CN 是否处于加载处理状态
    */
@@ -53,7 +53,7 @@ const emit = defineEmits<{
 
 const router = useRouter();
 
-const [Form, formApi] = usezhwForm(
+const [Form, formApi] = useZhwForm(
   reactive({
     commonConfig: {
       hideLabel: true,
@@ -99,7 +99,7 @@ defineExpose({
       </template>
     </Title>
     <Form />
-    <zhwButton
+    <ZhwButton
       :class="{
         'cursor-wait': loading,
       }"
@@ -110,9 +110,9 @@ defineExpose({
       <slot name="submitButtonText">
         {{ submitButtonText || $t('common.login') }}
       </slot>
-    </zhwButton>
-    <zhwButton class="mt-4 w-full" variant="outline" @click="goToLogin()">
+    </ZhwButton>
+    <ZhwButton class="mt-4 w-full" variant="outline" @click="goToLogin()">
       {{ $t('common.back') }}
-    </zhwButton>
+    </ZhwButton>
   </div>
 </template>

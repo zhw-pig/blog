@@ -73,9 +73,9 @@ const customConfig: Linter.Config[] = [
         {
           patterns: [
             {
-              group: ['@zhw*'],
+              group: ['@zhw/*'],
               message:
-                'The @core package cannot import the @zhwpackage, please use the @core package itself',
+                'The @core package cannot import the @zhw package, please use the @core package itself',
             },
           ],
         },
@@ -83,7 +83,7 @@ const customConfig: Linter.Config[] = [
     },
   },
   {
-    // @core/shared内部组件，不能引入@zhw* 或者 @zzhwore/* 里面的包
+    // @core/shared内部组件，不能引入@zhw* 或者 @zhw-core/* 里面的包
     files: ['packages/@core/base/**/**'],
     ignores: restrictedImportIgnores,
     rules: {
@@ -92,9 +92,9 @@ const customConfig: Linter.Config[] = [
         {
           patterns: [
             {
-              group: ['@zhw*', '@zzhwore/*'],
+              group: ['@zhw/*', '@zhw-core/*'],
               message:
-                'The @zhw-core/shared package cannot import the @zzhwackage, please use the @core/shared package itself',
+                'The @zhw-core/shared package cannot import the @zhw package, please use the @core/shared package itself',
             },
           ],
         },
@@ -121,9 +121,9 @@ const customConfig: Linter.Config[] = [
         {
           patterns: [
             {
-              group: ['@zhw*'],
+              group: ['@zhw/*'],
               message:
-                'The @zhwpackage cannot be imported, please use the @core package itself',
+                'The @zhw package cannot be imported, please use the @core package itself',
             },
           ],
         },

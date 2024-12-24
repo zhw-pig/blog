@@ -1,6 +1,6 @@
 import type {
   ApplicationConfig,
-  zhwAdminProAppConfigRaw,
+  ZhwAdminProAppConfigRaw,
 } from '@zhw/types/global';
 
 /**
@@ -12,8 +12,8 @@ export function useAppConfig(
 ): ApplicationConfig {
   // 生产环境下，直接使用 window._zhw_ADMIN_PRO_APP_CONF_ 全局变量
   const config = isProduction
-    ? window._zhw_ADMIN_PRO_APP_CONF_
-    : (env as zhwAdminProAppConfigRaw);
+    ? window._ZHW_ADMIN_PRO_APP_CONF_
+    : (env as ZhwAdminProAppConfigRaw);
 
   const { VITE_GLOB_API_URL } = config;
 

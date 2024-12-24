@@ -1,1 +1,1 @@
-export { default as zhwSpineText } from './spine-text.vue';
+export { default as ZhwSpineText } from './spine-text.vue';

@@ -1,2 +1,2 @@
 export type * from './zhw-layout';
-export { default as zhwAdminLayout } from './zhw-layout.vue';
+export { default as ZhwAdminLayout } from './zhw-layout.vue';

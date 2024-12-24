@@ -1,1 +1,1 @@
-export { default as zhwCountToAnimator } from './count-to-animator.vue';
+export { default as ZhwCountToAnimator } from './count-to-animator.vue';

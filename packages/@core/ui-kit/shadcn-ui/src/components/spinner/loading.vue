@@ -22,7 +22,7 @@ interface Props {
 }
 
 defineOptions({
-  name: 'zhwLoading',
+  name: 'ZhwLoading',
 });
 
 const props = withDefaults(defineProps<Props>(), {

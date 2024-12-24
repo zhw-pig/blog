@@ -1,1 +1,1 @@
-export { default as zhwLogo } from './logo.vue';
+export { default as ZhwLogo } from './logo.vue';

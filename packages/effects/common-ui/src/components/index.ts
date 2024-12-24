@@ -10,12 +10,12 @@ export * from '@zhw-core/popup-ui';
 
 // 给文档用
 export {
-  zhwButton,
-  zhwCountToAnimator,
-  zhwInputPassword,
-  zhwLoading,
-  zhwPinInput,
-  zhwSpinner,
+  ZhwButton,
+  ZhwCountToAnimator,
+  ZhwInputPassword,
+  ZhwLoading,
+  ZhwPinInput,
+  ZhwSpinner,
 } from '@zhw-core/shadcn-ui';
 
 export { globalShareState } from '@zhw-core/shared/global-state';

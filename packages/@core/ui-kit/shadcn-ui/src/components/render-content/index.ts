@@ -1,1 +1,1 @@
-export { default as zhwRenderContent } from './render-content.vue';
+export { default as ZhwRenderContent } from './render-content.vue';

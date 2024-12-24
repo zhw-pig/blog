@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type {
   DropdownMenuProps,
-  zhwDropdownMenuItem as IDropdownMenuItem,
+  ZhwDropdownMenuItem as IDropdownMenuItem,
 } from './interface';
 
 import {

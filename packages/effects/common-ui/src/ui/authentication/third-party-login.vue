@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { MdiGithub, MdiGoogle, MdiQqchat, MdiWechat } from '@zhw/icons';
-import { $t } from '@zhwlocales';
-import { zhwIconButton } from '@zzhwore/shadcn-ui';
+import { $t } from '@zhw/locales';
+import { ZhwIconButton } from '@zhw-core/shadcn-ui';
 
 defineOptions({
   name: 'ThirdPartyLogin',
@@ -19,18 +19,18 @@ defineOptions({
     </div>
 
     <div class="mt-4 flex flex-wrap justify-center">
-      <zhwIconButton class="mb-3">
+      <ZhwIconButton class="mb-3">
         <MdiWechat />
-      </zhwIconButton>
-      <zhwIconButton class="mb-3">
+      </ZhwIconButton>
+      <ZhwIconButton class="mb-3">
         <MdiQqchat />
-      </zhwIconButton>
-      <zhwIconButton class="mb-3">
+      </ZhwIconButton>
+      <ZhwIconButton class="mb-3">
         <MdiGithub />
-      </zhwIconButton>
-      <zhwIconButton class="mb-3">
+      </ZhwIconButton>
+      <ZhwIconButton class="mb-3">
         <MdiGoogle />
-      </zhwIconButton>
+      </ZhwIconButton>
     </div>
   </div>
 </template>

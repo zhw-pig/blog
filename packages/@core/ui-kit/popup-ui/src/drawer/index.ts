@@ -1,3 +1,3 @@
 export type * from './drawer';
-export { default as zhwDrawer } from './drawer.vue';
-export { usezhwDrawer } from './use-drawer';
+export { default as ZhwDrawer } from './drawer.vue';
+export { useZhwDrawer } from './use-drawer';

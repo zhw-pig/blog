@@ -378,7 +378,7 @@ export type ExtendedFormApi = {
   ) => Readonly<Ref<T>>;
 } & FormApi;
 
-export interface zhwFormAdapterOptions<
+export interface ZhwFormAdapterOptions<
   T extends BaseFormComponentType = BaseFormComponentType,
 > {
   config?: {

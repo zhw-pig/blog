@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import type { Recordable } from '@zhw/types';
-import type { zhwFormSchema } from '@zzhwore/form-ui';
+import type { zhwFormSchema } from '@zhw-core/form-ui';
 
 import type { AuthenticationProps } from './types';
 
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { $t } from '@zhwlocales';
-import { usezhwForm } from '@zzhwore/form-ui';
-import { zhwButton, zhwCheckbox } from '@zhzhwre/shadcn-ui';
+import { $t } from '@zhw/locales';
+import { useZhwForm } from '@zhw-core/form-ui';
+import { ZhwButton, ZhwCheckbox } from '@zhw-core/shadcn-ui';
 
 import Title from './auth-title.vue';
 import ThirdPartyLogin from './third-party-login.vue';
@@ -44,7 +44,7 @@ const emit = defineEmits<{
   submit: [Recordable<any>];
 }>();
 
-const [Form, formApi] = usezhwForm(
+const [Form, formApi] = useZhwForm(
   reactive({
     commonConfig: {
       hideLabel: true,
@@ -113,13 +113,13 @@ defineExpose({
       class="mb-6 flex justify-between"
     >
       <div class="flex-center">
-        <zhwCheckbox
+        <ZhwCheckbox
           v-if="showRememberMe"
           v-model:checked="rememberMe"
           name="rememberMe"
         >
           {{ $t('authentication.rememberMe') }}
-        </zhwCheckbox>
+        </ZhwCheckbox>
       </div>
 
       <span
@@ -130,7 +130,7 @@ defineExpose({
         {{ $t('authentication.forgetPassword') }}
       </span>
     </div>
-    <zhwButton
+    <ZhwButton
       :class="{
         'cursor-wait': loading,
       }"
@@ -140,28 +140,28 @@ defineExpose({
       @click="handleSubmit"
     >
       {{ submitButtonText || $t('common.login') }}
-    </zhwButton>
+    </ZhwButton>
 
     <div
       v-if="showCodeLogin || showQrcodeLogin"
       class="mb-2 mt-4 flex items-center justify-between"
     >
-      <zhwButton
+      <ZhwButton
         v-if="showCodeLogin"
         class="w-1/2"
         variant="outline"
         @click="handleGo(codeLoginPath)"
       >
         {{ $t('authentication.mobileLogin') }}
-      </zhwButton>
-      <zhwButton
+      </ZhwButton>
+      <ZhwButton
         v-if="showQrcodeLogin"
         class="ml-4 w-1/2"
         variant="outline"
         @click="handleGo(qrCodeLoginPath)"
       >
         {{ $t('authentication.qrcodeLogin') }}
-      </zhwButton>
+      </ZhwButton>
     </div>
 
     <!-- 第三方登录 -->

@@ -1,7 +1,7 @@
 import { computed } from 'vue';
 
 import { preferences, updatePreferences } from '@zhw/preferences';
-import { useAccessStore, useUserStore } from '@zhwstores';
+import { useAccessStore, useUserStore } from '@zhw/stores';
 
 function useAccess() {
   const accessStore = useAccessStore();

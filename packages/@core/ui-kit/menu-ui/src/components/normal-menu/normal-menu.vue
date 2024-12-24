@@ -4,7 +4,7 @@ import type { MenuRecordRaw } from '@zhw-core/typings';
 import type { NormalMenuProps } from './normal-menu';
 
 import { useNamespace } from '@zhw-core/composables';
-import { zhwIcon } from '@zzhwore/shadcn-ui';
+import { ZhwIcon } from '@zhw-core/shadcn-ui';
 
 interface Props extends NormalMenuProps {}
 
@@ -50,7 +50,7 @@ function menuIcon(menu: MenuRecordRaw) {
         @click="() => emit('select', menu)"
         @mouseenter="() => emit('enter', menu)"
       >
-        <zhwIcon :class="e('icon')" :icon="menuIcon(menu)" fallback />
+        <ZhwIcon :class="e('icon')" :icon="menuIcon(menu)" fallback />
 
         <span :class="e('name')" class="truncate"> {{ menu.name }}</span>
       </li>

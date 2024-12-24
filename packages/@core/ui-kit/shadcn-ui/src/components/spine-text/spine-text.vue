@@ -21,7 +21,7 @@ const style = computed(() => {
   </div>
 </template>
 <style>
-.zhwspine-text {
+.zhw-spine-text {
   background:
     radial-gradient(circle at center, rgb(255 255 255 / 80%), #f000) -200% 50% /
       200% 100% no-repeat,
@@ -30,7 +30,7 @@ const style = computed(() => {
   /* animation: shine 3s linear infinite; */
 }
 
-.dark .zhwspine-text {
+.dark .zhw-spine-text {
   background:
     radial-gradient(circle at center, rgb(24 24 26 / 80%), transparent) -200%
       50% / 200% 100% no-repeat,

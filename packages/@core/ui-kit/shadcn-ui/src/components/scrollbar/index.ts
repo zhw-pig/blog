@@ -1,1 +1,1 @@
-export { default as zhwScrollbar } from './scrollbar.vue';
+export { default as ZhwScrollbar } from './scrollbar.vue';

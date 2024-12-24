@@ -3,10 +3,10 @@
   "version": "5.5.1",
   "private": true,
   "homepage": "https://github.com/zhw-pig/blog",
-  "bugs": "https://github.com/zhw-pig/blog
+  "bugs": "https://github.com/zhw-pig/blog",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhw-pig/blog
+    "url": "git+https://github.com/zhw-pig/blog",
     "directory": "internal/lint-configs/commitlint-config"
   },
   "license": "MIT",
@@ -25,7 +25,7 @@
   "dependencies": {
     "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
-    "@zhwnode-utils": "workspace:*",
+    "@zhw/node-utils": "workspace:*",
     "commitlint-plugin-function-rules": "catalog:",
     "cz-git": "catalog:",
     "czg": "catalog:"

@@ -6,18 +6,18 @@ import type { TabConfig, TabsProps } from '../../types';
 import { computed, ref } from 'vue';
 
 import { Pin, X } from '@zhw-core/icons';
-import { zhwContextMenu, zhwIcon } from '@zhzhwre/shadcn-ui';
+import { ZhwContextMenu, ZhwIcon } from '@zhw-core/shadcn-ui';
 
 interface Props extends TabsProps {}
 
 defineOptions({
-  name: 'zhwTabsChrome',
+  name: 'ZhwTabsChrome',
   // eslint-disable-next-line perfectionist/sort-objects
   inheritAttrs: false,
 });
 
 const props = withDefaults(defineProps<Props>(), {
-  contentClass: 'zhwtabs-content',
+  contentClass: 'zhw-tabs-content',
   contextMenus: () => [],
   gap: 7,
   tabs: () => [],
@@ -83,7 +83,7 @@ const tabsView = computed(() => {
         data-tab-item="true"
         @click="active = tab.key"
       >
-        <zhwContextMenu
+        <ZhwContextMenu
           :handler-data="tab"
           :menus="contextMenus"
           :modal="false"
@@ -139,7 +139,7 @@ const tabsView = computed(() => {
             <div
               class="tabs-chrome__item-main group-[.is-active]:text-primary dark:group-[.is-active]:text-accent-foreground text-accent-foreground z-[2] mx-[calc(var(--gap)*2)] my-0 flex h-full items-center overflow-hidden rounded-tl-[5px] rounded-tr-[5px] pl-2 pr-4 duration-150"
             >
-              <zhwIcon
+              <ZhwIcon
                 v-if="showIcon"
                 :icon="tab.icon"
                 class="mr-1 flex size-4 items-center overflow-hidden"
@@ -150,7 +150,7 @@ const tabsView = computed(() => {
               </span>
             </div>
           </div>
-        </zhwContextMenu>
+        </ZhwContextMenu>
       </div>
     </TransitionGroup>
   </div>
