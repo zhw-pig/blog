@@ -3,17 +3,17 @@ import type { MenuRecordRaw } from '@zhw/types';
 
 import { computed, useSlots, watch } from 'vue';
 
-import { useRefresh } from '@zhwhooks';
-import { $t } from '@zhwlocales';
+import { useRefresh } from '@zhw/hooks';
+import { $t } from '@zhw/locales';
 import {
   preferences,
   updatePreferences,
   usePreferences,
-} from '@zhwpreferences';
-import { useLockStore } from '@zhwstores';
-import { cloneDeep, mapTree } from '@zhwutils';
-import { zhwAdminLayout } from '@zzhwore/layout-ui';
-import { zhwBackTop, zhwLogo } from '@zhzhwre/shadcn-ui';
+} from '@zhw/preferences';
+import { useLockStore } from '@zhw/stores';
+import { cloneDeep, mapTree } from '@zhw/utils';
+import { ZhwAdminLayout } from '@zhw-core/layout-ui';
+import { ZhwBackTop, ZhwLogo } from '@zhw-core/shadcn-ui';
 
 import { Breadcrumb, CheckUpdates, Preferences } from '../widgets';
 import { LayoutContent, LayoutContentSpinner } from './content';
@@ -161,7 +161,7 @@ const headerSlots = computed(() => {
 </script>
 
 <template>
-  <zhwAdminLayout
+  <ZhwAdminLayout
     v-model:sidebar-extra-visible="sidebarExtraVisible"
     :content-compact="preferences.app.contentCompact"
     :footer-enable="preferences.footer.enable"
@@ -202,7 +202,7 @@ const headerSlots = computed(() => {
   >
     <!-- logo -->
     <template #logo>
-      <zhwLogo
+      <ZhwLogo
         v-if="preferences.logo.enable"
         :class="logoClass"
         :collapsed="logoCollapsed"
@@ -287,7 +287,7 @@ const headerSlots = computed(() => {
       />
     </template>
     <template #side-extra-title>
-      <zhwLogo
+      <ZhwLogo
         v-if="preferences.logo.enable"
         :text="preferences.app.name"
         :theme="theme"
@@ -338,7 +338,7 @@ const headerSlots = computed(() => {
           @clear-preferences-and-logout="clearPreferencesAndLogout"
         />
       </template>
-      <zhwBackTop />
+      <ZhwBackTop />
     </template>
-  </zhwAdminLayout>
+  </ZhwAdminLayout>
 </template>

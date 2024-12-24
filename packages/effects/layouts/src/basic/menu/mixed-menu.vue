@@ -5,7 +5,7 @@ import type { NormalMenuProps } from '@zhw-core/menu-ui';
 import { onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router';
 
-import { findMenuByPath } from '@zhwutils';
+import { findMenuByPath } from '@zhw/utils';
 import { NormalMenu } from '@zhw-core/menu-ui';
 
 interface Props extends NormalMenuProps {}

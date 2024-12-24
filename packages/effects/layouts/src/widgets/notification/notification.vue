@@ -2,12 +2,12 @@
 import type { NotificationItem } from './types';
 
 import { Bell, MailCheck } from '@zhw/icons';
-import { $t } from '@zhwlocales';
+import { $t } from '@zhw/locales';
 import {
-  zhwButton,
-  zhwIconButton,
-  zhwPopover,
-  zhwScrollbar,
+  ZhwButton,
+  ZhwIconButton,
+  ZhwPopover,
+  ZhwScrollbar,
 } from '@zhw-core/shadcn-ui';
 
 import { useToggle } from '@vueuse/core';
@@ -61,34 +61,34 @@ function handleClick(item: NotificationItem) {
 }
 </script>
 <template>
-  <zhwPopover
+  <ZhwPopover
     v-model:open="open"
     content-class="relative right-2 w-[360px] p-0"
   >
     <template #trigger>
       <div class="flex-center mr-2 h-full" @click.stop="toggle()">
-        <zhwIconButton class="bell-button text-foreground relative">
+        <ZhwIconButton class="bell-button text-foreground relative">
           <span
             v-if="dot"
             class="bg-primary absolute right-0.5 top-0.5 h-2 w-2 rounded"
           ></span>
           <Bell class="size-4" />
-        </zhwIconButton>
+        </ZhwIconButton>
       </div>
     </template>
 
     <div class="relative">
       <div class="flex items-center justify-between p-4 py-3">
         <div class="text-foreground">{{ $t('ui.widgets.notifications') }}</div>
-        <zhwIconButton
+        <ZhwIconButton
           :disabled="notifications.length <= 0"
           :tooltip="$t('ui.widgets.markAllAsRead')"
           @click="handleMakeAll"
         >
           <MailCheck class="size-4" />
-        </zhwIconButton>
+        </ZhwIconButton>
       </div>
-      <zhwScrollbar v-if="notifications.length > 0">
+      <ZhwScrollbar v-if="notifications.length > 0">
         <ul class="!flex max-h-[360px] w-full flex-col">
           <template v-for="item in notifications" :key="item.title">
             <li
@@ -121,7 +121,7 @@ function handleClick(item: NotificationItem) {
             </li>
           </template>
         </ul>
-      </zhwScrollbar>
+      </ZhwScrollbar>
 
       <template v-else>
         <div class="flex-center text-muted-foreground min-h-[150px] w-full">
@@ -132,20 +132,20 @@ function handleClick(item: NotificationItem) {
       <div
         class="border-border flex items-center justify-between border-t px-4 py-3"
       >
-        <zhwButton
+        <ZhwButton
           :disabled="notifications.length <= 0"
           size="sm"
           variant="ghost"
           @click="handleClear"
         >
           {{ $t('ui.widgets.clearNotifications') }}
-        </zhwButton>
-        <zhwButton size="sm" @click="handleViewAll">
+        </ZhwButton>
+        <ZhwButton size="sm" @click="handleViewAll">
           {{ $t('ui.widgets.viewAll') }}
-        </zhwButton>
+        </ZhwButton>
       </div>
     </div>
-  </zhwPopover>
+  </ZhwPopover>
 </template>
 
 <style scoped>

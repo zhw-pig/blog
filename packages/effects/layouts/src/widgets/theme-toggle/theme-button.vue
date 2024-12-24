@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, nextTick } from 'vue';
 
-import { zhwButton } from '@zhw-core/shadcn-ui';
+import { ZhwButton } from '@zhw-core/shadcn-ui';
 
 interface Props {
   /**
@@ -81,7 +81,7 @@ function toggleTheme(event: MouseEvent) {
 </script>
 
 <template>
-  <zhwButton
+  <ZhwButton
     :aria-label="theme"
     :class="[`is-${theme}`]"
     aria-live="polite"
@@ -118,7 +118,7 @@ function toggleTheme(event: MouseEvent) {
         <line x1="18.36" x2="19.78" y1="5.64" y2="4.22" />
       </g>
     </svg>
-  </zhwButton>
+  </ZhwButton>
 </template>
 
 <style scoped>

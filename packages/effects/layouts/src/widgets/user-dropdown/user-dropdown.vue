@@ -4,13 +4,13 @@ import type { AnyFunction } from '@zhw/types';
 import type { Component } from 'vue';
 import { computed, useTemplateRef, watch } from 'vue';
 
-import { useHoverToggle } from '@zhwhooks';
-import { LockKeyhole, LogOut } from '@zhwicons';
-import { $t } from '@zhwlocales';
-import { preferences, usePreferences } from '@zhwpreferences';
-import { useLockStore } from '@zhwstores';
-import { isWindowsOs } from '@zhwutils';
-import { usezhwModal } from '@zzhwore/popup-ui';
+import { useHoverToggle } from '@zhw/hooks';
+import { LockKeyhole, LogOut } from '@zhw/icons';
+import { $t } from '@zhw/locales';
+import { preferences, usePreferences } from '@zhw/preferences';
+import { useLockStore } from '@zhw/stores';
+import { isWindowsOs } from '@zhw/utils';
+import { useZhwModal } from '@zhw-core/popup-ui';
 import {
   Badge,
   DropdownMenu,
@@ -20,8 +20,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-  zhwAvatar,
-  zhwIcon,
+  ZhwAvatar,
+  ZhwIcon,
 } from '@zhw-core/shadcn-ui';
 
 import { useMagicKeys, whenever } from '@vueuse/core';
@@ -81,10 +81,10 @@ const emit = defineEmits<{ logout: [] }>();
 const { globalLockScreenShortcutKey, globalLogoutShortcutKey } =
   usePreferences();
 const lockStore = useLockStore();
-const [LockModal, lockModalApi] = usezhwModal({
+const [LockModal, lockModalApi] = useZhwModal({
   connectedComponent: LockScreenModal,
 });
-const [LogoutModal, logoutModalApi] = usezhwModal({
+const [LogoutModal, logoutModalApi] = useZhwModal({
   onConfirm() {
     handleSubmitLogout();
   },
@@ -186,14 +186,14 @@ if (enableShortcutKey.value) {
     <DropdownMenuTrigger ref="refTrigger" :disabled="props.trigger === 'hover'">
       <div class="hover:bg-accent ml-1 mr-2 cursor-pointer rounded-full p-1.5">
         <div class="hover:text-accent-foreground flex-center">
-          <zhwAvatar :alt="text" :src="avatar" class="size-8" dot />
+          <ZhwAvatar :alt="text" :src="avatar" class="size-8" dot />
         </div>
       </div>
     </DropdownMenuTrigger>
     <DropdownMenuContent class="mr-2 min-w-[240px] p-0 pb-1">
       <div ref="refContent">
         <DropdownMenuLabel class="flex items-center p-3">
-          <zhwAvatar
+          <ZhwAvatar
             :alt="text"
             :src="avatar"
             class="size-12"
@@ -224,7 +224,7 @@ if (enableShortcutKey.value) {
           class="mx-1 flex cursor-pointer items-center rounded-sm py-1 leading-8"
           @click="menu.handler"
         >
-          <zhwIcon :icon="menu.icon" class="mr-2 size-4" />
+          <ZhwIcon :icon="menu.icon" class="mr-2 size-4" />
           {{ menu.text }}
         </DropdownMenuItem>
         <DropdownMenuSeparator />

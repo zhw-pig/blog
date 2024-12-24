@@ -3,14 +3,14 @@ import type { SelectOption } from '@zhw/types';
 
 import { useSlots } from 'vue';
 
-import { CircleHelp } from '@zhwicons';
+import { CircleHelp } from '@zhw/icons';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-  zhwTooltip,
+  ZhwTooltip,
 } from '@zhw-core/shadcn-ui';
 
 defineOptions({
@@ -46,12 +46,12 @@ const slots = useSlots();
     <span class="flex items-center text-sm">
       <slot></slot>
 
-      <zhwTooltip v-if="slots.tip" side="bottom">
+      <ZhwTooltip v-if="slots.tip" side="bottom">
         <template #trigger>
           <CircleHelp class="ml-1 size-3 cursor-help" />
         </template>
         <slot name="tip"></slot>
-      </zhwTooltip>
+      </ZhwTooltip>
     </span>
     <Select v-model="selectValue">
       <SelectTrigger class="h-8 w-[165px]">

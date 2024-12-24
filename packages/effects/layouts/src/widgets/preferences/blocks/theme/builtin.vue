@@ -3,13 +3,13 @@ import type { BuiltinThemeType } from '@zhw/types';
 
 import { computed, ref } from 'vue';
 
-import { UserRoundPen } from '@zhwicons';
-import { $t } from '@zhwlocales';
+import { UserRoundPen } from '@zhw/icons';
+import { $t } from '@zhw/locales';
 import {
   BUILT_IN_THEME_PRESETS,
   type BuiltinThemePreset,
-} from '@zhwpreferences';
-import { convertToHsl, TinyColor } from '@zhwutils';
+} from '@zhw/preferences';
+import { convertToHsl, TinyColor } from '@zhw/utils';
 
 defineOptions({
   name: 'PreferenceBuiltinTheme',

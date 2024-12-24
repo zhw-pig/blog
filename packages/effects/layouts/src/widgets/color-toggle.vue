@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { BuiltinThemeType } from '@zhw/types';
 
-import { Palette } from '@zhwicons';
+import { Palette } from '@zhw/icons';
 import {
   COLOR_PRESETS,
   preferences,
   updatePreferences,
-} from '@zhwpreferences';
-import { zhwIconButton } from '@zzhwore/shadcn-ui';
+} from '@zhw/preferences';
+import { ZhwIconButton } from '@zhw-core/shadcn-ui';
 
 defineOptions({
   name: 'AuthenticationColorToggle',
@@ -29,7 +29,7 @@ function handleUpdate(colorPrimary: string, type: BuiltinThemeType) {
       class="flex w-0 overflow-hidden transition-all duration-500 ease-out group-hover:w-60"
     >
       <template v-for="preset in COLOR_PRESETS" :key="preset.color">
-        <zhwIconButton
+        <ZhwIconButton
           class="flex-center flex-shrink-0"
           @click="handleUpdate(preset.color, preset.type)"
         >
@@ -52,12 +52,12 @@ function handleUpdate(colorPrimary: string, type: BuiltinThemeType) {
               />
             </svg>
           </div>
-        </zhwIconButton>
+        </ZhwIconButton>
       </template>
     </div>
 
-    <zhwIconButton>
+    <ZhwIconButton>
       <Palette class="text-primary size-4" />
-    </zhwIconButton>
+    </ZhwIconButton>
   </div>
 </template>

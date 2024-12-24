@@ -1,23 +1,23 @@
 <script setup lang="ts">
 import type { AuthPageLayoutType } from '@zhw/types';
-import type { zhwDropdownMenuItem } from '@zzhwore/shadcn-ui';
+import type { ZhwDropdownMenuItem } from '@zhw-core/shadcn-ui';
 
 import { computed } from 'vue';
 
-import { InspectionPanel, PanelLeft, PanelRight } from '@zhwicons';
-import { $t } from '@zhwlocales';
+import { InspectionPanel, PanelLeft, PanelRight } from '@zhw/icons';
+import { $t } from '@zhw/locales';
 import {
   preferences,
   updatePreferences,
   usePreferences,
-} from '@zhwpreferences';
-import { zhwDropdownRadioMenu, zhwIconButton } from '@zhzhwre/shadcn-ui';
+} from '@zhw/preferences';
+import { ZhwDropdownRadioMenu, ZhwIconButton } from '@zhw-core/shadcn-ui';
 
 defineOptions({
   name: 'AuthenticationLayoutToggle',
 });
 
-const menus = computed((): zhwDropdownMenuItem[] => [
+const menus = computed((): ZhwDropdownMenuItem[] => [
   {
     icon: PanelLeft,
     label: $t('authentication.layout.alignLeft'),
@@ -47,15 +47,15 @@ function handleUpdate(value: string) {
 </script>
 
 <template>
-  <zhwDropdownRadioMenu
+  <ZhwDropdownRadioMenu
     :menus="menus"
     :model-value="preferences.app.authPageLayout"
     @update:model-value="handleUpdate"
   >
-    <zhwIconButton>
+    <ZhwIconButton>
       <PanelRight v-if="authPanelRight" class="size-4" />
       <PanelLeft v-if="authPanelLeft" class="size-4" />
       <InspectionPanel v-if="authPanelCenter" class="size-4" />
-    </zhwIconButton>
-  </zhwDropdownRadioMenu>
+    </ZhwIconButton>
+  </ZhwDropdownRadioMenu>
 </template>

@@ -3,10 +3,10 @@ import type { Recordable } from '@zhw/types';
 
 import { computed, reactive } from 'vue';
 
-import { $t } from '@zhwlocales';
-import { usezhwForm, z } from '@zzhwore/form-ui';
-import { usezhwModal } from '@zzhwore/popup-ui';
-import { zhwAvatar, zhwButton } from '@zhzhwre/shadcn-ui';
+import { $t } from '@zhw/locales';
+import { useZhwForm, z } from '@zhw-core/form-ui';
+import { useZhwModal } from '@zhw-core/popup-ui';
+import { ZhwAvatar, ZhwButton } from '@zhw-core/shadcn-ui';
 
 interface Props {
   avatar?: string;
@@ -26,7 +26,7 @@ const emit = defineEmits<{
   submit: [Recordable<any>];
 }>();
 
-const [Form, { resetForm, validate, getValues }] = usezhwForm(
+const [Form, { resetForm, validate, getValues }] = useZhwForm(
   reactive({
     commonConfig: {
       hideLabel: true,
@@ -50,7 +50,7 @@ const [Form, { resetForm, validate, getValues }] = usezhwForm(
   }),
 );
 
-const [Modal] = usezhwModal({
+const [Modal] = useZhwModal({
   onConfirm() {
     handleSubmit();
   },
@@ -82,7 +82,7 @@ async function handleSubmit() {
     >
       <div class="w-full">
         <div class="ml-2 flex w-full flex-col items-center">
-          <zhwAvatar
+          <ZhwAvatar
             :src="avatar"
             class="size-20"
             dot-class="bottom-0 right-1 border-2 size-4 bg-green-500"
@@ -92,9 +92,9 @@ async function handleSubmit() {
           </div>
         </div>
         <Form />
-        <zhwButton class="mt-1 w-full" @click="handleSubmit">
+        <ZhwButton class="mt-1 w-full" @click="handleSubmit">
           {{ $t('ui.widgets.lockScreen.screenButton') }}
-        </zhwButton>
+        </ZhwButton>
       </div>
     </div>
   </Modal>

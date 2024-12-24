@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { LayoutHeaderModeType, SelectOption } from '@zhw/types';
 
-import { $t } from '@zhwlocales';
+import { $t } from '@zhw/locales';
 
 import SelectItem from '../select-item.vue';
 import SwitchItem from '../switch-item.vue';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SUPPORT_LANGUAGES } from '@zhw/constants';
-import { $t } from '@zhwlocales';
+import { $t } from '@zhw/locales';
 
 import SelectItem from '../select-item.vue';
 import SwitchItem from '../switch-item.vue';

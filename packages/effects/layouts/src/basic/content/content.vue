@@ -8,7 +8,7 @@ import { type VNode } from 'vue';
 import { RouterView } from 'vue-router';
 
 import { preferences, usePreferences } from '@zhw/preferences';
-import { storeToRefs, useTabbarStore } from '@zhwstores';
+import { storeToRefs, useTabbarStore } from '@zhw/stores';
 
 import { IFrameRouterView } from '../../iframe';
 

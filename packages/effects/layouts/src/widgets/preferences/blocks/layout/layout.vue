@@ -3,9 +3,9 @@ import type { LayoutType } from '@zhw/types';
 
 import { type Component, computed } from 'vue';
 
-import { CircleHelp } from '@zhwicons';
-import { $t } from '@zhwlocales';
-import { zhwTooltip } from '@zzhwore/shadcn-ui';
+import { CircleHelp } from '@zhw/icons';
+import { $t } from '@zhw/locales';
+import { ZhwTooltip } from '@zhw-core/shadcn-ui';
 
 import {
   FullContent,
@@ -82,12 +82,12 @@ function activeClass(theme: string): string[] {
           class="text-muted-foreground flex-center hover:text-foreground mt-2 text-center text-xs"
         >
           {{ theme.name }}
-          <zhwTooltip v-if="theme.tip" side="bottom">
+          <ZhwTooltip v-if="theme.tip" side="bottom">
             <template #trigger>
               <CircleHelp class="ml-1 size-3 cursor-help" />
             </template>
             {{ theme.tip }}
-          </zhwTooltip>
+          </ZhwTooltip>
         </div>
       </div>
     </template>

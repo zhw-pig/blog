@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { SelectOption } from '@zhw/types';
 
-import { $t } from '@zhwlocales';
+import { $t } from '@zhw/locales';
 
 import SwitchItem from '../switch-item.vue';
 import ToggleItem from '../toggle-item.vue';

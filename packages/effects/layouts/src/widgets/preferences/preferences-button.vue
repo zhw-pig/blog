@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Settings } from '@zhw/icons';
-import { zhwIconButton } from '@zzhwore/shadcn-ui';
+import { ZhwIconButton } from '@zhw-core/shadcn-ui';
 
 import Preferences from './preferences.vue';
 
@@ -12,8 +12,8 @@ function clearPreferencesAndLogout() {
 </script>
 <template>
   <Preferences @clear-preferences-and-logout="clearPreferencesAndLogout">
-    <zhwIconButton>
+    <ZhwIconButton>
       <Settings class="text-foreground size-4" />
-    </zhwIconButton>
+    </ZhwIconButton>
   </Preferences>
 </template>

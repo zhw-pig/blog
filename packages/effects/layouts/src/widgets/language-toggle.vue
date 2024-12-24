@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { SupportedLanguagesType } from '@zhw/locales';
 
-import { SUPPORT_LANGUAGES } from '@zhwconstants';
-import { Languages } from '@zhwicons';
-import { loadLocaleMessages } from '@zhwlocales';
-import { preferences, updatePreferences } from '@zhwpreferences';
-import { zhwDropdownRadioMenu, zhwIconButton } from '@zhzhwre/shadcn-ui';
+import { SUPPORT_LANGUAGES } from '@zhw/constants';
+import { Languages } from '@zhw/icons';
+import { loadLocaleMessages } from '@zhw/locales';
+import { preferences, updatePreferences } from '@zhw/preferences';
+import { ZhwDropdownRadioMenu, ZhwIconButton } from '@zhw-core/shadcn-ui';
 
 defineOptions({
   name: 'LanguageToggle',
@@ -24,14 +24,14 @@ async function handleUpdate(value: string) {
 
 <template>
   <div>
-    <zhwDropdownRadioMenu
+    <ZhwDropdownRadioMenu
       :menus="SUPPORT_LANGUAGES"
       :model-value="preferences.app.locale"
       @update:model-value="handleUpdate"
     >
-      <zhwIconButton>
+      <ZhwIconButton>
         <Languages class="text-foreground size-4" />
-      </zhwIconButton>
-    </zhwDropdownRadioMenu>
+      </ZhwIconButton>
+    </ZhwDropdownRadioMenu>
   </div>
 </template>

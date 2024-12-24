@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 
 import { $t } from '@zhw/locales';
-import { isWindowsOs } from '@zhwutils';
+import { isWindowsOs } from '@zhw/utils';
 
 import SwitchItem from '../switch-item.vue';
 

@@ -9,24 +9,24 @@ import type {
   NavigationStyleType,
   PreferencesButtonPositionType,
   ThemeModeType,
-} from '@zhwtypes';
+} from '@zhw/types';
 import type { SegmentedItem } from '@zhw-core/shadcn-ui';
 
 import { computed, ref } from 'vue';
 
-import { Copy, RotateCw } from '@zhwicons';
-import { $t, loadLocaleMessages } from '@zhwlocales';
+import { Copy, RotateCw } from '@zhw/icons';
+import { $t, loadLocaleMessages } from '@zhw/locales';
 import {
   clearPreferencesCache,
   preferences,
   resetPreferences,
   usePreferences,
-} from '@zhwpreferences';
-import { usezhwDrawer } from '@zzhwore/popup-ui';
+} from '@zhw/preferences';
+import { useZhwDrawer } from '@zhw-core/popup-ui';
 import {
-  zhwButton,
-  zhwIconButton,
-  zhwSegmented,
+  ZhwButton,
+  ZhwIconButton,
+  ZhwSegmented,
 } from '@zhw-core/shadcn-ui';
 import { globalShareState } from '@zhw-core/shared/global-state';
 
@@ -166,7 +166,7 @@ const {
 } = usePreferences();
 const { copy } = useClipboard({ legacy: true });
 
-const [Drawer] = usezhwDrawer();
+const [Drawer] = useZhwDrawer();
 
 const activeTab = ref('appearance');
 
@@ -233,7 +233,7 @@ async function handleReset() {
     >
       <template #extra>
         <div class="flex items-center">
-          <zhwIconButton
+          <ZhwIconButton
             :disabled="!diffPreference"
             :tooltip="$t('preferences.resetTip')"
             class="relative"
@@ -243,12 +243,12 @@ async function handleReset() {
               class="bg-primary absolute right-0.5 top-0.5 h-2 w-2 rounded"
             ></span>
             <RotateCw class="size-4" @click="handleReset" />
-          </zhwIconButton>
+          </ZhwIconButton>
         </div>
       </template>
 
       <div class="p-1">
-        <zhwSegmented v-model="activeTab" :tabs="tabs">
+        <ZhwSegmented v-model="activeTab" :tabs="tabs">
           <template #general>
             <Block :title="$t('preferences.general')">
               <General
@@ -403,11 +403,11 @@ async function handleReset() {
               />
             </Block>
           </template>
-        </zhwSegmented>
+        </ZhwSegmented>
       </div>
 
       <template #footer>
-        <zhwButton
+        <ZhwButton
           :disabled="!diffPreference"
           class="mx-4 w-full"
           size="sm"
@@ -416,8 +416,8 @@ async function handleReset() {
         >
           <Copy class="mr-2 size-3" />
           {{ $t('preferences.copyPreferences') }}
-        </zhwButton>
-        <zhwButton
+        </ZhwButton>
+        <ZhwButton
           :disabled="!diffPreference"
           class="mr-4 w-full"
           size="sm"
@@ -425,7 +425,7 @@ async function handleReset() {
           @click="handleClearCache"
         >
           {{ $t('preferences.clearAndLogout') }}
-        </zhwButton>
+        </ZhwButton>
       </template>
     </Drawer>
   </div>

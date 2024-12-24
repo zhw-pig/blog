@@ -5,8 +5,8 @@ import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 import { preferences } from '@zhw/preferences';
-import { useTabbarStore } from '@zhwstores';
-import { zhwSpinner } from '@zzhwore/shadcn-ui';
+import { useTabbarStore } from '@zhw/stores';
+import { ZhwSpinner } from '@zhw-core/shadcn-ui';
 
 defineOptions({ name: 'IFrameRouterView' });
 
@@ -73,7 +73,7 @@ function showSpinning(index: number) {
         v-show="routeShow(item)"
         class="relative size-full"
       >
-        <zhwSpinner :spinning="showSpinning(index)" />
+        <ZhwSpinner :spinning="showSpinning(index)" />
         <iframe
           :src="item.meta.iframeSrc as string"
           class="size-full"

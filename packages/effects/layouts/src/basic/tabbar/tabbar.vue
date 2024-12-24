@@ -3,8 +3,8 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 import { useContentMaximize, useTabs } from '@zhw/hooks';
-import { preferences } from '@zhwpreferences';
-import { useTabbarStore } from '@zhwstores';
+import { preferences } from '@zhw/preferences';
+import { useTabbarStore } from '@zhw/stores';
 import { TabsToolMore, TabsToolScreen, TabsView } from '@zhw-core/tabs-ui';
 
 import { useTabbar } from './use-tabbar';

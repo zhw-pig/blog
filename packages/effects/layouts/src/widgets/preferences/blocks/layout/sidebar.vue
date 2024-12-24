@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { LayoutType } from '@zhw/types';
 
-import { $t } from '@zhwlocales';
+import { $t } from '@zhw/locales';
 
 import NumberFieldItem from '../number-field-item.vue';
 import SwitchItem from '../switch-item.vue';

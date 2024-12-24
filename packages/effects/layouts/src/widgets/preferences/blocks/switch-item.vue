@@ -2,7 +2,7 @@
 import { useSlots } from 'vue';
 
 import { CircleHelp } from '@zhw/icons';
-import { Switch, zhwTooltip } from '@zzhwore/shadcn-ui';
+import { Switch, ZhwTooltip } from '@zhw-core/shadcn-ui';
 
 defineOptions({
   name: 'PreferenceSwitchItem',
@@ -33,7 +33,7 @@ function handleClick() {
     <span class="flex items-center text-sm">
       <slot></slot>
 
-      <zhwTooltip v-if="slots.tip || tip" side="bottom">
+      <ZhwTooltip v-if="slots.tip || tip" side="bottom">
         <template #trigger>
           <CircleHelp class="ml-1 size-3 cursor-help" />
         </template>
@@ -44,7 +44,7 @@ function handleClick() {
             </p>
           </template>
         </slot>
-      </zhwTooltip>
+      </ZhwTooltip>
     </span>
     <span v-if="$slots.shortcut" class="ml-auto mr-2 text-xs opacity-60">
       <slot name="shortcut"></slot>

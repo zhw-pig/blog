@@ -3,8 +3,8 @@ import type { ThemeModeType } from '@zhw/types';
 
 import type { Component } from 'vue';
 
-import { MoonStar, Sun, SunMoon } from '@zhwicons';
-import { $t } from '@zhwlocales';
+import { MoonStar, Sun, SunMoon } from '@zhw/icons';
+import { $t } from '@zhw/locales';
 
 import SwitchItem from '../switch-item.vue';
 

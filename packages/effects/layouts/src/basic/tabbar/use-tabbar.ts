@@ -5,7 +5,7 @@ import type { RouteLocationNormalizedGeneric } from 'vue-router';
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
-import { useContentMaximize, useTabs } from '@zhwhooks';
+import { useContentMaximize, useTabs } from '@zhw/hooks';
 import {
   ArrowLeftToLine,
   ArrowRightLeft,
@@ -18,10 +18,10 @@ import {
   PinOff,
   RotateCw,
   X,
-} from '@zhwicons';
-import { $t, useI18n } from '@zhwlocales';
-import { useAccessStore, useTabbarStore } from '@zhwstores';
-import { filterTree } from '@zhwutils';
+} from '@zhw/icons';
+import { $t, useI18n } from '@zhw/locales';
+import { useAccessStore, useTabbarStore } from '@zhw/stores';
+import { filterTree } from '@zhw/utils';
 
 export function useTabbar() {
   const router = useRouter();

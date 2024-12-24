@@ -2,15 +2,15 @@
 import { computed } from 'vue';
 
 import { Settings } from '@zhw/icons';
-import { $t, loadLocaleMessages } from '@zhwlocales';
-import { preferences, updatePreferences } from '@zhwpreferences';
-import { capitalizeFirstLetter } from '@zhwutils';
-import { usezhwDrawer } from '@zzhwore/popup-ui';
-import { zhwButton } from '@zzhwore/shadcn-ui';
+import { $t, loadLocaleMessages } from '@zhw/locales';
+import { preferences, updatePreferences } from '@zhw/preferences';
+import { capitalizeFirstLetter } from '@zhw/utils';
+import { useZhwDrawer } from '@zhw-core/popup-ui';
+import { ZhwButton } from '@zhw-core/shadcn-ui';
 
 import PreferencesDrawer from './preferences-drawer.vue';
 
-const [Drawer, drawerApi] = usezhwDrawer({
+const [Drawer, drawerApi] = useZhwDrawer({
   connectedComponent: PreferencesDrawer,
 });
 
@@ -59,12 +59,12 @@ const listen = computed(() => {
 
     <div @click="() => drawerApi.open()">
       <slot>
-        <zhwButton
+        <ZhwButton
           :title="$t('preferences.title')"
           class="bg-primary flex-col-center size-10 cursor-pointer rounded-l-lg rounded-r-none border-none"
         >
           <Settings class="size-5" />
-        </zhwButton>
+        </ZhwButton>
       </slot>
     </div>
   </div>

@@ -4,10 +4,10 @@ import type { MenuRecordRaw } from '@zhw/types';
 import { nextTick, onMounted, ref, shallowRef, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { SearchX, X } from '@zhwicons';
-import { $t } from '@zhwlocales';
-import { mapTree, traverseTreeValues, uniqueByField } from '@zhwutils';
-import { zhwIcon, zhwScrollbar } from '@zhzhwre/shadcn-ui';
+import { SearchX, X } from '@zhw/icons';
+import { $t } from '@zhw/locales';
+import { mapTree, traverseTreeValues, uniqueByField } from '@zhw/utils';
+import { ZhwIcon, ZhwScrollbar } from '@zhw-core/shadcn-ui';
 import { isHttpUrl } from '@zhw-core/shared/utils';
 
 import { onKeyStroke, useLocalStorage, useThrottleFn } from '@vueuse/core';
@@ -221,7 +221,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <zhwScrollbar>
+  <ZhwScrollbar>
     <div class="!flex h-full justify-center px-2 sm:max-h-[450px]">
       <!-- 无搜索结果 -->
       <div
@@ -267,7 +267,7 @@ onMounted(() => {
           @click="handleEnter"
           @mouseenter="handleMouseenter"
         >
-          <zhwIcon
+          <ZhwIcon
             :icon="item.icon"
             class="mr-2 size-5 flex-shrink-0"
             fallback
@@ -283,5 +283,5 @@ onMounted(() => {
         </li>
       </ul>
     </div>
-  </zhwScrollbar>
+  </ZhwScrollbar>
 </template>

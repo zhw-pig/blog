@@ -2,7 +2,7 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 
 import { $t } from '@zhw/locales';
-import { usezhwModal } from '@zzhwore/popup-ui';
+import { useZhwModal } from '@zhw-core/popup-ui';
 
 interface Props {
   // 轮训时间，分钟
@@ -23,7 +23,7 @@ const currentVersionTag = ref('');
 const lastVersionTag = ref('');
 const timer = ref<ReturnType<typeof setInterval>>();
 
-const [UpdateNoticeModal, modalApi] = usezhwModal({
+const [UpdateNoticeModal, modalApi] = useZhwModal({
   closable: false,
   closeOnPressEscape: false,
   closeOnClickModal: false,

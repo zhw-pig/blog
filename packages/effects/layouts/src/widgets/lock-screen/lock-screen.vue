@@ -2,11 +2,11 @@
 import { computed, reactive, ref } from 'vue';
 
 import { LockKeyhole } from '@zhw/icons';
-import { $t, useI18n } from '@zhwlocales';
-import { storeToRefs, useLockStore } from '@zhwstores';
+import { $t, useI18n } from '@zhw/locales';
+import { storeToRefs, useLockStore } from '@zhw/stores';
 import { useScrollLock } from '@zhw-core/composables';
-import { usezhwForm, z } from '@zzhwore/form-ui';
-import { zhwAvatar, zhwButton } from '@zhzhwre/shadcn-ui';
+import { useZhwForm, z } from '@zhw-core/form-ui';
+import { ZhwAvatar, ZhwButton } from '@zhw-core/shadcn-ui';
 
 import { useDateFormat, useNow } from '@vueuse/core';
 
@@ -36,7 +36,7 @@ const date = useDateFormat(now, 'YYYY-MM-DD dddd', { locales: locale.value });
 const showUnlockForm = ref(false);
 const { lockScreenPassword } = storeToRefs(lockStore);
 
-const [Form, { form, validate }] = usezhwForm(
+const [Form, { form, validate }] = useZhwForm(
   reactive({
     commonConfig: {
       hideLabel: true,
@@ -117,28 +117,28 @@ useScrollLock();
         @keydown.enter.prevent="handleSubmit"
       >
         <div class="flex-col-center mb-10 w-[300px]">
-          <zhwAvatar :src="avatar" class="enter-x mb-6 size-20" />
+          <ZhwAvatar :src="avatar" class="enter-x mb-6 size-20" />
 
           <div class="enter-x mb-2 w-full items-center">
             <Form />
           </div>
-          <zhwButton class="enter-x w-full" @click="handleSubmit">
+          <ZhwButton class="enter-x w-full" @click="handleSubmit">
             {{ $t('ui.widgets.lockScreen.entry') }}
-          </zhwButton>
-          <zhwButton
+          </ZhwButton>
+          <ZhwButton
             class="enter-x my-2 w-full"
             variant="ghost"
             @click="$emit('toLogin')"
           >
             {{ $t('ui.widgets.lockScreen.backToLogin') }}
-          </zhwButton>
-          <zhwButton
+          </ZhwButton>
+          <ZhwButton
             class="enter-x mr-2 w-full"
             variant="ghost"
             @click="toggleUnlockForm"
           >
             {{ $t('common.back') }}
-          </zhwButton>
+          </ZhwButton>
         </div>
       </div>
     </transition>

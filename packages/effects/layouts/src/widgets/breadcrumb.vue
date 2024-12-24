@@ -5,8 +5,8 @@ import type { IBreadcrumb } from '@zhw-core/shadcn-ui';
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
-import { $t } from '@zhwlocales';
-import { zhwBreadcrumbView } from '@zzhwore/shadcn-ui';
+import { $t } from '@zhw/locales';
+import { ZhwBreadcrumbView } from '@zhw-core/shadcn-ui';
 
 interface Props {
   hideWhenOnlyOne?: boolean;
@@ -62,7 +62,7 @@ function handleSelect(path: string) {
 }
 </script>
 <template>
-  <zhwBreadcrumbView
+  <ZhwBreadcrumbView
     :breadcrumbs="breadcrumbs"
     :show-icon="showIcon"
     :style-type="type"

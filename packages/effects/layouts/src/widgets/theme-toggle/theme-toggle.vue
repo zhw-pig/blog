@@ -1,17 +1,17 @@
 <script lang="ts" setup>
 import type { ThemeModeType } from '@zhw/types';
 
-import { MoonStar, Sun, SunMoon } from '@zhwicons';
-import { $t } from '@zhwlocales';
+import { MoonStar, Sun, SunMoon } from '@zhw/icons';
+import { $t } from '@zhw/locales';
 import {
   preferences,
   updatePreferences,
   usePreferences,
-} from '@zhwpreferences';
+} from '@zhw/preferences';
 import {
   ToggleGroup,
   ToggleGroupItem,
-  zhwTooltip,
+  ZhwTooltip,
 } from '@zhw-core/shadcn-ui';
 
 import ThemeButton from './theme-button.vue';
@@ -52,7 +52,7 @@ const PRESETS = [
 </script>
 <template>
   <div>
-    <zhwTooltip :disabled="!shouldOnHover" side="bottom">
+    <ZhwTooltip :disabled="!shouldOnHover" side="bottom">
       <template #trigger>
         <ThemeButton
           :model-value="isDark"
@@ -77,6 +77,6 @@ const PRESETS = [
           <component :is="item.icon" class="size-5" />
         </ToggleGroupItem>
       </ToggleGroup>
-    </zhwTooltip>
+    </ZhwTooltip>
   </div>
 </template>

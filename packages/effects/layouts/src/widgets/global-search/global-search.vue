@@ -9,10 +9,10 @@ import {
   CornerDownLeft,
   MdiKeyboardEsc,
   Search,
-} from '@zhwicons';
-import { $t } from '@zhwlocales';
-import { isWindowsOs } from '@zhwutils';
-import { usezhwModal } from '@zzhwore/popup-ui';
+} from '@zhw/icons';
+import { $t } from '@zhw/locales';
+import { isWindowsOs } from '@zhw/utils';
+import { useZhwModal } from '@zhw-core/popup-ui';
 
 import { useMagicKeys, whenever } from '@vueuse/core';
 
@@ -33,7 +33,7 @@ const props = withDefaults(
 const keyword = ref('');
 const searchInputRef = ref<HTMLInputElement>();
 
-const [Modal, modalApi] = usezhwModal({
+const [Modal, modalApi] = useZhwModal({
   onCancel() {
     modalApi.close();
   },

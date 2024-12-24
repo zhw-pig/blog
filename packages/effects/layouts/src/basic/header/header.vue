@@ -2,10 +2,10 @@
 import { computed, useSlots } from 'vue';
 
 import { useRefresh } from '@zhw/hooks';
-import { RotateCw } from '@zhwicons';
-import { preferences, usePreferences } from '@zhwpreferences';
-import { useAccessStore } from '@zhwstores';
-import { zhwFullScreen, zhwIconButton } from '@zhzhwre/shadcn-ui';
+import { RotateCw } from '@zhw/icons';
+import { preferences, usePreferences } from '@zhw/preferences';
+import { useAccessStore } from '@zhw/stores';
+import { ZhwFullScreen, ZhwIconButton } from '@zhw-core/shadcn-ui';
 
 import {
   GlobalSearch,
@@ -118,9 +118,9 @@ function clearPreferencesAndLogout() {
   >
     <slot :name="slot.name">
       <template v-if="slot.name === 'refresh'">
-        <zhwIconButton class="my-0 mr-1 rounded-md" @click="refresh">
+        <ZhwIconButton class="my-0 mr-1 rounded-md" @click="refresh">
           <RotateCw class="size-4" />
-        </zhwIconButton>
+        </ZhwIconButton>
       </template>
     </slot>
   </template>
@@ -160,7 +160,7 @@ function clearPreferencesAndLogout() {
           <LanguageToggle class="mr-1" />
         </template>
         <template v-else-if="slot.name === 'fullscreen'">
-          <zhwFullScreen class="mr-1" />
+          <ZhwFullScreen class="mr-1" />
         </template>
       </slot>
     </template>

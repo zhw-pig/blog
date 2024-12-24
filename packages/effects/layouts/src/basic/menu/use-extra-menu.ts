@@ -3,9 +3,9 @@ import type { MenuRecordRaw } from '@zhw/types';
 import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
-import { preferences } from '@zhwpreferences';
-import { useAccessStore } from '@zhwstores';
-import { findRootMenuByPath } from '@zhwutils';
+import { preferences } from '@zhw/preferences';
+import { useAccessStore } from '@zhw/stores';
+import { findRootMenuByPath } from '@zhw/utils';
 
 import { useNavigation } from './use-navigation';
 
