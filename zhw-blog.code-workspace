@@ -141,10 +141,6 @@
       "path": "packages/utils",
     },
     {
-      "name": "@zhw/playground",
-      "path": "playground",
-    },
-    {
       "name": "@zhw/turbo-run",
       "path": "scripts/turbo-run",
     },

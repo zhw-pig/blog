@@ -58,7 +58,7 @@ function menuIcon(menu: MenuRecordRaw) {
   </ul>
 </template>
 <style lang="scss" scoped>
-$namespace: zhw
+$namespace: zhw;
 
 .#{$namespace}-normal-menu {
   --menu-item-margin-y: 4px;

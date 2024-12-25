@@ -1,7 +1,4 @@
-import type {
-  zhwFormSchema as FormSchema,
-  zhwFormProps,
-} from '@zhw/common-ui';
+import type { zhwFormSchema as FormSchema, zhwFormProps } from '@zhw/common-ui';
 
 import type { ComponentType } from './component';
 

@@ -1,11 +1,11 @@
 {
-  "name": "@zhw/web-ele",
+  "name": "@zhw/web-admin",
   "version": "5.5.1",
   "bugs": "https://github.com/zhw-pig/blog/issues",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhw-pig/blog",
-    "directory": "apps/web-ele"
+    "directory": "apps/web-admin"
   },
   "license": "MIT",
   "author": {
@@ -25,6 +25,7 @@
     "#/*": "./src/*"
   },
   "dependencies": {
+    "@vueuse/core": "catalog:",
     "@zhw/access": "workspace:*",
     "@zhw/common-ui": "workspace:*",
     "@zhw/constants": "workspace:*",
@@ -39,7 +40,6 @@
     "@zhw/styles": "workspace:*",
     "@zhw/types": "workspace:*",
     "@zhw/utils": "workspace:*",
-    "@vueuse/core": "catalog:",
     "dayjs": "catalog:",
     "element-plus": "catalog:",
     "pinia": "catalog:",

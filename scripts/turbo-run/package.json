@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@clack/prompts": "catalog:",
-    "@zhwnode-utils": "workspace:*",
+    "@zhw/node-utils": "workspace:*",
     "cac": "catalog:"
   }
 }

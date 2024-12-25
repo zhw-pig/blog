@@ -356,7 +356,7 @@ function removeMenuItem(item: MenuItemRegistered) {
 </template>
 
 <style lang="scss">
-$namespace: zhw
+$namespace: zhw;
 
 @mixin menu-item-active {
   color: var(--menu-item-active-color);
@@ -368,7 +368,6 @@ $namespace: zhw
 @mixin menu-item {
   position: relative;
   display: flex;
-  // gap: 12px;
   align-items: center;
   height: var(--menu-item-height);
   padding: var(--menu-item-padding-y) var(--menu-item-padding-x);

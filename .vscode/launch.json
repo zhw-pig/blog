@@ -13,12 +13,12 @@
     },
     {
       "type": "chrome",
-      "name": "zhwadmin ele dev",
+      "name": "blog admin",
       "request": "launch",
       "url": "http://localhost:5777",
       "env": { "NODE_ENV": "development" },
       "sourceMaps": true,
-      "webRoot": "${workspaceFolder}/apps/web-ele"
-    },
+      "webRoot": "${workspaceFolder}/apps/web-admin"
+    }
   ]
 }
