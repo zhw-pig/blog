@@ -30,20 +30,20 @@ const MOCK_USER_OPTIONS: BasicOption[] = [
 
 const formSchema = computed((): ZhwFormSchema[] => {
   return [
-    {
-      component: 'ZhwSelect',
-      componentProps: {
-        options: MOCK_USER_OPTIONS,
-        placeholder: $t('authentication.selectAccount'),
-      },
-      fieldName: 'selectAccount',
-      label: $t('authentication.selectAccount'),
-      rules: z
-        .string()
-        .min(1, { message: $t('authentication.selectAccount') })
-        .optional()
-        .default('zhw'),
-    },
+    // {
+    //   component: 'ZhwSelect',
+    //   componentProps: {
+    //     options: MOCK_USER_OPTIONS,
+    //     placeholder: $t('authentication.selectAccount'),
+    //   },
+    //   fieldName: 'selectAccount',
+    //   label: $t('authentication.selectAccount'),
+    //   rules: z
+    //     .string()
+    //     .min(1, { message: $t('authentication.selectAccount') })
+    //     .optional()
+    //     .default('zhw'),
+    // },
     {
       component: 'ZhwInput',
       componentProps: {
