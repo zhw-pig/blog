@@ -11,7 +11,7 @@ import lombok.Data;
 @SuppressWarnings("all")
 @Data
 // 想要直接为前端返回响应，可利用全局异常处理功能
-public class SystemException extends RuntimeException {
+public class BlogException extends RuntimeException {
 
     //异常状态码
     private Integer code;
@@ -20,7 +20,7 @@ public class SystemException extends RuntimeException {
      * @param message
      * @param code
      */
-    public SystemException(String message, Integer code) {
+    public BlogException(String message, Integer code) {
         super(message);
         this.code = code;
     }
@@ -29,7 +29,7 @@ public class SystemException extends RuntimeException {
      * 根据响应结果枚举对象创建异常对象
      * @param resultCodeEnum
      */
-    public SystemException(ResultCodeEnum resultCodeEnum) {
+    public BlogException(ResultCodeEnum resultCodeEnum) {
         super(resultCodeEnum.getMessage());
         this.code = resultCodeEnum.getCode();
     }

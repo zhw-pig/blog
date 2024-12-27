@@ -10,36 +10,15 @@ public enum ResultCodeEnum {
 
     SUCCESS(200, "操作成功"),
     FAIL(201, "操作失败"),
-    PARAM_ERROR(202, "参数不正确"),
-    SERVICE_ERROR(203, "服务异常"),
-    DATA_ERROR(204, "数据异常"),
-    ILLEGAL_REQUEST(205, "非法请求"),
-    REPEAT_SUBMIT(206, "重复提交"),
-    DELETE_ERROR(207, "请先删除子集"),
+    PARAM_ERROR(400, "参数不正确"),
+    TOKEN_EXPIRED(401, "token过期"),
+    TOKEN_INVALID(402, "token非法"),
 
-    ADMIN_ACCOUNT_EXIST_ERROR(301, "账号已存在"),
-    ADMIN_CAPTCHA_CODE_ERROR(302, "验证码错误"),
-    ADMIN_CAPTCHA_CODE_EXPIRED(303, "验证码已过期"),
-    ADMIN_CAPTCHA_CODE_NOT_FOUND(304, "验证码不能为空"),
-
-
-    ADMIN_LOGIN_AUTH(305, "未登陆"),
-    ADMIN_ACCOUNT_NOT_EXIST_ERROR(306, "账号不存在"),
-    ADMIN_ACCOUNT_ERROR(307, "用户名或密码错误"),
-    ADMIN_ACCOUNT_DISABLED_ERROR(308, "该用户已被禁用"),
-    ADMIN_ACCESS_FORBIDDEN(309, "无访问权限"),
-
-    APP_LOGIN_AUTH(501, "未登陆"),
-    APP_LOGIN_PHONE_EMPTY(502, "手机号码为空"),
-    APP_LOGIN_CODE_EMPTY(503, "验证码为空"),
-    APP_SEND_SMS_TOO_OFTEN(504, "验证法发送过于频繁"),
-    APP_LOGIN_CODE_EXPIRED(505, "验证码已过期"),
-    APP_LOGIN_CODE_ERROR(506, "验证码错误"),
-    APP_ACCOUNT_DISABLED_ERROR(507, "该用户已被禁用"),
-    ADMIN_APARTMENT_DELETE_ERROR(508, "先删除房间信息再删除公寓信息"),
-
-    TOKEN_EXPIRED(601, "token过期"),
-    TOKEN_INVALID(602, "token非法");
+    NO_LOGIN(501, "未登陆"),
+    ACCOUNT_NULL(502, "账号不能为空"),
+    PASSWORD_NULL(503, "密码不能为空"),
+    LOGIN_ERROR(504, "账号或密码错误"),
+    ACCOUNT_DISABLE(503, "账号已禁用");
 
 
     private final Integer code;

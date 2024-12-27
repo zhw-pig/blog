@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 // @MapperScan只是会被Spring解析，不会被IDEA解析，
 // 所以注入Mapper的时候会报Cont find bean警告，但不影响使用
 // 避免出现警告可以在Mapper类上，单独加上@Mapper/@Repository注解
-
+@MapperScan("com.zhw.blog.web.*.mapper")
 public class MybatisPlusConfiguration {
     @Bean
     // 配置Mybatis-Plus分页插件

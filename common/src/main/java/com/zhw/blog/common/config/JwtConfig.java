@@ -2,7 +2,7 @@ package com.zhw.blog.common.config;
 
 
 
-import com.zhw.blog.common.exception.SystemException;
+import com.zhw.blog.common.exception.BlogException;
 import com.zhw.blog.common.result.ResultCodeEnum;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,7 +108,7 @@ public class JwtConfig {
         // 令牌为空
         // 返回未登录异常
         if (token == null || "".equals(token)) {
-            throw new SystemException(ResultCodeEnum.ADMIN_LOGIN_AUTH);
+            throw new BlogException(ResultCodeEnum.NO_LOGIN);
         }
 
         try{
@@ -116,9 +116,9 @@ public class JwtConfig {
             JwtParser jwtParser = Jwts.parser().setSigningKey(secretKey);
             return jwtParser.parseClaimsJws(token).getBody();
         } catch (ExpiredJwtException e){
-            throw new SystemException(ResultCodeEnum.TOKEN_EXPIRED);
+            throw new BlogException(ResultCodeEnum.TOKEN_EXPIRED);
         } catch (JwtException e){
-            throw new SystemException(ResultCodeEnum.TOKEN_INVALID);
+            throw new BlogException(ResultCodeEnum.TOKEN_INVALID);
         }
     }
 }

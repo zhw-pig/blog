@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * @description:  处理所有Controller方法抛出的异常， 因此Controller层就无序关注异常的处理逻辑了
- * @author: zhanghuaiwei
+ * @author: zhw
  * @date: 2024/11/16 17:45
  **/
 
@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 // @ResponseBody: 表示将方法的返回值作为HTTP的响应体
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(SystemException.class)
-    public ResponseResult systemExceptionHandler(SystemException e){
+    @ExceptionHandler(BlogException.class)
+    public ResponseResult systemExceptionHandler(BlogException e){
         // 打印异常信息
         log.error("出现了异常！ {}", e);
         e.printStackTrace();
