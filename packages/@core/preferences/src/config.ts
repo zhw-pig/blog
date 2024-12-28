@@ -34,7 +34,7 @@ const defaultPreferences: Preferences = {
     companyName: 'zhw',
     companySiteLink: 'https://www.zhw.pro',
     date: '2024',
-    enable: true,
+    enable: false,
     icp: '',
     icpLink: '',
     settingShow: true,
@@ -50,7 +50,7 @@ const defaultPreferences: Preferences = {
   },
   logo: {
     enable: true,
-    source: 'https://unpkg.com/@zhwjs/static-source@0.1.7/source/logo-v1.webp',
+    source: '',
   },
   navigation: {
     accordion: true,
@@ -73,6 +73,10 @@ const defaultPreferences: Preferences = {
     extraCollapse: true,
     hidden: false,
     width: 224,
+  },
+  sloganImage: {
+    enable: true,
+    source: 'C:/Users/ZN220203/Desktop/1.jpg',
   },
   tabbar: {
     draggable: true,

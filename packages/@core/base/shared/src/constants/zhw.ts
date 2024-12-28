@@ -11,8 +11,7 @@ export const ZHW_DOC_URL = 'https://doc.zzhwro';
 /**
  * @zh_CN zhw Logo
  */
-export const ZHW_LOGO_URL =
-  'https://unpkg.com/@zhwjs/static-source@0.1.7/source/logo-v1.webp';
+export const ZHW_LOGO_URL = '';
 
 /**
  * @zh_CN zhw Admin 首页地址

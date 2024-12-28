@@ -249,6 +249,7 @@ interface Preferences {
   shortcutKeys: ShortcutKeyPreferences;
   /** 侧边栏配置 */
   sidebar: SidebarPreferences;
+  sloganImage: LogoPreferences;
   /** 标签页配置 */
   tabbar: TabbarPreferences;
   /** 主题配置 */

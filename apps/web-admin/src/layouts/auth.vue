@@ -4,20 +4,16 @@ import { computed } from 'vue';
 import { AuthPageLayout } from '@zhw/layouts';
 import { preferences } from '@zhw/preferences';
 
-import { $t } from '#/locales';
-
 const appName = computed(() => preferences.app.name);
 const logo = computed(() => preferences.logo.source);
+// 登录背景图
+const sloganImage = computed(() => '');
 </script>
 
 <template>
   <AuthPageLayout
     :app-name="appName"
     :logo="logo"
-    :page-description="$t('authentication.pageDesc')"
-    :page-title="$t('authentication.pageTitle')"
-  >
-    <!-- 自定义工具栏 -->
-    <!-- <template #toolbar></template> -->
-  </AuthPageLayout>
+    :slogan-image="sloganImage"
+  />
 </template>

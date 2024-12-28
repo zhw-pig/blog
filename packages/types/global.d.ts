@@ -7,7 +7,7 @@ declare module 'vue-router' {
   interface RouteMeta extends IRouteMeta {}
 }
 
-export interface zhwAdminProAppConfigRaw {
+export interface ZhwAdminProAppConfigRaw {
   VITE_GLOB_API_URL: string;
 }
 
@@ -17,6 +17,6 @@ export interface ApplicationConfig {
 
 declare global {
   interface Window {
-    _zhw_ADMIN_PRO_APP_CONF_: zhwAdminProAppConfigRaw;
+    _ZHW_ADMIN_PRO_APP_CONF_: ZhwAdminProAppConfigRaw;
   }
 }

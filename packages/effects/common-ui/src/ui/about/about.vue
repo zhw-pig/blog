@@ -3,11 +3,7 @@ import type { AboutProps, DescriptionItem } from './about';
 
 import { h } from 'vue';
 
-import {
-  ZHW_DOC_URL,
-  ZHW_GITHUB_URL,
-  ZHW_PREVIEW_URL,
-} from '@zhw/constants';
+import { ZHW_DOC_URL, ZHW_GITHUB_URL, ZHW_PREVIEW_URL } from '@zhw/constants';
 import { ZhwRenderContent } from '@zhw-core/shadcn-ui';
 
 import { Page } from '../../components';
@@ -19,8 +15,7 @@ defineOptions({
 });
 
 withDefaults(defineProps<Props>(), {
-  description:
-    '是一个现代化开箱即用的中后台解决方案，采用最新的技术栈，包括 Vue 3.0、Vite、TailwindCSS 和 TypeScript 等前沿技术，代码规范严谨，提供丰富的配置选项，旨在为中大型项目的开发提供现成的开箱即用解决方案及丰富的示例，同时，它也是学习和深入前端技术的一个极佳示例。',
+  description: '博客项目',
   name: 'zhw-blog',
   title: '关于项目',
 });
@@ -42,11 +37,7 @@ declare global {
 }
 
 const renderLink = (href: string, text: string) =>
-  h(
-    'a',
-    { href, target: '_blank', class: 'Zhwlink' },
-    { default: () => text },
-  );
+  h('a', { href, target: '_blank', class: 'Zhwlink' }, { default: () => text });
 
 const {
   authorEmail,

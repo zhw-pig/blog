@@ -35,6 +35,7 @@ export const authenticateResponseInterceptor = ({
       if (client.isRefreshing) {
         return new Promise((resolve) => {
           client.refreshTokenQueue.push((newToken: string) => {
+            // Authorization
             config.headers.Authorization = formatToken(newToken);
             resolve(client.request(config.url, { ...config }));
           });

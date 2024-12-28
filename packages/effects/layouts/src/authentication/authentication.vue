@@ -5,7 +5,7 @@ import { preferences, usePreferences } from '@zhw/preferences';
 
 import { Copyright } from '../basic/copyright';
 import AuthenticationFormView from './form.vue';
-import SloganIcon from './icons/slogan.vue';
+import SloganSvg from './icons/SloganSvg.vue';
 import Toolbar from './toolbar.vue';
 
 interface Props {
@@ -21,7 +21,7 @@ interface Props {
 
 withDefaults(defineProps<Props>(), {
   appName: '',
-  copyright: true,
+  copyright: false,
   logo: '',
   pageDescription: '',
   pageTitle: '',
@@ -86,7 +86,7 @@ const { authPanelCenter, authPanelLeft, authPanelRight, isDark } =
               class="animate-float h-64 w-2/5"
             />
           </template>
-          <SloganIcon v-else :alt="appName" class="animate-float h-64 w-2/5" />
+          <SloganSvg v-else :alt="appName" class="animate-float h-64 w-2/5" />
           <div class="text-1xl text-foreground mt-6 font-sans lg:text-2xl">
             {{ pageTitle }}
           </div>
