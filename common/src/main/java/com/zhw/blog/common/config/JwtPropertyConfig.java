@@ -26,4 +26,8 @@ public class JwtPropertyConfig {
     private String issuer;
     // 密钥算法
     private String algorithm;
+    // 请求头
+    private String header;
+    // token前缀
+    private String prefix;
 }

@@ -6,6 +6,7 @@ package com.zhw.blog.common.constant;
  */
 public class RedisConstant {
     public static final String ADMIN_LOGIN_PREFIX = "admin:login:";
+    public static final Integer ADMIN_LOGIN_TOKEN_TTL_SEC = 60 * 60 * 24;
     // 过期之后 redis将没有记录
     public static final Integer ADMIN_LOGIN_CAPTCHA_TTL_SEC = 60;
     public static final String APP_LOGIN_PREFIX = "app:login:";

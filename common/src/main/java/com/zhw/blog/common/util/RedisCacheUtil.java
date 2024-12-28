@@ -28,6 +28,7 @@ public class RedisCacheUtil
      */
     public <T> void setCacheObject(final String key, final T value)
     {
+
         redisTemplate.opsForValue().set(key, value);
     }
 

@@ -3,8 +3,11 @@ package com.zhw.blog.web.admin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zhw.blog.common.config.JwtConfig;
+import com.zhw.blog.common.config.JwtPropertyConfig;
+import com.zhw.blog.common.constant.RedisConstant;
 import com.zhw.blog.common.exception.BlogException;
 import com.zhw.blog.common.result.ResultCodeEnum;
+import com.zhw.blog.common.util.RedisCacheUtil;
 import com.zhw.blog.model.entity.Admin;
 import com.zhw.blog.model.enums.BaseStatus;
 import com.zhw.blog.web.admin.mapper.AuthMapper;
@@ -13,6 +16,8 @@ import com.zhw.blog.web.admin.vo.login.AdminLoginVo;
 import io.netty.util.internal.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author zhanghuaiwei
@@ -26,10 +31,13 @@ public class AuthServiceImpl extends ServiceImpl<AuthMapper, Admin>
     private AuthMapper authMapper;
     @Autowired
     private JwtConfig jwtConfig;
+    @Autowired
+    private RedisCacheUtil redisCacheUtil;
+
 
 
     @Override
-    public String authToken(AdminLoginVo adminLoginVo) {
+    public HashMap<String, Object> authToken(AdminLoginVo adminLoginVo) {
         // 接口参数判空
         if(adminLoginVo == null) {
             throw new BlogException(ResultCodeEnum.PARAM_ERROR);
@@ -56,6 +64,12 @@ public class AuthServiceImpl extends ServiceImpl<AuthMapper, Admin>
         }
         // 生成token
         String token = jwtConfig.createJWT(adminLoginVo.getUsername());
-        return token;
+        // 将token存储到redis中
+        String key = RedisConstant.ADMIN_LOGIN_PREFIX + adminLoginVo.getUsername();
+        redisCacheUtil.setCacheObject(key, token, RedisConstant.ADMIN_LOGIN_TOKEN_TTL_SEC, TimeUnit.SECONDS);
+        // 组装token，返回给前端
+        HashMap<String, Object> resultMap = new HashMap<>();
+        resultMap.put("accessToken", token);
+        return resultMap;
     }
 }
