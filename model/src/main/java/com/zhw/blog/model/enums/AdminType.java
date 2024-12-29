@@ -18,8 +18,8 @@ import java.util.Map;
 @Getter
 public enum AdminType implements BaseEnum {
 
-    DISABLE(0, "普通管理员，需要分权限"),
-    ENABLE(1, "超级管理员，全部权限");
+    NOT_ADMIN(0, "普通管理员，需要分权限"),
+    IS_ADMIN(1, "超级管理员，全部权限");
 
 
     @EnumValue // 表示在数据库中存储和读取时使用这个属性的值
@@ -50,7 +50,7 @@ public enum AdminType implements BaseEnum {
                 return adminType;
             }
         }
-        return AdminType.ENABLE;
+        return AdminType.IS_ADMIN;
     }
 
 }

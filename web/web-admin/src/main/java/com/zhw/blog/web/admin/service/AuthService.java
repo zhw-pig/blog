@@ -1,6 +1,7 @@
 package com.zhw.blog.web.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zhw.blog.common.result.ResponseResult;
 import com.zhw.blog.model.entity.Admin;
 import com.zhw.blog.web.admin.vo.login.AdminLoginVo;
 
@@ -12,4 +13,6 @@ import java.util.HashMap;
  */
 public interface AuthService extends IService<Admin> {
     HashMap<String, Object> authToken(AdminLoginVo adminLoginVo);
+
+    ResponseResult logout();
 }

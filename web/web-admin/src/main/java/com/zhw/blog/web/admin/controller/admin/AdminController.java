@@ -21,6 +21,6 @@ public class AdminController {
 
     @GetMapping("selectUserByToken")
     public ResponseResult<Admin> selectUserByToken() {
-        return ResponseResult.ok();
+        return ResponseResult.okResult();
     }
 }

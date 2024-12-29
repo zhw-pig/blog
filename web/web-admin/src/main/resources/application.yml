@@ -56,4 +56,4 @@ jwt:
 auth:
   interceptor:
     add-path-patterns: /admin/**
-    exclude-path-patterns: /auth/oauth/token
+    exclude-path-patterns: /auth/oauth/token /auth/test

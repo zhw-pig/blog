@@ -1,6 +1,7 @@
 package com.zhw.blog.common.exception;
 
 import com.zhw.blog.common.result.ResponseResult;
+import com.zhw.blog.common.result.ResultCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -25,7 +26,7 @@ public class GlobalExceptionHandler {
         // 打印异常信息
         log.error("出现了异常！ {}", e);
         e.printStackTrace();
-        return ResponseResult.fail(e.getCode(), e.getMessage());
+        return ResponseResult.errorResult(e.getCode(), e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)  // 用于声明处理异常的方法，`value`属性用于声明该方法处理的异常类型
@@ -33,6 +34,6 @@ public class GlobalExceptionHandler {
         // 打印异常信息
         log.error("出现了异常！ {}", e);
         e.printStackTrace();
-        return ResponseResult.fail();
+        return ResponseResult.errorResult(ResultCodeEnum.SYSTEM_ERROR.getCode(), e.getMessage());
     }
 }

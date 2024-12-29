@@ -1,11 +1,15 @@
 package com.zhw.blog.common.result;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 全局统一返回结果类
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ResponseResult<T> {
 
     //返回码
@@ -17,41 +21,72 @@ public class ResponseResult<T> {
     //返回数据
     private T data;
 
-    public ResponseResult() {
+
+
+
+
+    public static ResponseResult errorResult(int code, String message) {
+        ResponseResult result = new ResponseResult();
+        return result.error(code, message);
     }
 
-    private static <T> ResponseResult<T> build(T data) {
-        ResponseResult<T> result = new ResponseResult<>();
-        if (data != null)
+    public static ResponseResult okResult() {
+        ResponseResult result = new ResponseResult();
+        return result;
+    }
+
+    public static ResponseResult okResult(int code, String message) {
+        ResponseResult result = new ResponseResult();
+        return result.ok(code, null, message);
+    }
+
+    public static ResponseResult okResult(Object data) {
+        ResponseResult result = setAppHttpCodeEnum(ResultCodeEnum.SUCCESS,
+                ResultCodeEnum.SUCCESS.getMessage());
+        if (data != null) {
             result.setData(data);
+        }
         return result;
     }
 
-    public static <T> ResponseResult<T> build(T body, ResultCodeEnum resultCodeEnum) {
-        ResponseResult<T> result = build(body);
-        result.setCode(resultCodeEnum.getCode());
-        result.setMessage(resultCodeEnum.getMessage());
-        return result;
+    public static ResponseResult errorResult(ResultCodeEnum enums) {
+        return setAppHttpCodeEnum(enums, enums.getMessage());
     }
 
-
-    public static <T> ResponseResult<T> ok(T data) {
-        return build(data, ResultCodeEnum.SUCCESS);
+    public static ResponseResult errorResult(ResultCodeEnum enums, String message) {
+        return setAppHttpCodeEnum(enums, message);
     }
 
-    public static <T> ResponseResult<T> ok() {
-        return ResponseResult.ok(null);
+    public static ResponseResult setAppHttpCodeEnum(ResultCodeEnum enums) {
+        return okResult(enums.getCode(), enums.getMessage());
     }
 
-    public static <T> ResponseResult<T> fail() {
-        return build(null, ResultCodeEnum.FAIL);
+    private static ResponseResult setAppHttpCodeEnum(ResultCodeEnum enums,
+                                                     String message) {
+        return okResult(enums.getCode(), message);
     }
 
-    // 错误异常处理
-    public static <T> ResponseResult<T> fail(Integer code, String message) {
-        ResponseResult<T> result = build(null);
-        result.setCode(code);
-        result.setMessage(message);
-        return result;
+    public ResponseResult<?> error(Integer code, String message) {
+        this.code = code;
+        this.message = message;
+        return this;
+    }
+
+    public ResponseResult<?> ok(Integer code, T data) {
+        this.code = code;
+        this.data = data;
+        return this;
+    }
+
+    public ResponseResult<?> ok(Integer code, T data, String message) {
+        this.code = code;
+        this.data = data;
+        this.message = message;
+        return this;
+    }
+
+    public ResponseResult<?> ok(T data) {
+        this.data = data;
+        return this;
     }
 }

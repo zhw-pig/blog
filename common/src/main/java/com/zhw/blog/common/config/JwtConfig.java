@@ -107,18 +107,24 @@ public class JwtConfig {
     public Claims parseToken(String token) throws Exception {
         // 令牌为空
         // 返回未登录异常
-        if (token == null || "".equals(token)) {
-            throw new BlogException(ResultCodeEnum.NO_LOGIN);
-        }
+        // if (token == null || "".equals(token)) {
+        //     throw new BlogException(ResultCodeEnum.NO_LOGIN);
+        // }
+        //
+        // try{
+        //     SecretKey secretKey = generalKey();
+        //     JwtParser jwtParser = Jwts.parser().setSigningKey(secretKey);
+        //     return jwtParser.parseClaimsJws(token).getBody();
+        // } catch (ExpiredJwtException e){
+        //     throw new BlogException(ResultCodeEnum.TOKEN_EXPIRED);
+        // } catch (JwtException e){
+        //     throw new BlogException(ResultCodeEnum.TOKEN_INVALID);
+        // }
 
-        try{
-            SecretKey secretKey = generalKey();
-            JwtParser jwtParser = Jwts.parser().setSigningKey(secretKey);
-            return jwtParser.parseClaimsJws(token).getBody();
-        } catch (ExpiredJwtException e){
-            throw new BlogException(ResultCodeEnum.TOKEN_EXPIRED);
-        } catch (JwtException e){
-            throw new BlogException(ResultCodeEnum.TOKEN_INVALID);
-        }
+        SecretKey secretKey = generalKey();
+        return Jwts.parser()
+                .setSigningKey(secretKey)
+                .parseClaimsJws(token)
+                .getBody();
     }
 }

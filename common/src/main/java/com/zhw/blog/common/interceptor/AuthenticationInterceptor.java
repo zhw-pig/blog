@@ -9,14 +9,17 @@ import com.zhw.blog.common.result.ResultCodeEnum;
 import com.zhw.blog.common.util.RedisCacheUtil;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 // 为所有受保护的接口增加校验JWT合法性的逻辑
-@Component
+// @Component // 注释掉： 不再注册到容器中
+// HandlerInterceptor 是Spring MVC框架的一部分，主要用于拦截请求和响应
+// HandlerInterceptor和SpringSecurity的区别：
+// HandlerInterceptor 适用于简单的权限控制和请求级别的拦截，实现简单，适用于轻量级应用。
+// Spring Security 提供了全面的安全控制解决方案，适用于复杂应用和企业级应用，功能强大且灵活。
 
 @SuppressWarnings("all")
 public class AuthenticationInterceptor implements HandlerInterceptor {

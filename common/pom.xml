@@ -69,6 +69,11 @@
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
         </dependency>
+        <!-- spring boot自带了 security，所以不需要显示版本号 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
         <!-- 助于 IDE 更好地解析配置属性，避免ConfigurationProperties注解无法解析 -->
         <dependency>

@@ -2,13 +2,11 @@ package com.zhw.blog.web.admin.controller.auth;
 
 import com.zhw.blog.common.constant.RedisConstant;
 import com.zhw.blog.common.result.ResponseResult;
-import com.zhw.blog.common.util.RedisCacheUtil;
 import com.zhw.blog.web.admin.service.AuthService;
 import com.zhw.blog.web.admin.vo.login.AdminLoginVo;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 
 /**
@@ -22,20 +20,17 @@ public class AuthController {
 
     @Autowired
     private AuthService authService;
-    @Autowired
-    private RedisCacheUtil redisCacheUtil;
+
 
     // consumes = "application/x-www-form-urlencoded;charset=UTF-8"
     @PostMapping(value = "oauth/token")
     public ResponseResult<HashMap<String, Object>> authToken(@RequestBody AdminLoginVo adminLoginVo) {
         HashMap<String, Object> tokenMap = authService.authToken(adminLoginVo);
-        return ResponseResult.ok(tokenMap);
+        return ResponseResult.okResult(tokenMap);
     }
 
     @PostMapping("oauth/logout")
     public ResponseResult logout() {
-        // 删除redis的token记录
-        redisCacheUtil.deleteObject(RedisConstant.ADMIN_LOGIN_PREFIX + "token");
-        return ResponseResult.ok();
+        return authService.logout();
     }
 }
