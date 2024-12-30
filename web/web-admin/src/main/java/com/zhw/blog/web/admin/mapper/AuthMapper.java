@@ -1,7 +1,7 @@
 package com.zhw.blog.web.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zhw.blog.model.entity.Admin;
+import com.zhw.blog.model.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,5 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2024/12/27 10:35
  */
 @Mapper
-public interface AuthMapper extends BaseMapper<Admin> {
+public interface AuthMapper extends BaseMapper<User> {
 }

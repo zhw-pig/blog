@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.zhw.blog.common.exception.BlogException;
 import com.zhw.blog.common.result.ResultCodeEnum;
 import com.zhw.blog.common.security.AdminLoginSecurity;
-import com.zhw.blog.model.entity.Admin;
+import com.zhw.blog.model.entity.User;
 import com.zhw.blog.model.enums.BaseStatus;
 import com.zhw.blog.web.admin.mapper.AuthMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -40,9 +43,9 @@ public class AdminDetailsServiceImpl implements UserDetailsService {
             throw new BlogException(ResultCodeEnum.ACCOUNT_NULL);
         }
         // 根据用户名查询用户信息
-        LambdaQueryWrapper<Admin> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(StringUtils.hasText(username), Admin::getLoginId, username);
-        Admin admin = authMapper.selectOne(queryWrapper);
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(StringUtils.hasText(username), User::getLoginId, username);
+        User admin = authMapper.selectOne(queryWrapper);
         // 判断该账号是否在数据库中
         if(Objects.isNull(admin)) {
             throw new BlogException(ResultCodeEnum.LOGIN_ERROR);
@@ -53,9 +56,9 @@ public class AdminDetailsServiceImpl implements UserDetailsService {
             throw new BlogException(ResultCodeEnum.ACCOUNT_DISABLE);
         }
         // 2、授权: 查询用户的对应权限信息
-
+        List<String> permissions = new ArrayList<>(Arrays.asList("USER","ADMIN"));
         // 3、返回用户信息（UserDetails接口的自定义实现类）
         // Authentication认证成功后，会返回一个UserDetails对象
-        return new AdminLoginSecurity(admin);
+        return new AdminLoginSecurity(admin, permissions);
     }
 }

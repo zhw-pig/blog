@@ -1,47 +1,63 @@
 package com.zhw.blog.common.util;
 
-import com.zhw.blog.common.security.AdminLoginSecurity;
-import com.zhw.blog.model.enums.AdminType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import java.util.Collection;
+
+/**
+ * Security工具类
+ */
+@Configuration
 public class SecurityUtils {
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
 
     /**
-     * 设置Authentication
-     */
-    public static void setAuthentication(Authentication authentication) {
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-    }
-
-    /**
-     * 获取Authentication
-     */
-    public static Authentication getAuthentication() {
-        return SecurityContextHolder.getContext().getAuthentication();
-    }
-
-    /**
-     * 获取用户  admin和user分开写
+     * 获取认证权限信息
      **/
-    // public static <T>T getLoginUser(Class<T> clazz) {
-    //     AdminLoginSecurity adminLoginSecurity = (AdminLoginSecurity)getAuthentication().getPrincipal();
-    //     if (clazz.isInstance(adminLoginSecurity)) {
-    //         return clazz.cast(adminLoginSecurity);
-    //     }
-    //     throw new IllegalArgumentException("Principal is not of type " + clazz.getName());
-    // }
-
-    public static AdminLoginSecurity getLoginAdmin() {
-        return (AdminLoginSecurity)getAuthentication().getPrincipal();
+    public Authentication getAuthentication(String username, String password) {
+        // 使用SpringSecurity的AuthenticationManager 进行身份认证
+        // authenticationManager的认证方法authenticate，接收一个Authentication类型的参数
+        // Authentication：是接口类型
+        // 所以这块使用Authentication他的实现类UsernamePasswordAuthenticationToken
+        // alt+ctrl+点击Authentication：可查看实现类
+        UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken(username,password);
+        // 把客户端传的用户名和密码封装成authenticationToken
+        // 通过authenticationManager调用authenticate
+        // 可执行在自定义的AdminDetailsServiceImpl重写的loadUserByUsername方法
+        // 从而实现用户的登录认证
+        return authenticationManager.authenticate(authenticationToken);
     }
 
-    public static Boolean isAdmin() {
-        return getLoginAdmin().getAdmin().getIsAdmin() == AdminType.IS_ADMIN;
+    /**
+     * 将每次接口携带的token的用户信息，存入SecurityContextHolder;
+     * 方便异步获取当前登录用户信息
+     * 参数1：用户名；参数2： 密码；参数3：权限信息
+     * 三个参数构造器：表示已认证状态的（super.setAuthenticated(true)）
+     **/
+    public static void setAuthentication(Object principal, Object credentials, Collection<? extends GrantedAuthority> authorities) {
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(principal, credentials, authorities);
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
     }
 
-    // LoginId指登录id/手机号
-    public static String getAdminLoginId() {
-        return getLoginAdmin().getUsername();
+    /**
+     * 后台用户登录：
+     * 获取登录账号：loginId/username
+     * setAuthentication: 向SecurityContextHolder存储的是username，而不是整个AdminLoginSecurity
+     **/
+    public static String getAdminUsername() {
+        UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        // AdminLoginSecurity adminLoginSecurity = (AdminLoginSecurity) authentication.getPrincipal();
+        // return adminLoginSecurity.getUsername();
+        return (String) authentication.getPrincipal();
     }
+
 }

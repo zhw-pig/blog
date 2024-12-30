@@ -8,13 +8,13 @@ import com.zhw.blog.common.constant.RedisConstant;
 import com.zhw.blog.common.exception.BlogException;
 import com.zhw.blog.common.result.ResponseResult;
 import com.zhw.blog.common.result.ResultCodeEnum;
+import com.zhw.blog.common.security.AdminLoginSecurity;
 import com.zhw.blog.common.util.RedisCacheUtil;
+import com.zhw.blog.common.util.SecurityUtils;
 import com.zhw.blog.common.util.WebUtils;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -24,6 +24,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * @author zhanghuaiwei
@@ -71,8 +72,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         String loginId = claims.getSubject();
         // 从redis中获取用户信息
         String key = RedisConstant.ADMIN_LOGIN_PREFIX + loginId;
-        String redisToken = redisCacheUtil.getCacheObject(key);
-        if(!StringUtils.hasText(redisToken)){
+        AdminLoginSecurity adminLoginSecurity = redisCacheUtil.getCacheObject(key);
+        if(Objects.isNull(adminLoginSecurity)){
             // throw new BlogException(ResultCodeEnum.NEED_LOGIN);
             // token超时 token非法
             // 响应告诉前端需要重新登录
@@ -84,9 +85,11 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         // 方便异步获取当前登录用户信息
         // 参数1：用户名；参数2： 密码；参数3：权限信息
         // 三个参数构造器：表示已认证状态的（super.setAuthenticated(true)）
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginId, null, null);
-        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-        // SecurityUtils.setAuthentication(authenticationToken);
+        // UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginId, null, null);
+        // SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+        // 这块不能用注入，否则会形成依赖循环, 所以setAuthentication写成静态的，直接调用
+        SecurityUtils.setAuthentication(loginId, null, adminLoginSecurity.getAuthorities());
         // 携带token的接口放行
         filterChain.doFilter(request, response);
     }

@@ -1,11 +1,11 @@
 package com.zhw.blog.common.util;
 
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.BoundSetOperations;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2024/11/16 15:27
  */
 
-@Component
+@Configuration
 public class RedisCacheUtil
 {
     @Resource

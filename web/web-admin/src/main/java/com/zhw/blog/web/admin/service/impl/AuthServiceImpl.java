@@ -9,13 +9,12 @@ import com.zhw.blog.common.result.ResultCodeEnum;
 import com.zhw.blog.common.security.AdminLoginSecurity;
 import com.zhw.blog.common.util.RedisCacheUtil;
 import com.zhw.blog.common.util.SecurityUtils;
-import com.zhw.blog.model.entity.Admin;
+import com.zhw.blog.model.entity.User;
 import com.zhw.blog.web.admin.mapper.AuthMapper;
 import com.zhw.blog.web.admin.service.AuthService;
 import com.zhw.blog.web.admin.vo.login.AdminLoginVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import java.util.HashMap;
@@ -27,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2024/12/27 10:34
  */
 @Service
-public class AuthServiceImpl extends ServiceImpl<AuthMapper, Admin>
+public class AuthServiceImpl extends ServiceImpl<AuthMapper, User>
         implements AuthService {
 
     @Autowired
@@ -36,24 +35,16 @@ public class AuthServiceImpl extends ServiceImpl<AuthMapper, Admin>
     private JwtConfig jwtConfig;
     @Autowired
     private RedisCacheUtil redisCacheUtil;
+    @Autowired
+    private SecurityUtils securityUtils;
 
 
 
 
     @Override
     public HashMap<String, Object> authToken(AdminLoginVo adminLoginVo) {
-        // 使用SpringSecurity的AuthenticationManager 进行身份认证
-        // authenticationManager的认证方法authenticate，接收一个Authentication类型的参数
-        // Authentication：是接口类型
-        // 所以这块使用Authentication他的实现类UsernamePasswordAuthenticationToken
-        // alt+ctrl+点击Authentication：可查看实现类
-        UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(adminLoginVo.getUsername(),adminLoginVo.getPassword());
-        // 把客户端传的用户名和密码封装成authenticationToken
-        // 通过authenticationManager调用authenticate
-        // 可执行在自定义的AdminDetailsServiceImpl重写的loadUserByUsername方法
-        // 从而实现用户的登录认证
-        Authentication authenticate = authenticationManager.authenticate(authenticationToken);
+
+        Authentication authenticate = securityUtils.getAuthentication(adminLoginVo.getUsername(),adminLoginVo.getPassword());
 
         // authenticate为空：认证失败
         if(Objects.isNull(authenticate)) {
@@ -70,7 +61,7 @@ public class AuthServiceImpl extends ServiceImpl<AuthMapper, Admin>
         String token = jwtConfig.createJWT(loginId);
         // 将token存储到redis中
         String key = RedisConstant.ADMIN_LOGIN_PREFIX + loginId;
-        redisCacheUtil.setCacheObject(key, token, RedisConstant.ADMIN_LOGIN_TOKEN_TTL_SEC, TimeUnit.SECONDS);
+        redisCacheUtil.setCacheObject(key, adminLoginSecurity, RedisConstant.ADMIN_LOGIN_TOKEN_TTL_SEC, TimeUnit.SECONDS);
         // 组装token，返回给前端
         HashMap<String, Object> resultMap = new HashMap<>();
         resultMap.put("accessToken", token);
@@ -80,7 +71,7 @@ public class AuthServiceImpl extends ServiceImpl<AuthMapper, Admin>
     @Override
     public ResponseResult logout() {
         // 获取保存在SecurityContextHolder的登录id
-        String loginId = SecurityUtils.getAdminLoginId();
+        String loginId = SecurityUtils.getAdminUsername();
         // 删除redis对应的token
         redisCacheUtil.deleteObject(RedisConstant.ADMIN_LOGIN_PREFIX + loginId);
         return ResponseResult.okResult();

@@ -1,6 +1,5 @@
 package com.zhw.blog.web.admin.controller.auth;
 
-import com.zhw.blog.common.constant.RedisConstant;
 import com.zhw.blog.common.result.ResponseResult;
 import com.zhw.blog.web.admin.service.AuthService;
 import com.zhw.blog.web.admin.vo.login.AdminLoginVo;

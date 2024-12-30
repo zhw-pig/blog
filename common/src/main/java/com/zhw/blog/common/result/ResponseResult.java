@@ -32,7 +32,7 @@ public class ResponseResult<T> {
 
     public static ResponseResult okResult() {
         ResponseResult result = new ResponseResult();
-        return result;
+        return result.ok(ResultCodeEnum.SUCCESS.getCode(), null, ResultCodeEnum.SUCCESS.getMessage());
     }
 
     public static ResponseResult okResult(int code, String message) {

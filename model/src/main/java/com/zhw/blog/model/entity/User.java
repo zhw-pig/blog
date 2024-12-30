@@ -10,9 +10,9 @@ import lombok.Data;
 /**
  * @TableName t_sys_admin
  */
-@TableName(value ="t_sys_admin")
+@TableName(value ="t_sys_user")
 @Data
-public class Admin extends BaseEntity {
+public class User extends BaseEntity {
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
