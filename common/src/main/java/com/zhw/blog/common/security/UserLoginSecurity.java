@@ -20,9 +20,9 @@ import java.util.stream.Collectors;
  */
 @Data
 @NoArgsConstructor
-public class AdminLoginSecurity implements UserDetails {
+public class UserLoginSecurity implements UserDetails {
 
-    private User admin;
+    private User user;
 
     private List<String> permissions;
 
@@ -31,8 +31,8 @@ public class AdminLoginSecurity implements UserDetails {
     // @JSONField(serialize = false)  // fastjson提供的注解
     private Set<GrantedAuthority> authorities;
 
-    public AdminLoginSecurity(User admin, List<String> permissions) {
-        this.admin = admin;
+    public UserLoginSecurity(User user, List<String> permissions) {
+        this.user = user;
         this.permissions = permissions;
     }
 
@@ -52,17 +52,17 @@ public class AdminLoginSecurity implements UserDetails {
 
     @Override
     public String getPassword() {
-        return admin.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return admin.getLoginId();
+        return user.getLoginId();
     }
 
     @Override
     public boolean isEnabled() {
-        return admin.getState() == BaseStatus.ENABLE;
+        return user.getState() == BaseStatus.ENABLE;
     }
 
     @Override

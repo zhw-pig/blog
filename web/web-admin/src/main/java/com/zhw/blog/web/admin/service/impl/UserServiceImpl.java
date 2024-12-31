@@ -3,8 +3,8 @@ package com.zhw.blog.web.admin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zhw.blog.model.entity.User;
-import com.zhw.blog.web.admin.mapper.AdminMapper;
-import com.zhw.blog.web.admin.service.AdminService;
+import com.zhw.blog.web.admin.mapper.UserMapper;
+import com.zhw.blog.web.admin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -15,17 +15,17 @@ import org.springframework.util.StringUtils;
 * @createDate 2024-12-26 11:57:37
 */
 @Service
-public class AdminServiceImpl extends ServiceImpl<AdminMapper, User>
-        implements AdminService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User>
+        implements UserService {
 
     @Autowired
-    private AdminMapper adminMapper;
+    private UserMapper userMapper;
 
     @Override
     public User getAdminByUsername(String username) {
         LambdaQueryWrapper<User> adminQueryWrapper = new LambdaQueryWrapper<>();
         adminQueryWrapper.eq(StringUtils.hasText(username), User::getLoginId, username);
-        User admin = adminMapper.selectOne(adminQueryWrapper);
+        User admin = userMapper.selectOne(adminQueryWrapper);
         return admin;
     }
 }

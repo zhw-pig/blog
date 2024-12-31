@@ -1,7 +1,7 @@
 package com.zhw.blog.web.admin.config;
 
 import com.zhw.blog.common.filter.JwtAuthenticationTokenFilter;
-import com.zhw.blog.web.admin.service.impl.AdminDetailsServiceImpl;
+import com.zhw.blog.web.admin.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,9 +30,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig  {
 
     @Autowired
-    private AdminDetailsServiceImpl adminDetailsService;
+    private UserDetailsServiceImpl adminDetailsService;
     @Autowired
     private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+    // 因为系统实现了AuthenticationEntryPoint接口，所以可以注入该接口，从而实现自定义的认证失败处理逻辑
     @Autowired
     private AuthenticationEntryPoint authenticationEntryPoint;
     @Autowired
@@ -41,7 +42,10 @@ public class SecurityConfig  {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            // 前后端分离：关闭csrf
+
+            // 前后端不分离，信息存储到了cookie中，会有csrf攻击的风险
+            // 前后端分离：是不需要考虑csrf攻击的，如果不关闭csrf，则默认会校验请求是否携带了csrf_token
+            // 所以关闭csrf：跨站请求伪造攻击
             .csrf().disable()
             // 前后端分离：关闭session,不通过session获取SecurityContext
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -57,9 +61,10 @@ public class SecurityConfig  {
         //配置异常处理器
         // authenticationEntryPoint是系统自定义的认证失败处理实现类
         // 因为有了@Configuration注解，所以可以注入该类
+        // SpringSecurity内置的异常过滤器调用的是异常处理器接口的实现类，所以我们需要在系统自定义Security的异常实现类
         http.exceptionHandling()
-                .authenticationEntryPoint(authenticationEntryPoint)
-                .accessDeniedHandler(accessDeniedHandler);
+                .authenticationEntryPoint(authenticationEntryPoint)  // 配置认证失败处理器
+                .accessDeniedHandler(accessDeniedHandler);   // 授权失败处理器
 
         // 关闭默认的注销功能
         http.logout().disable();

@@ -3,7 +3,7 @@ package com.zhw.blog.web.admin.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zhw.blog.common.result.ResponseResult;
 import com.zhw.blog.model.entity.User;
-import com.zhw.blog.web.admin.vo.login.AdminLoginVo;
+import com.zhw.blog.web.admin.vo.login.UserLoginVo;
 
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @date 2024/12/27 10:33
  */
 public interface AuthService extends IService<User> {
-    HashMap<String, Object> authToken(AdminLoginVo adminLoginVo);
+    HashMap<String, Object> authToken(UserLoginVo userLoginVo);
 
     ResponseResult logout();
 }

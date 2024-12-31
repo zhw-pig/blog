@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Schema(description = "后台管理系统登录信息")
-public class AdminLoginVo {
+public class UserLoginVo {
 
     @Schema(description="用户名")
     private String username;

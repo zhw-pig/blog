@@ -1,4 +1,4 @@
-package com.zhw.blog.web.admin.vo.admin;
+package com.zhw.blog.web.admin.vo.user;
 
 import com.zhw.blog.model.entity.User;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdminInfoVo {
+public class UserInfoVo {
     private List<String> permissions;
     private List<String> roles;
     private User user;

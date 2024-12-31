@@ -8,7 +8,7 @@ import com.zhw.blog.common.constant.RedisConstant;
 import com.zhw.blog.common.exception.BlogException;
 import com.zhw.blog.common.result.ResponseResult;
 import com.zhw.blog.common.result.ResultCodeEnum;
-import com.zhw.blog.common.security.AdminLoginSecurity;
+import com.zhw.blog.common.security.UserLoginSecurity;
 import com.zhw.blog.common.util.RedisCacheUtil;
 import com.zhw.blog.common.util.SecurityUtils;
 import com.zhw.blog.common.util.WebUtils;
@@ -72,8 +72,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         String loginId = claims.getSubject();
         // 从redis中获取用户信息
         String key = RedisConstant.ADMIN_LOGIN_PREFIX + loginId;
-        AdminLoginSecurity adminLoginSecurity = redisCacheUtil.getCacheObject(key);
-        if(Objects.isNull(adminLoginSecurity)){
+        UserLoginSecurity userLoginSecurity = redisCacheUtil.getCacheObject(key);
+        if(Objects.isNull(userLoginSecurity)){
             // throw new BlogException(ResultCodeEnum.NEED_LOGIN);
             // token超时 token非法
             // 响应告诉前端需要重新登录
@@ -89,7 +89,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         // SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
         // 这块不能用注入，否则会形成依赖循环, 所以setAuthentication写成静态的，直接调用
-        SecurityUtils.setAuthentication(loginId, null, adminLoginSecurity.getAuthorities());
+        SecurityUtils.setAuthentication(loginId, null, userLoginSecurity.getAuthorities());
         // 携带token的接口放行
         filterChain.doFilter(request, response);
     }

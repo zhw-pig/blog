@@ -2,7 +2,7 @@ package com.zhw.blog.web.admin.controller.auth;
 
 import com.zhw.blog.common.result.ResponseResult;
 import com.zhw.blog.web.admin.service.AuthService;
-import com.zhw.blog.web.admin.vo.login.AdminLoginVo;
+import com.zhw.blog.web.admin.vo.login.UserLoginVo;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +23,8 @@ public class AuthController {
 
     // consumes = "application/x-www-form-urlencoded;charset=UTF-8"
     @PostMapping(value = "oauth/token")
-    public ResponseResult<HashMap<String, Object>> authToken(@RequestBody AdminLoginVo adminLoginVo) {
-        HashMap<String, Object> tokenMap = authService.authToken(adminLoginVo);
+    public ResponseResult<HashMap<String, Object>> authToken(@RequestBody UserLoginVo userLoginVo) {
+        HashMap<String, Object> tokenMap = authService.authToken(userLoginVo);
         return ResponseResult.okResult(tokenMap);
     }
 

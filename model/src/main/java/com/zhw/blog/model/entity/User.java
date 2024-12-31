@@ -5,16 +5,20 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.zhw.blog.model.enums.AdminType;
 import com.zhw.blog.model.enums.BaseStatus;
+import com.zhw.blog.model.enums.UserSourceType;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * @TableName t_sys_admin
+ * @TableName t_sys_user
  */
 @TableName(value ="t_sys_user")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User extends BaseEntity {
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
+
 
     /**
      * 登陆账号
@@ -54,28 +58,11 @@ public class User extends BaseEntity {
     @TableField("state")
     private BaseStatus state;
 
-    /**
-     * 记录创建者ID
-     */
-    @TableField("create_by")
-    private String createBy;
 
     /**
-     * 最后修改人ID
+     * 登录用户来源 0：后台管理员；1：客户端用户
      */
-    @TableField("last_modified_by")
-    private String lastModifiedBy;
-
-    /**
-     * 创建人名称
-     */
-    @TableField("create_name")
-    private String createName;
-
-    /**
-     * 最后修改人名称
-     */
-    @TableField("last_modified_name")
-    private String lastModifiedName;
+    @TableField("source")
+    private UserSourceType source;
 
 }

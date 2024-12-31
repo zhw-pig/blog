@@ -55,7 +55,7 @@ public class SecurityUtils {
      **/
     public static String getAdminUsername() {
         UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-        // AdminLoginSecurity adminLoginSecurity = (AdminLoginSecurity) authentication.getPrincipal();
+        // UserLoginSecurity adminLoginSecurity = (UserLoginSecurity) authentication.getPrincipal();
         // return adminLoginSecurity.getUsername();
         return (String) authentication.getPrincipal();
     }

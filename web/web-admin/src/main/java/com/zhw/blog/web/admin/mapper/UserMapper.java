@@ -10,6 +10,6 @@ import org.apache.ibatis.annotations.Mapper;
 * @createDate 2024-12-26 11:57:37
 */
 @Mapper
-public interface AdminMapper extends BaseMapper<User> {
+public interface UserMapper extends BaseMapper<User> {
 
 }
