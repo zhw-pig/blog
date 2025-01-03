@@ -31,9 +31,9 @@ export async function loginApi(data: AuthApi.LoginParams) {
 export async function refreshTokenApi() {
   return baseRequestClient.post<AuthApi.RefreshTokenResult>(
     '/auth/oauth/refresh',
-    {
-      withCredentials: true,
-    },
+    // {
+    //   withCredentials: true,
+    // },
   );
 }
 
@@ -41,9 +41,7 @@ export async function refreshTokenApi() {
  * 退出登录
  */
 export async function logoutApi() {
-  return baseRequestClient.post('/auth/oauth/logout', {
-    withCredentials: true,
-  });
+  return baseRequestClient.post('/auth/oauth/logout');
 }
 
 /**

@@ -59,6 +59,7 @@ function createRequestClient(baseURL: string) {
   }
 
   // 请求头处理
+  // 退出登录接口未进入此逻辑
   client.addRequestInterceptor({
     fulfilled: async (config) => {
       const accessStore = useAccessStore();
@@ -66,6 +67,9 @@ function createRequestClient(baseURL: string) {
       config.headers.Authorization = formatToken(accessStore.accessToken);
       config.headers['Accept-Language'] = preferences.app.locale;
       return config;
+    },
+    rejected: (error) => {
+      return Promise.reject(error);
     },
   });
 
@@ -112,4 +116,5 @@ function createRequestClient(baseURL: string) {
 
 export const requestClient = createRequestClient(apiURL);
 
+// 并未加任何拦截权限
 export const baseRequestClient = new RequestClient({ baseURL: apiURL });
