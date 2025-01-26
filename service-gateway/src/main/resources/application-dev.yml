@@ -1,0 +1,49 @@
+server:
+  port: 30000 # 网关端口，前端VUE_APP_BASE_API用的就是这个端口号
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 开启服务发现
+      routes:
+        - id: service-acl # 网关路由名称/服务名称
+          uri: lb://service-acl # lb：负载均衡
+          predicates: # 接口路径断言， 一个* 一层路径，两个* 多层路径
+            - Path=/*/acl/**
+
+        - id: service-sys
+          uri: lb://service-sys
+          predicates:
+            - Path=/*/sys/**
+
+        - id: service-product
+          uri: lb://service-product
+          predicates:
+            - Path=/*/product/**
+
+        - id: service-activity
+          uri: lb://service-activity
+          predicates:
+            - Path=/*/activity/**
+
+        - id: service-order
+          uri: lb://service-order
+          predicates:
+            - Path=/*/order/**
+
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/*/user/**
+
+        - id: service-search
+          uri: lb://service-search
+          predicates:
+            - Path=/*/search/**
+
+        - id: service-home
+          uri: lb://service-home
+          predicates:
+            - Path=/*/home/**
